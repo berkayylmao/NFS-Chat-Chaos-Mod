@@ -287,6 +287,7 @@ namespace Extensions::D3D9::Menu {
     static constexpr char CONST_UI_ABOUT_GITHUB_RELEASE[] = "https://github.com/berkayylmao/NFS-Chat-Chaos-Mod/releases/latest";
     static constexpr char CONST_UI_ABOUT_PAYPAL[]         = "https://www.paypal.me/berkayylmao";
     static constexpr char CONST_UI_ABOUT_KOFI[]           = "https://ko-fi.com/berkayylmao";
+    static constexpr char CONST_UI_ABOUT_PATREON[]        = "https://www.patreon.com/berkayylmao";
 
     // Tab content
     static inline void DrawAboutTabContent() {
@@ -311,6 +312,7 @@ namespace Extensions::D3D9::Menu {
         ImGui::PopTextWrapPos();
         if (ImGui::SmallButton("PayPal: paypal.me/berkayylmao")) ShellExecuteA(NULL, NULL, details::CONST_UI_ABOUT_PAYPAL, NULL, NULL, SW_SHOW);
         if (ImGui::SmallButton("Ko-Fi: ko-fi.com/berkayylmao")) ShellExecuteA(NULL, NULL, details::CONST_UI_ABOUT_KOFI, NULL, NULL, SW_SHOW);
+        if (ImGui::SmallButton("Patreon: patreon.com/berkayylmao")) ShellExecuteA(NULL, NULL, details::CONST_UI_ABOUT_PATREON, NULL, NULL, SW_SHOW);
       }
 
       // Compatibility
