@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="_win32entry">
+      <UniqueIdentifier>{c7a8b338-b8e5-4cc0-95fb-f2f85da3c4d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers\Dear ImGui">
+      <UniqueIdentifier>{39c0aa81-6904-4a0c-bfde-e801dab0c19f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{47f531fd-3c84-4a2e-a28d-1c74040207d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers\fmt">
+      <UniqueIdentifier>{e10a2693-ba6d-4e1b-a86f-e16866c88dab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_vs">
+      <UniqueIdentifier>{06118aad-171f-4932-81e1-aa48d3d2291b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers\Dear ImGui\backends">
+      <UniqueIdentifier>{688b1400-9e85-4ab5-a7a4-988dfcc4473d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers\Dear ImGui\misc\freetype">
+      <UniqueIdentifier>{5c9e23a6-d6fd-4089-b124-51f0cbb5f117}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers\Dear ImGui\misc">
+      <UniqueIdentifier>{3450b680-4d78-4e40-800c-b522cffddac1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extensions\D3D9">
+      <UniqueIdentifier>{660840a2-0da9-4a02-ba15-0b50bb7d01aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extensions">
+      <UniqueIdentifier>{97afa71c-f27a-4d2b-a0db-4d957c9efe08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extensions\DInput8">
+      <UniqueIdentifier>{e86a1cf3-ab49-4b98-994d-117bc317c3e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extensions\Game">
+      <UniqueIdentifier>{e67fa640-0ff1-4a5b-bb1d-ce8f064c0c77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extensions\Game\MW05">
+      <UniqueIdentifier>{09073955-413a-463b-a9d2-1e629f51e8e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extensions\WndProc">
+      <UniqueIdentifier>{12a6b441-a2b3-444a-bb21-345356d115b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers\Dear ImGui\misc\fonts">
+      <UniqueIdentifier>{aec3daa7-811d-4df2-811f-741a964d73d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extensions\Game\MW05\Effects">
+      <UniqueIdentifier>{e4ff402e-d734-4a95-9486-d23eadb2b849}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extensions\Game\MW05\Modifiers">
+      <UniqueIdentifier>{0a6d2089-a7aa-49e0-a869-baee31991cd1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\_win32entry\dllmain.cpp">
+      <Filter>_win32entry</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Helpers\Dear ImGui\imgui.cpp">
+      <Filter>Helpers\Dear ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Helpers\Dear ImGui\imgui_demo.cpp">
+      <Filter>Helpers\Dear ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Helpers\Dear ImGui\imgui_draw.cpp">
+      <Filter>Helpers\Dear ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Helpers\Dear ImGui\imgui_user.cpp">
+      <Filter>Helpers\Dear ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Helpers\Dear ImGui\imgui_widgets.cpp">
+      <Filter>Helpers\Dear ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Helpers\fmt\format.cc">
+      <Filter>Helpers\fmt</Filter>
+    </ClCompile>
+    <ClCompile Include="src\_vs\pch.cpp">
+      <Filter>_vs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Helpers\Dear ImGui\backends\imgui_impl_dx9.cpp">
+      <Filter>Helpers\Dear ImGui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Helpers\Dear ImGui\backends\imgui_impl_win32.cpp">
+      <Filter>Helpers\Dear ImGui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Helpers\Dear ImGui\misc\freetype\imgui_freetype.cpp">
+      <Filter>Helpers\Dear ImGui\misc\freetype</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Helpers\Dear ImGui\imgui_tables.cpp">
+      <Filter>Helpers\Dear ImGui</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Helpers\TwitchIRC.hpp">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\Dear ImGui\imconfig.h">
+      <Filter>Helpers\Dear ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\Dear ImGui\imgui.h">
+      <Filter>Helpers\Dear ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\Dear ImGui\imgui_internal.h">
+      <Filter>Helpers\Dear ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\Dear ImGui\imgui_user.h">
+      <Filter>Helpers\Dear ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\Dear ImGui\imstb_rectpack.h">
+      <Filter>Helpers\Dear ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\Dear ImGui\imstb_textedit.h">
+      <Filter>Helpers\Dear ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\fmt\core.h">
+      <Filter>Helpers\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\fmt\format-inl.h">
+      <Filter>Helpers\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\fmt\format.h">
+      <Filter>Helpers\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\fmt\ostream.h">
+      <Filter>Helpers\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\fmt\printf.h">
+      <Filter>Helpers\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="src\_vs\pch.h">
+      <Filter>_vs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\_vs\resource.h">
+      <Filter>_vs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\D3D9\D3D9.Base.hpp">
+      <Filter>Extensions\D3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\D3D9\D3D9.Menu.hpp">
+      <Filter>Extensions\D3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\D3D9\Shared.hpp">
+      <Filter>Extensions\D3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\DInput8\DInput8.hpp">
+      <Filter>Extensions\DInput8</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\IGameEffectsHandler.hpp">
+      <Filter>Extensions\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\IGameEffect.hpp">
+      <Filter>Extensions\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\MW05.hpp">
+      <Filter>Extensions\Game\MW05</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\GameEffectsHandler.hpp">
+      <Filter>Extensions\Game\MW05</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\WndProc\DontStopGameOnFocussLoss.hpp">
+      <Filter>Extensions\WndProc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\WndProc\WindowedModeImprovements.hpp">
+      <Filter>Extensions\WndProc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\Dear ImGui\backends\imgui_impl_dx9.h">
+      <Filter>Helpers\Dear ImGui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\Dear ImGui\backends\imgui_impl_win32.h">
+      <Filter>Helpers\Dear ImGui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\Dear ImGui\misc\fonts\FontAwesome-Solid.hpp">
+      <Filter>Helpers\Dear ImGui\misc\fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\Dear ImGui\misc\fonts\OpenSans-Regular.hpp">
+      <Filter>Helpers\Dear ImGui\misc\fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\Dear ImGui\misc\fonts\OpenSans-SemiBold.hpp">
+      <Filter>Helpers\Dear ImGui\misc\fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\Dear ImGui\misc\freetype\imgui_freetype.h">
+      <Filter>Helpers\Dear ImGui\misc\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Main.hpp" />
+    <ClInclude Include="src\Extensions\D3D9\D3D9.Overlay.hpp">
+      <Filter>Extensions\D3D9</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\ThanosSnap.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\IfYouCantBeatThemKillThem.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\EnterTheMatrix.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\EARFQUAKE.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\Sbinnala.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\YouShouldHaveSaved.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\AYAYAAYAYA.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\DoABarrelRoll.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\OpenSpeedEx.hpp">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\Chernobyl.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\RainbowRoad.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\Timeout.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\BluetoothController.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\CruiseControl.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\YouAreSafeThisTime.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\SchoolZone.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\DeveloperMode.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\Random.hpp">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\Config.hpp">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\FMODWrapper.hpp">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\TheMagnumOpus.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\POVYouAreVolkswagenDuringEmissionTests.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\DontLookBackInAnger.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\PowerPointPresentation.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\PotatoPC.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\IntoTheVoid.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\CrossEyedRider.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\JesusTakeTheWheel.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\JumpToSafehouse.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\JumpToCarLot.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\Snitch.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\TurnUpTheHeat.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\TurnDownTheHeat.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\INeedSomeHelp.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\SlotMachine.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\STONKS.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\Magneto.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\FAK500.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\MidnightClubRacing.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\Superhot.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\BrakesJustSlowYouDown.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\ExperienceTheLag.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\AreYouAMinivanMom.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\DesignatedDriver.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\FastAndFuriousNOS.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\HowsYourCarRunning.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\GASGASGAS.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\CameraSwitcheroo.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\SuddentlyItsADragRace.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\Teasing.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\DriveOrDie.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\TurnNoMore.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\WideCars.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\RCCars.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\JellyCars.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\TheJavaExperience.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\Flashbang.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\ToTheMoon.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\PaperCars.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\YoBroIsThatASupra.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\DoILookBetterInThisDress.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\TankMode.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\AXEDeodorant.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\SuperSeducer.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\HeavyCars.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\LightCars.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\ThePSPExperience.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\BlurPowerups.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\XInputWrapper.hpp">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\EnjoyTheScenery.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\InsaneTraffic.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\CrazyTaxi.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\GigaRubberband.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\MegaRubberband.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\GuessWhosBack.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\YoureGoingTheWrongWay.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\BailMeOut.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\BlackOut.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\RKO.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Helpers\DefaultConfigFile.hpp">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\LightCops.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\HeavyCops.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\NeverBusted.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\StickShiftPro.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\IGameplayModifier.hpp">
+      <Filter>Extensions\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Modifiers\CarScaleModifier.hpp">
+      <Filter>Extensions\Game\MW05\Modifiers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="src\_vs\NFS_ChatChaosMod.rc">
+      <Filter>_vs</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="src\Helpers\Dear ImGui\misc\imgui.natvis">
+      <Filter>Helpers\Dear ImGui\misc</Filter>
+    </Natvis>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NFS_ChatChaosMod.licenseheader" />
+    <None Include="src\Helpers\fmt\fmt.licenseheader">
+      <Filter>Helpers\fmt</Filter>
+    </None>
+    <None Include="src\Helpers\Dear ImGui\imgui.licenseheader">
+      <Filter>Helpers\Dear ImGui</Filter>
+    </None>
+  </ItemGroup>
+</Project>
