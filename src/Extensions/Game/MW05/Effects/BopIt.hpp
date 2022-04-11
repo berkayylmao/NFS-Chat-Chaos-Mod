@@ -29,8 +29,7 @@ namespace Extensions::Game::MW05::Effects {
     enum class Mode : std::uint32_t { BopIt, TwistIt, PullIt, SpinIt };
 
    protected:
-    virtual bool _activate() noexcept override { return true; }
-    virtual bool _deactivate() noexcept override { return true; }
+    virtual bool _activate() noexcept override { return OpenMW::PVehicleEx::GetPlayerInstance(); }
     virtual void _activeTick() noexcept override {
       __EXECUTE_EVERY_X_SECONDS__(1.5f);
 
