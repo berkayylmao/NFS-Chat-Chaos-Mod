@@ -73,7 +73,7 @@ namespace ChaosMod::DefaultConfigFile {
       "20]},{\"Name\":\"Into the Void\",\"Description\":\"Makes you fall into the "
       "void\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":25,\"Duration\":10.0,\"IncompatibleWith\":[]},{\"Name\":"
       "\"Cross-Eyed Rider\",\"Description\":\"Inverts "
-      "steering\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":9,\"Duration\":50.0,\"IncompatibleWith\":[]},{"
+      "steering\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":9,\"Duration\":50.0,\"IncompatibleWith\":[83]},{"
       "\"Name\":\"Jesus Take the Wheel\",\"Description\":\"Forces the player\'s car to be controlled by "
       "AI\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":9,\"Duration\":30.0,\"IncompatibleWith\":[]},{\"Name\":"
       "\"Jump to "
@@ -191,5 +191,7 @@ namespace ChaosMod::DefaultConfigFile {
       "\"Name\":\"Tall Cars\",\"Description\":\"More headroom is always "
       "good\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[]},{\"Name\":"
       "\"I\'m TIREd\",\"Description\":\"Get it? haHaa\\n(Blows the tires of all "
-      "cars)\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":24,\"Duration\":30.0,\"IncompatibleWith\":[]}]}";
+      "cars)\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":24,\"Duration\":30.0,\"IncompatibleWith\":[]},{"
+      "\"Name\":\"Maybe Inverted Steering\",\"Description\":\"Inverts steering, but only "
+      "sometimes\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":9,\"Duration\":50.0,\"IncompatibleWith\":[23]}]}";
 }

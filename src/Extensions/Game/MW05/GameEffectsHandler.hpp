@@ -106,6 +106,7 @@
 #include "Extensions/Game/MW05/Effects/TunnelVision.hpp"
 #include "Extensions/Game/MW05/Effects/TallCars.hpp"
 #include "Extensions/Game/MW05/Effects/ImTIREd.hpp"
+#include "Extensions/Game/MW05/Effects/MaybeInvertedSteering.hpp"
 
 // Modifiers
 #include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
@@ -322,6 +323,7 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::TunnelVision());
       IGameEffectsHandler::AddEffect(new Effects::TallCars());
       IGameEffectsHandler::AddEffect(new Effects::ImTIREd());
+      IGameEffectsHandler::AddEffect(new Effects::MaybeInvertedSteering());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),
