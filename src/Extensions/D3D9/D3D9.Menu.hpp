@@ -291,7 +291,7 @@ namespace Extensions::D3D9::Menu {
 
     // Tab content
     static inline void DrawAboutTabContent() {
-      ImGui::TextUnformatted("NFS Chat Chaos Mod v" __MOD_VERSION_STR__ "\nCopyright (C) berkayylmao. All rights reserved.");
+      ImGui::TextUnformatted("NFS Chat Chaos Mod v" __MOD_VERSION_STR__ "\nCopyright (C) berkayylmao");
 
       // GitHub
       {
