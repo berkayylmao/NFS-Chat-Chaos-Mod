@@ -325,6 +325,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TheJavaExperience.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\ThePSPExperience.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\ToTheMoon.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\TunnelVision.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TurnDownTheHeat.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TurnNoMore.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TurnUpTheHeat.hpp" />

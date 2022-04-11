@@ -275,9 +275,6 @@ namespace Extensions::D3D9::Overlay {
       const std::size_t num_active_effects = active_effects.size();
       if (num_active_effects == 0) return;
 
-      // Overlays
-      for (const auto& effect : active_effects) effect->Draw(viewport);
-
       // Active effects display
       {
         ImGui::WithStyle _s1(ImGuiStyleVar_WindowPadding, ImVec2(5.0f, 5.0f));
@@ -422,6 +419,9 @@ namespace Extensions::D3D9::Overlay {
 
   // Called every frame
   static inline void DrawEffectsDisplay(const ImGuiViewport* pMainViewport) {
+    // Overlays
+    for (const auto& effect : Game::IGameEffectsHandler::GetActiveEffects()) effect->Draw(pMainViewport);
+
     // Timer
     {
       // Draw timer
