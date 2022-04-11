@@ -57,10 +57,10 @@ namespace Extensions::Game::MW05::Effects {
           damageable->ResetDamage();
           mFixDamage = false;
         } else {
-          mTireToBlow = static_cast<OpenMW::eTireIdx>(static_cast<std::uint32_t>(mTireToBlow) + 1);
           damageable->Puncture(mTireToBlow);
 
-          if (mTireToBlow == OpenMW::eTireIdx::RearLeft) {
+          mTireToBlow = static_cast<OpenMW::eTireIdx>(static_cast<std::uint32_t>(mTireToBlow) + 1);
+          if (mTireToBlow > OpenMW::eTireIdx::RearRight) {
             mFixDamage  = true;
             mTireToBlow = OpenMW::eTireIdx::FrontLeft;
           }
