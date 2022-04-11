@@ -71,7 +71,7 @@
 #include "Extensions/Game/MW05/Effects/SuddentlyItsADragRace.hpp"
 #include "Extensions/Game/MW05/Effects/Teasing.hpp"
 #include "Extensions/Game/MW05/Effects/DriveOrDie.hpp"
-#include "Extensions/Game/MW05/Effects/TurnNoMore.hpp"
+#include "Extensions/Game/MW05/Effects/LookMaNoHands.hpp"
 #include "Extensions/Game/MW05/Effects/WideCars.hpp"
 #include "Extensions/Game/MW05/Effects/RCCars.hpp"
 #include "Extensions/Game/MW05/Effects/JellyCars.hpp"
@@ -289,7 +289,7 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::SuddentlyItsADragRace());
       IGameEffectsHandler::AddEffect(new Effects::Teasing());
       IGameEffectsHandler::AddEffect(new Effects::DriveOrDie());
-      IGameEffectsHandler::AddEffect(new Effects::TurnNoMore());
+      IGameEffectsHandler::AddEffect(new Effects::LookMaNoHands());
       IGameEffectsHandler::AddEffect(new Effects::WideCars());
       IGameEffectsHandler::AddEffect(new Effects::RCCars());
       IGameEffectsHandler::AddEffect(new Effects::JellyCars());

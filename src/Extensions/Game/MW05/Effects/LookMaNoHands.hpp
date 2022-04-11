@@ -25,26 +25,17 @@
 #include "Helpers/OpenSpeedEx.hpp"
 
 namespace Extensions::Game::MW05::Effects {
-  class TurnNoMore : public IGameEffect {
-    OpenMW::UMath::Vector3 mLinearVelocity;
-
+  class LookMaNoHands : public IGameEffect {
    protected:
-    virtual bool _activate() noexcept override {
-      auto* pvehicle = OpenMW::PVehicleEx::GetPlayerInstance();
-      if (!pvehicle) return false;
-
-      pvehicle->GetLinearVelocity(mLinearVelocity);
-      mLinearVelocity.z = 0.0f;
-      return true;
-    }
     virtual void _activeTick() noexcept override {
-      auto* pvehicle = OpenMW::PVehicleEx::GetPlayerInstance();
-      if (!pvehicle) return;
+      auto* input = OpenMW::InputEx::GetPlayerInstance() | OpenMW::InputEx::AsInputPlayer;
+      if (!input) return;
 
-      pvehicle->GetRigidBody()->SetLinearVelocity(mLinearVelocity);
+      auto& controls     = input->GetControls();
+      controls.mSteering = 0.0f;
     }
 
    public:
-    explicit TurnNoMore() : IGameEffect(47), mLinearVelocity() {}
+    explicit LookMaNoHands() : IGameEffect(47) {}
   };
 }  // namespace Extensions::Game::MW05::Effects

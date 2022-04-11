@@ -120,7 +120,7 @@ namespace ChaosMod::DefaultConfigFile {
       "earrape\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":5,\"Duration\":10.0,\"IncompatibleWith\":[]},{"
       "\"Name\":\"Drive or Die\",\"Description\":\"If you let go off the gas, the engine "
       "blows\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":true,\"Cooldown\":16,\"Duration\":40.0,\"IncompatibleWith\":[11,16,42]},{"
-      "\"Name\":\"Turn No More\",\"Description\":\"Locked "
+      "\"Name\":\"Look Ma No Hands\",\"Description\":\"No "
       "steering\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":7,\"Duration\":5.0,\"IncompatibleWith\":[]},{"
       "\"Name\":\"Wide Cars\",\"Description\":\"IT\'S HIM "
       "widepeepoHappy\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[55]"
