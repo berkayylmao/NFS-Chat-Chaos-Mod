@@ -218,8 +218,8 @@ namespace Extensions::D3D9::Overlay {
             if (Shared::g_ChaosMode == Shared::ChaosMode::SinglePlayer) {
               auto rnd = Random::Get().Generate(0, 1) * Random::Get().Generate(0, 100);
               if (rnd > 98) {
-                sEffectsBeingVoted[it->first] += rnd;
-                sVotesReceived += rnd;
+                sEffectsBeingVoted[it->first]++;
+                sVotesReceived++;
               }
             }
 
