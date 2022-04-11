@@ -444,6 +444,9 @@
     <ClInclude Include="src\Extensions\Game\MW05\Modifiers\CarScaleModifier.hpp">
       <Filter>Extensions\Game\MW05\Modifiers</Filter>
     </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\BopIt.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\_vs\NFS_ChatChaosMod.rc">

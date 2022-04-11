@@ -53,7 +53,11 @@ class FMODWrapper {
     BlurBoostBackwardPowerUp,
     BlurBargePowerUp,
     BlurPowerUpSwitch,
-    GuessWhosBack
+    GuessWhosBack,
+    BopIt,
+    TwistIt,
+    PullIt,
+    SpinIt
   };
 
  private:
@@ -76,7 +80,11 @@ class FMODWrapper {
                                                                             {"blurboostpowerupbackward.mp3", SoundFX::BlurBoostBackwardPowerUp},
                                                                             {"blurbargepowerup.mp3", SoundFX::BlurBargePowerUp},
                                                                             {"blurswitchpowerup.mp3", SoundFX::BlurPowerUpSwitch},
-                                                                            {"guesswhosback.mp3", SoundFX::GuessWhosBack}};
+                                                                            {"guesswhosback.mp3", SoundFX::GuessWhosBack},
+                                                                            {"bopit.mp3", SoundFX::BopIt},
+                                                                            {"twistit.mp3", SoundFX::TwistIt},
+                                                                            {"pullit.mp3", SoundFX::PullIt},
+                                                                            {"spinit.mp3", SoundFX::SpinIt}};
 
  public:
   FMOD::System*                                     mFMODSystem;

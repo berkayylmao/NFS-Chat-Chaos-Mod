@@ -266,6 +266,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BailMeOut.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BlackOut.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BlurPowerups.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\BopIt.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BrakesJustSlowYouDown.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\CameraSwitcheroo.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\Chernobyl.hpp" />

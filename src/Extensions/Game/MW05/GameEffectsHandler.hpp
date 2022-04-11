@@ -102,6 +102,7 @@
 #include "Extensions/Game/MW05/Effects/HeavyCops.hpp"
 #include "Extensions/Game/MW05/Effects/NeverBusted.hpp"
 #include "Extensions/Game/MW05/Effects/StickShiftPro.hpp"
+#include "Extensions/Game/MW05/Effects/BopIt.hpp"
 
 // Modifiers
 #include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
@@ -309,6 +310,7 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::HeavyCops());
       IGameEffectsHandler::AddEffect(new Effects::NeverBusted());
       IGameEffectsHandler::AddEffect(new Effects::StickShiftPro());
+      IGameEffectsHandler::AddEffect(new Effects::BopIt());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),
