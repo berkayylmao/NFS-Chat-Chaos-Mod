@@ -339,9 +339,6 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\DriveOrDie.hpp">
       <Filter>Extensions\Game\MW05\Effects</Filter>
     </ClInclude>
-    <ClInclude Include="src\Extensions\Game\MW05\Effects\TurnNoMore.hpp">
-      <Filter>Extensions\Game\MW05\Effects</Filter>
-    </ClInclude>
     <ClInclude Include="src\Extensions\Game\MW05\Effects\WideCars.hpp">
       <Filter>Extensions\Game\MW05\Effects</Filter>
     </ClInclude>
@@ -460,6 +457,9 @@
       <Filter>Extensions\Game\MW05\Effects</Filter>
     </ClInclude>
     <ClInclude Include="src\Extensions\Game\MW05\Effects\DeliveryBoy.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\LookMaNoHands.hpp">
       <Filter>Extensions\Game\MW05\Effects</Filter>
     </ClInclude>
   </ItemGroup>

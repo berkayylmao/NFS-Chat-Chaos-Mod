@@ -331,7 +331,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\ToTheMoon.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TunnelVision.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TurnDownTheHeat.hpp" />
-    <ClInclude Include="src\Extensions\Game\MW05\Effects\TurnNoMore.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\LookMaNoHands.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TurnUpTheHeat.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\Sbinnala.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\CruiseControl.hpp" />
