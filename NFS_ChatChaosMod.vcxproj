@@ -273,6 +273,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BluetoothController.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\CrazyTaxi.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\CrossEyedRider.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\DeliveryBoy.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\DesignatedDriver.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\DoILookBetterInThisDress.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\DriveOrDie.hpp" />

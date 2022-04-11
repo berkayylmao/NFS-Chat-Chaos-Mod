@@ -161,7 +161,7 @@ namespace ChaosMod::DefaultConfigFile {
       "\"Name\":\"Insane Traffic\",\"Description\":\"Years of illegal street racing have made people of Rockport go "
       "insane\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":20,\"Duration\":60.0,\"IncompatibleWith\":[]},{"
       "\"Name\":\"Crazy Taxi\",\"Description\":\"Need a "
-      "cab?\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":15,\"Duration\":10.0,\"IncompatibleWith\":[16,32]},{"
+      "cab?\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":15,\"Duration\":10.0,\"IncompatibleWith\":[16]},{"
       "\"Name\":\"Giga Rubberband\",\"Description\":\"He\'s always one step ahead of "
       "you\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":14,\"Duration\":60.0,\"IncompatibleWith\":[]},{\"Name\":"
       "\"Mega Rubberband\",\"Description\":\"You thought Earl was "
@@ -193,5 +193,7 @@ namespace ChaosMod::DefaultConfigFile {
       "\"I\'m TIREd\",\"Description\":\"Get it? haHaa\\n(Blows the tires of all "
       "cars)\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":24,\"Duration\":30.0,\"IncompatibleWith\":[]},{"
       "\"Name\":\"Maybe Inverted Steering\",\"Description\":\"Inverts steering, but only "
-      "sometimes\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":9,\"Duration\":50.0,\"IncompatibleWith\":[23]}]}";
+      "sometimes\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":9,\"Duration\":50.0,\"IncompatibleWith\":[23]},{"
+      "\"Name\":\"Delivery Boy\",\"Description\":\"Domino\'s needs an extra "
+      "hand\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":15,\"Duration\":10.0,\"IncompatibleWith\":[16]}]}";
 }
