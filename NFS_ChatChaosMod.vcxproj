@@ -320,6 +320,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\SuddentlyItsADragRace.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\Superhot.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\SuperSeducer.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\TallCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TankMode.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\Teasing.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TheJavaExperience.hpp" />

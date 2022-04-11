@@ -35,11 +35,13 @@ namespace Extensions::Game::MW05::Modifiers {
     static constexpr float CONST_NOT_USED_MARKER = -123.456f;
 
     const CarScaleVector sRCCarsScale    = CarScaleVector(0.4f, 0.4f, 0.4f);
+    const CarScaleVector sTallCarsScale  = CarScaleVector(4.0f, CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER);
     const CarScaleVector sWideCarsScale  = CarScaleVector(CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER, 4.0f);
     const CarScaleVector sPaperCarsScale = CarScaleVector(CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER, 0.001f);
     CarScaleVector       mJellyCarsScale;
 
     bool mRCCarsEnabled;
+    bool mTallCarsEnabled;
     bool mWideCarsEnabled;
     bool mPaperCarsEnabled;
     bool mReversedCarsEnabled;
@@ -86,9 +88,11 @@ namespace Extensions::Game::MW05::Modifiers {
       }
 
       if (mWideCarsEnabled)
-        OpenMW::Variables::CarScaleMatrix.GetField().v1.z = sWideCarsScale.z;
+        OpenMW::Variables::CarScaleMatrix.GetField().v1.z *= sWideCarsScale.z;
       else if (mPaperCarsEnabled)
         OpenMW::Variables::CarScaleMatrix.GetField().v1.z = sPaperCarsScale.z;
+
+      if (mTallCarsEnabled) OpenMW::Variables::CarScaleMatrix.GetField().v2.x *= sTallCarsScale.x;
 
       if (mJellyCarsEnabled) {
         _transformJelly();
@@ -131,6 +135,15 @@ namespace Extensions::Game::MW05::Modifiers {
       _decEnabled();
     }
 
+    void EnableTallCars() {
+      mTallCarsEnabled = true;
+      _incEnabled();
+    }
+    void DisableTallCars() {
+      mTallCarsEnabled = false;
+      _decEnabled();
+    }
+
     void EnablePaperCars() {
       mPaperCarsEnabled = true;
       _incEnabled();
@@ -158,16 +171,16 @@ namespace Extensions::Game::MW05::Modifiers {
       mJellyCarsEnabled = false;
       _decEnabled();
     }
-    auto& GetJellyCarsScale() { return mJellyCarsScale; }
 
     virtual void OnTick() override {
       if (mCountEnabled > 0) _onTick();
     }
 
    private:
-    CarScaleModifier() :
+    explicit CarScaleModifier() :
         mCountEnabled(0),
         mRCCarsEnabled(false),
+        mTallCarsEnabled(false),
         mWideCarsEnabled(false),
         mPaperCarsEnabled(false),
         mReversedCarsEnabled(false),

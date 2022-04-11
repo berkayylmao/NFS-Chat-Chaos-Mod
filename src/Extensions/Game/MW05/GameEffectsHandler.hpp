@@ -104,6 +104,7 @@
 #include "Extensions/Game/MW05/Effects/StickShiftPro.hpp"
 #include "Extensions/Game/MW05/Effects/BopIt.hpp"
 #include "Extensions/Game/MW05/Effects/TunnelVision.hpp"
+#include "Extensions/Game/MW05/Effects/TallCars.hpp"
 
 // Modifiers
 #include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
@@ -318,6 +319,7 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::StickShiftPro());
       IGameEffectsHandler::AddEffect(new Effects::BopIt());
       IGameEffectsHandler::AddEffect(new Effects::TunnelVision());
+      IGameEffectsHandler::AddEffect(new Effects::TallCars());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),
