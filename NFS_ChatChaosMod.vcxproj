@@ -293,6 +293,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\FAK500.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\IfYouCantBeatThemKillThem.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\EnterTheMatrix.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\ImTIREd.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\INeedSomeHelp.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\InsaneTraffic.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\IntoTheVoid.hpp" />

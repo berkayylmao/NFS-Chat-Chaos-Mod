@@ -453,6 +453,9 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TallCars.hpp">
       <Filter>Extensions\Game\MW05\Effects</Filter>
     </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\ImTIREd.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\_vs\NFS_ChatChaosMod.rc">
