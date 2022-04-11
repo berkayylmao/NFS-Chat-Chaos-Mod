@@ -70,7 +70,14 @@ namespace Extensions::Game::MW05::Effects {
                              {OpenMW::Attrib::StringToKey("slr"), OpenMW::CarType::SLR},
                              {OpenMW::Attrib::StringToKey("supra"), OpenMW::CarType::SUPRA},
                              {OpenMW::Attrib::StringToKey("tt"), OpenMW::CarType::TT},
-                             {OpenMW::Attrib::StringToKey("viper"), OpenMW::CarType::VIPER}};
+                             {OpenMW::Attrib::StringToKey("viper"), OpenMW::CarType::VIPER},
+                             {OpenMW::Attrib::StringToKey("cs_semi"), OpenMW::CarType::SEMI},
+                             {OpenMW::Attrib::StringToKey("cs_clio_trafpizza"), OpenMW::CarType::PIZZA},
+                             {OpenMW::Attrib::StringToKey("cs_clio_traftaxi"), OpenMW::CarType::TAXI},
+                             {OpenMW::Attrib::StringToKey("cs_cts_traf_minivan"), OpenMW::CarType::MINIVAN},
+                             {OpenMW::Attrib::StringToKey("cs_cts_traffictruck"), OpenMW::CarType::PICKUPA},
+                             {OpenMW::Attrib::StringToKey("cs_trafcement"), OpenMW::CarType::CEMTR},
+                             {OpenMW::Attrib::StringToKey("cs_trafgarb"), OpenMW::CarType::GARB}};
       }
       // Get random car
       const auto& rnd = mAvailableCarsMap[Random::Get().Generate(0, mAvailableCarsMap.size() - 1)];
