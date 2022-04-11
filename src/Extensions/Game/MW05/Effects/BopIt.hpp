@@ -30,7 +30,7 @@ namespace Extensions::Game::MW05::Effects {
 
    protected:
     virtual void _activeTick() noexcept override {
-      __EXECUTE_EVERY_X_SECONDS__(1.5f);
+      __EXECUTE_EVERY_X_SECONDS__(2.0f);
 
       Mode rnd = static_cast<Mode>(Random::Get().Generate(static_cast<std::int32_t>(Mode::BopIt), static_cast<std::int32_t>(Mode::SpinIt)));
 
