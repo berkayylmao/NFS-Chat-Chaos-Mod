@@ -37,18 +37,20 @@ namespace Extensions::Game::MW05::Effects {
       if (!pvehicle) return false;
       // Save player car
       {
-        mSavedVehicleKey = OpenMW::Attrib::StringToKey(pvehicle->GetVehicleName());
+        // Get vehicle key
+        mSavedVehicleKey             = pvehicle->GetVehicleKey();
+        mSavedCustomizations.mPreset = 0xDEADBEEF;
         if (auto* customizations = pvehicle->GetCustomizations()) mSavedCustomizations = *customizations;
       }
       // Change car
       if (!OpenMW::PVehicleEx::ChangePlayerVehicle(OpenMW::Attrib::StringToKey("speedtest"), nullptr)) return false;
       // Enable wireframe mode
-      ChaosMod::GetD3D9Device()->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
+      ChaosMod::GetD3D9Device()->SetRenderState(D3DRS_FILLMODE, D3DFILL_POINT);
       return true;
     }
     virtual bool _deactivate() noexcept override {
       // Change back to player vehicle
-      OpenMW::PVehicleEx::ChangePlayerVehicle(mSavedVehicleKey, &mSavedCustomizations);
+      OpenMW::PVehicleEx::ChangePlayerVehicle(mSavedVehicleKey, mSavedCustomizations.mPreset == 0xDEADBEEF ? nullptr : &mSavedCustomizations);
       // Disable wireframe mode
       ChaosMod::GetD3D9Device()->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
       return true;

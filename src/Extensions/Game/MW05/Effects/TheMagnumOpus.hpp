@@ -39,9 +39,11 @@ namespace Extensions::Game::MW05::Effects {
       auto* db_car_record = db->GetUserProfile()->mPlayersCarStable.GetCarRecordByHandle(db->GetCareerSettings().GetCurrentCar());
       if (!db_car_record) return false;
 
+      auto instance = OpenMW::Attrib::Gen::pvehicle::TryGetInstance(db_car_record->mVehicleKey);
+      if (!instance.mCollection) return false;
+
       // Get existing tuning
-      OpenMW::FECustomizationRecord customizations;
-      if (auto* fecr = pvehicle->GetCustomizations()) customizations = *fecr;
+      OpenMW::FECustomizationRecord customizations = *db->GetUserProfile()->mPlayersCarStable.GetCustomizationRecordByHandle(db_car_record->mCustomization);
       // Install random visual tuning
       OpenMW::RideInfo ride_info(db_car_record->GetType());
       ride_info.SetStockParts();
@@ -50,11 +52,11 @@ namespace Extensions::Game::MW05::Effects {
       ride_info.SetUpgradePart(OpenMW::CarSlotId::Spoiler, OpenMW::eCareerUpgradeLevels::LevelUnique);
       customizations.WriteRideIntoRecord(&ride_info);
       // Install max perf parts
-      customizations.mInstalledPhysics = OpenMW::PhysicsEx::GetMaxLevelPackage(pvehicle->mAttributes);
+      customizations.mInstalledPhysics = OpenMW::PhysicsEx::GetMaxLevelPackage(instance);
       customizations.mTunings[0]       = OpenMW::Physics::Tunings(2.0f, 0.0f, 0.0f, 0.0f, 2.0f, 0.0f, 0.0f);
       customizations.mActiveTuning     = OpenMW::eCustomTuningType::Setting1;
       // Swap tuning
-      auto car_key = pvehicle->GetVehicleKey();
+      auto car_key = db_car_record->mVehicleKey;
       if (!OpenMW::PVehicleEx::ChangePlayerVehicle(car_key, &customizations)) return false;
       // Save to DB
       OpenMW::FEDatabaseEx::ChangeCarData(db_car_record, car_key, &customizations);
