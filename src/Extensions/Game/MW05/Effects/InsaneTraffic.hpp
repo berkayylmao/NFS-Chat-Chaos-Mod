@@ -37,12 +37,9 @@ namespace Extensions::Game::MW05::Effects {
         if (!ai) return;
 
         // set AI values
-        ai->mTopSpeed = 100.0f;
-        ai->SetDriveSpeed(100.0f);
+        ai->mTopSpeed = 300.0f;
+        ai->SetDriveSpeed(300.0f);
         ai->DoDriving(OpenMW::IVehicleAI::DriveFlags::All);
-        // set mass if possible
-        auto* rb = pvehicle->GetRigidBody();
-        if (rb && MemoryEditor::Get().ValidateMemoryIsInitialized(rb)) rb->SetMass(10000.0f);
         // set speed
         pvehicle->SetSpeed(100.0f);
       });
