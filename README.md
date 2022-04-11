@@ -1,11 +1,11 @@
 <p align="center">
-<img src=".gitdocs/UI_Main.png?raw=true]" />
+<img src=".gitdocs/UI_Main.png?raw=true" />
 </p>
 
 ## NFS Chat Chaos Mod
 Welcome to the official NFS Chat Chaos Mod repository!
 
-## What does this mod do?
+## What does this do?
 - Similar to the [GTA Chaos Mod](https://github.com/gta-chaos-mod), it activates effects in the corresponding game every X seconds.
 - All effects have their own cooldown and duration values which can be customized in-game.
   ![.gitdocs/UI_EffectsConfig.png?raw=true](.gitdocs/UI_EffectsConfig.png?raw=true)
@@ -17,8 +17,8 @@ Welcome to the official NFS Chat Chaos Mod repository!
 ## Which NFS games does it support?
 - **NFS Most Wanted 2005**: v1.3 - RELOADED, English
 
-## How do I install the mod?
-1. Head on over to the the `Releases` tab or [click here](https://github.com/berkayylmao/NFS-Chat-Chaos-Mod/releases/latest).
+## How do I install it?
+1. [Click here](https://github.com/berkayylmao/NFS-Chat-Chaos-Mod/releases/latest).
 2. Download the "NFS-Chat-Chaos-Mod.zip" file.
 3. Extract the zip file into the game folder.
 
@@ -30,8 +30,10 @@ Welcome to the official NFS Chat Chaos Mod repository!
 Simple:
 1. Start the game
 2. Wait for the in-game UI
-3. Customize, connect to Twitch, and press 'Start Chaos'
-4. Suffer
+3. Customize
+4. Connect to Twitch if you want
+5. Start the chaos
+6. <sub>Suffer</sub>
 
 ## How do I setup the Twitch voting?
 Simple! Click on the `Twitch` tab and enter the necessary information.
