@@ -190,6 +190,6 @@ namespace ChaosMod::DefaultConfigFile {
       "anyway\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":12,\"Duration\":45.0,\"IncompatibleWith\":[]},{"
       "\"Name\":\"Tall Cars\",\"Description\":\"More headroom is always "
       "good\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[]},{\"Name\":"
-      "\"I\'m TIREd\",\"Description\":\"Get it? "
-      "haHaa\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":24,\"Duration\":20.0,\"IncompatibleWith\":[]}]}";
+      "\"I\'m TIREd\",\"Description\":\"Get it? haHaa\\n(Blows the tires of all "
+      "cars)\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":24,\"Duration\":30.0,\"IncompatibleWith\":[]}]}";
 }
