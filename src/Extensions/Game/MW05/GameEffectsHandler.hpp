@@ -157,11 +157,16 @@ namespace Extensions::Game::MW05 {
           mov esi, ecx  // backup
           mov ebx, ecx
           sub ebx, 0x4C
-          mov ecx, [ebx+0x48]  // edi: IVehicle*
-          mov ebx, [ecx]
+          mov ecx, [ebx+0x48]  // ecx: IVehicle*
+          test ecx, ecx
+          jz go_to_gamecode
+
+          mov ebx, [ecx]  
           mov eax, [ebx+0x8]
-          call eax
+          call eax  // IVehicle::GetSimable()
           mov edi, eax  // edi: ISimable*
+          test edi, edi
+          jz go_to_gamecode
           
           mov ecx, edi
           mov ebx, [edi]
