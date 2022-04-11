@@ -30,7 +30,7 @@ namespace Extensions::Game::MW05::Effects {
     virtual bool _specialCooldownConditionSatisfied() const noexcept override { return !OpenMW::GameStatusEx::IsInPursuit(); }
 
     virtual bool _activate() noexcept override {
-      auto traftaxi = std::pair<OpenMW::Attrib::StringKey, OpenMW::CarType>(OpenMW::Attrib::StringToKey("traftaxi"), OpenMW::CarType::TRAFTAXI);
+      auto traftaxi = std::pair<OpenMW::Attrib::StringKey, OpenMW::CarType>(OpenMW::Attrib::StringToKey("cs_clio_traftaxi"), OpenMW::CarType::TAXI);
       auto instance = OpenMW::Attrib::Gen::pvehicle::TryGetInstance(traftaxi.first);
       if (!instance.mCollection) return false;
 
