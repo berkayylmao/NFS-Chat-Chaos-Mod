@@ -28,13 +28,10 @@ namespace Extensions::Game::MW05::Effects {
   class ToTheMoon : public IGameEffect {
    protected:
     virtual bool _activate() noexcept override {
-      auto* pvehicle = OpenMW::PVehicleEx::GetPlayerInstance();
-      if (!pvehicle) return false;
-
-      auto velocity = pvehicle->GetRigidBody()->GetLinearVelocity();
-      velocity.z += 80.0f;
-      pvehicle->GetRigidBody()->SetLinearVelocity(velocity);
-
+      OpenMW::PVehicleEx::ForEachInstance([](OpenMW::PVehicle* pvehicle) {
+        auto velocity = pvehicle->GetRigidBody()->GetLinearVelocity();
+        pvehicle->GetRigidBody()->SetLinearVelocity(pvehicle->GetRigidBody()->GetLinearVelocity() + OpenMW::UMath::Vector3(0.0f, 0.0f, 80.0f));
+      });
       return true;
     }
 
