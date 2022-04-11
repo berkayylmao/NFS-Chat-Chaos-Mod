@@ -304,6 +304,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\LightCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\LightCops.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\Magneto.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\MaybeInvertedSteering.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\MegaRubberband.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\MidnightClubRacing.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\NeverBusted.hpp" />
