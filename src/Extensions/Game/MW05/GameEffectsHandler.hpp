@@ -387,6 +387,92 @@ namespace Extensions::Game::MW05 {
         *reinterpret_cast<std::uintptr_t*>(addr) = reinterpret_cast<std::uintptr_t>(&details::DisableResetForPlayer::CodeCave);
         MemoryEditor::Get().LockMemory(addr);
       }
+      // Force traffic density to max
+      {
+        // Force AITrafficManager::ComputeDensity() to 100
+        {
+          std::uintptr_t addr1 = 0x926090;
+          std::uintptr_t addr2 = 0x41EC31;
+          std::uintptr_t addr3 = 0x41EC3A;
+
+          MemoryEditor::Get().UnlockMemory(addr1, sizeof(float));
+          MemoryEditor::Get().UnlockMemory(addr2, sizeof(std::uint16_t));
+          MemoryEditor::Get().UnlockMemory(addr3, sizeof(std::uint16_t));
+
+          *reinterpret_cast<float*>(addr1)         = 100.0f;
+          *reinterpret_cast<std::uint16_t*>(addr2) = 0x22EB;
+          *reinterpret_cast<std::uint16_t*>(addr3) = 0x19EB;
+
+          MemoryEditor::Get().LockMemory(addr1);
+          MemoryEditor::Get().LockMemory(addr2);
+          MemoryEditor::Get().LockMemory(addr3);
+        }
+
+        // Set all traffic levels to max
+        {
+          std::uintptr_t addrs[] = {0x56DD92, 0x56DD96, 0x56DD9A, 0x56DD9E};
+          for (const auto& addr : addrs) {
+            MemoryEditor::Get().UnlockMemory(addr, sizeof(std::uint8_t));
+            *reinterpret_cast<std::uint8_t*>(addr) = 100ui8;
+            MemoryEditor::Get().LockMemory(addr);
+          }
+        }
+
+        std::thread([&] {
+          OpenMW::Attrib::Database* db = nullptr;
+          while (!db) {
+            db = OpenMW::Attrib::Database::Get();
+            std::this_thread::sleep_for(1s);
+          }
+
+          // trafficpattern
+          {
+            OpenMW::Attrib::Class* trafficpattern = nullptr;
+            while (!trafficpattern) {
+              trafficpattern = db->GetClass(OpenMW::Attrib::StringToKey("trafficpattern"));
+              std::this_thread::sleep_for(1s);
+            }
+
+            auto collection_key = trafficpattern->GetFirstCollection();
+            for (size_t _1 = 0; _1 < trafficpattern->GetNumCollections(); _1++) {
+              auto* collection = trafficpattern->GetCollection(collection_key);
+              // Decrease spawn time
+              if (auto* var = collection->GetData<float>(OpenMW::Attrib::StringToKey("SpawnTime"))) *var = 0.01f;
+              // Increase per-car values
+              if (auto* var = collection->GetData<OpenMW::Attrib::Layouts::trafficpatternlayout::Vehicles>(OpenMW::Attrib::StringToKey("Vehicles"))) {
+                std::size_t count = static_cast<std::size_t>(*reinterpret_cast<std::uint16_t*>(reinterpret_cast<std::uintptr_t>(var) - 0x8));
+                for (size_t _2 = 0; _2 < count; _2++) {
+                  var->mMaxInstances = 100;
+                  var->mRate         = 100.0f;
+                  var++;
+                }
+              }
+              // next collection
+              collection_key = trafficpattern->GetNextCollection(collection_key);
+            }
+          }
+
+          // gameplay
+          {
+            OpenMW::Attrib::Class* gameplay = nullptr;
+            while (!gameplay) {
+              gameplay = db->GetClass(OpenMW::Attrib::StringToKey("gameplay"));
+              std::this_thread::sleep_for(1s);
+            }
+
+            auto collection_key = gameplay->GetFirstCollection();
+            for (size_t _1 = 0; _1 < gameplay->GetNumCollections(); _1++) {
+              auto* collection = gameplay->GetCollection(collection_key);
+              // Increase traffic density
+              if (auto* var = collection->GetData<float>(OpenMW::Attrib::StringToKey("ForceTrafficDensity"))) *var = 100.0f;
+              // Increase traffic level
+              if (auto* var = collection->GetData<float>(OpenMW::Attrib::StringToKey("TrafficLevel"))) *var = 100.0f;
+              // next collection
+              collection_key = gameplay->GetNextCollection(collection_key);
+            }
+          }
+        }).detach();
+      }
       // Register GRaceStatus::mPlayMode change handler
       { std::thread(OpenSpeed::MW05::GameStatusEx::details::timeUpdateThreadFn).detach(); }
       // Patches to make mw05 run the effect handler

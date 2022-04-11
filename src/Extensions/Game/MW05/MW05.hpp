@@ -28,8 +28,10 @@
 #include <OpenSpeed/Game.MW05/Types/Attrib.h>
 #include <OpenSpeed/Game.MW05/Types/Attrib/Gen/gameplay.h>
 #include <OpenSpeed/Game.MW05/Types/Attrib/Gen/timeofdaylighting.h>
+#include <OpenSpeed/Game.MW05/Types/Attrib/Gen/trafficpattern.h>
 #include <OpenSpeed/Game.MW05/Types/Attrib/Layouts/gameplaylayout.h>
 #include <OpenSpeed/Game.MW05/Types/Attrib/Layouts/timeofdaylightinglayout.h>
+#include <OpenSpeed/Game.MW05/Types/Attrib/Layouts/trafficpatternlayout.h>
 #include <OpenSpeed/Game.MW05/Types/AICopManager.h>
 #include <OpenSpeed/Game.MW05/Types/AIPursuit.h>
 #include <OpenSpeed/Game.MW05/Types/AITarget.h>

@@ -12,6 +12,7 @@ Welcome to the official NFS Chat Chaos Mod repository!
 - It will also:
   - Disable the ability to reset the player's car or be auto-reset.
   - Increase the maximum heat level to 10.
+  - Force traffic density to be at max.
   - Force the game moment camera to be always on.
 
 ## Which NFS games does it support?
