@@ -88,7 +88,7 @@ using namespace std::chrono_literals;
 // Mod info
 #define __STR__(x)          #x
 #define __STR_EXPAND__(x)   __STR__(x)
-#define __MOD_VERSION__     1.2.5.79
+#define __MOD_VERSION__     1.2.5.80
 #define __MOD_VERSION_STR__ __STR_EXPAND__(__MOD_VERSION__)
 
 #define __CONCAT_INNER__(a, b) a##b
