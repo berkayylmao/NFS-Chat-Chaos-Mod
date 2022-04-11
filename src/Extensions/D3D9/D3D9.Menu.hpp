@@ -348,7 +348,7 @@ namespace Extensions::D3D9::Menu {
         {
           ImGui::SliderFloat("##IdleTimerSlider", &ChaosMod::g_IdleTimerSeconds, 1.0f, 120.0f, "%.1f");
           if (ImGui::IsItemDeactivatedAfterEdit()) {
-            if (Shared::IsChaosRunning()) Shared::StartChaos();
+            if (Shared::IsChaosRunning()) Shared::g_ChaosTimerStatus = Shared::TimerStatus::IdleTimer;
             Config::Get()["Timers"]["IdleTimer"].SetFloat(ChaosMod::g_IdleTimerSeconds);
             Config::Get().Save();
           }
@@ -359,7 +359,7 @@ namespace Extensions::D3D9::Menu {
           ImGui::SetCursorPosX(_offsetX);
           ImGui::SliderFloat("##VoteTimerSlider", &ChaosMod::g_VoteTimerSeconds, 1.0f, 120.0f, "%.1f");
           if (ImGui::IsItemDeactivatedAfterEdit()) {
-            if (Shared::IsChaosRunning()) Shared::StartChaos();
+            if (Shared::IsChaosRunning()) Shared::g_ChaosTimerStatus = Shared::TimerStatus::IdleTimer;
             Config::Get()["Timers"]["VoteTimer"].SetFloat(ChaosMod::g_VoteTimerSeconds);
             Config::Get().Save();
           }

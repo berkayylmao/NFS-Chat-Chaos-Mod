@@ -96,12 +96,13 @@ namespace Extensions::D3D9 {
                 ImGui::WithItemFlag _f1(ImGuiItemFlags_Disabled);
                 ImGui::Button("chaos is ensuing", ImVec2{600.0f, 0.0f});
               } else {
-                if (ImGui::Button("Start Chaos (connect to Twitch first!)", ImVec2{600.0f, 0.0f})) Shared::StartChaos();
+                if (ImGui::Button("Start Single-Player Chaos", ImVec2{600.0f, 0.0f})) Shared::StartChaos(false);
+                if (ImGui::Button("Start Twitch Chat Chaos", ImVec2{600.0f, 0.0f})) Shared::StartChaos(true);
               }
               ImGui::EndTabItem();
             }
             // Twitch Tab
-            if (ImGui::BeginTabItem(CONST_UI_TITLE_TWITCH)) {
+            if (!Shared::IsChaosRunning() && ImGui::BeginTabItem(CONST_UI_TITLE_TWITCH)) {
               Menu::DrawTwitch();
               ImGui::EndTabItem();
             }

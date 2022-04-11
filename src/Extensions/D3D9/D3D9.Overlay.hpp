@@ -65,6 +65,8 @@ namespace Extensions::D3D9::Overlay {
 
       // Persistent local storage for the timer
       static float seconds_passed = 0.0f;
+      // Static format array
+      static std::array<char, 4196> format_array{};
 
       // Step timer (in seconds)
       seconds_passed = ImClamp(seconds_passed + ImGui::GetIO().DeltaTime, 0.0f, max_time);
@@ -131,16 +133,17 @@ namespace Extensions::D3D9::Overlay {
 
         // Draw remaining time (STRING)
         {
+          format_array.fill(NULL);
           // Format into string
-          const std::string str = fmt::format("{:.0f}", seconds_left);
+          fmt::format_to_n(format_array.data(), format_array.max_size(), "{:.0f}", seconds_left);
 
           // Center text
-          const ImVec2 str_size = ImGui::CalcTextSize(str.c_str());
+          const ImVec2 str_size = ImGui::CalcTextSize(format_array.data());
           const ImVec2 str_pos  = timerRect.GetXY() + (timerRect.GetWidthHeight() - str_size) / 2.0f;
 
           // Draw text
           ImGui::SetCursorPos(str_pos);
-          ImGui::TextUnformatted(str.c_str());
+          ImGui::TextUnformatted(format_array.data());
         }
       }
       ImGui::End();
@@ -175,6 +178,8 @@ namespace Extensions::D3D9::Overlay {
       // Vote bar colours
       static const ImU32 vote_bar_colour    = IM_COL32(255, 80, 80, 100);
       static const ImU32 vote_bar_colour_bg = IM_COL32(120, 40, 40, 150);
+      // Static format array
+      static std::array<char, 4196> format_array{};
 
       // Update vote bar rectangle
       sVoteBarRect = ImGui::Rectangle(timerRect.x, timerRect.GetBottom() + ImGui::GetFontSize() / 2.0f, timerRect.width, timerRect.height);
@@ -194,6 +199,8 @@ namespace Extensions::D3D9::Overlay {
         const ImVec2 cursor = ImGui::GetCursorScreenPos();
 
         for (std::size_t i = 0; i < 3; i++) {
+          format_array.fill(NULL);
+
           const auto& it                 = std::next(std::cbegin(sEffectsBeingVoted), i);
           float       it_vote_percentage = 0.0f;
 
@@ -206,26 +213,48 @@ namespace Extensions::D3D9::Overlay {
           // Draw background
           ImGui::GetWindowDrawList()->AddRectFilled(p_min + sContentPadding, p_max - sContentPadding, vote_bar_colour_bg);
 
-          // Draw received votes percentage
-          if (sVotesReceived > 0) {
-            // Calculate vote percentage
-            it_vote_percentage = (static_cast<float>(it->second) / static_cast<float>(sVotesReceived));
+          // Draw received votes and their percentage (TEXT)
+          {
+            if (Shared::g_ChaosMode == Shared::ChaosMode::SinglePlayer) {
+              auto rnd = Random::Get().Generate(0, 1) * Random::Get().Generate(0, 100);
+              if (rnd > 98) {
+                sEffectsBeingVoted[it->first] += rnd;
+                sVotesReceived += rnd;
+              }
+            }
 
             // Draw received votes percentage
-            ImGui::GetWindowDrawList()->AddRectFilled(
-                p_min + sContentPadding,
-                p_min + ImVec2(ImClamp(sVoteBarRect.width * it_vote_percentage, sContentPadding.x, sVoteBarRect.width - sContentPadding.x),
-                               sVoteBarRect.height - sContentPadding.y),
-                vote_bar_colour);
+            if (sVotesReceived > 0) {
+              // Calculate vote percentage
+              it_vote_percentage = (static_cast<float>(it->second) / static_cast<float>(sVotesReceived));
+
+              // Draw received votes percentage
+              ImGui::GetWindowDrawList()->AddRectFilled(
+                  p_min + sContentPadding,
+                  p_min + ImVec2(ImClamp(sVoteBarRect.width * it_vote_percentage, sContentPadding.x, sVoteBarRect.width - sContentPadding.x),
+                                 sVoteBarRect.height - sContentPadding.y),
+                  vote_bar_colour);
+            }
+
+            it_vote_percentage *= 100.0f;
+
+            // Format into string
+            fmt::format_to_n(format_array.data(), format_array.max_size(), "{}. {:.0f}%", i + 1, it_vote_percentage);
+            // Center text
+            const ImVec2 str_size = ImGui::CalcTextSize(format_array.data());
+            const ImVec2 str_pos  = ImVec2(sVoteBarRect.x, sVoteBarRect.y + y_diff) + (sVoteBarRect.GetWidthHeight() - str_size) / 2.0f;
+
+            ImGui::SetCursorPos(str_pos);
+            ImGui::TextUnformatted(format_array.data());
           }
 
           // Draw effect name
-          {
+          if (Shared::g_ChaosMode == Shared::ChaosMode::TwitchChat) {
             // Format into string
-            const std::string str = fmt::format("{}{}: {}", CONST_TWITCH_VOTE_PREFIX, i + 1, it->first->GetName());
+            fmt::format_to_n(format_array.data(), format_array.max_size(), "{}{}: {}", CONST_TWITCH_VOTE_PREFIX, i + 1, it->first->GetName());
 
             // Center text
-            const ImVec2 str_size = ImGui::CalcTextSize(str.c_str());
+            const ImVec2 str_size = ImGui::CalcTextSize(format_array.data());
             const ImVec2 str_pos =
                 ImVec2(sVoteBarRect.width + ImGui::GetFontSize() * 1.5f, sVoteBarRect.y + y_diff + (sVoteBarRect.height - str_size.y) / 2.0f);
 
@@ -234,32 +263,17 @@ namespace Extensions::D3D9::Overlay {
               ImGui::WithColor _c1(ImGuiCol_Text, IM_COL32_BLACK);
 
               ImGui::SetCursorPos(str_pos - ImVec2(CONST_UI_PAD_SHADOW, 0.0f));
-              ImGui::TextUnformatted(str.c_str());
+              ImGui::TextUnformatted(format_array.data());
               ImGui::SetCursorPos(str_pos - ImVec2(-CONST_UI_PAD_SHADOW, 0.0f));
-              ImGui::TextUnformatted(str.c_str());
+              ImGui::TextUnformatted(format_array.data());
               ImGui::SetCursorPos(str_pos - ImVec2(0.0f, CONST_UI_PAD_SHADOW));
-              ImGui::TextUnformatted(str.c_str());
+              ImGui::TextUnformatted(format_array.data());
               ImGui::SetCursorPos(str_pos - ImVec2(0.0f, -CONST_UI_PAD_SHADOW));
-              ImGui::TextUnformatted(str.c_str());
+              ImGui::TextUnformatted(format_array.data());
             }
 
             ImGui::SetCursorPos(str_pos);
-            ImGui::TextUnformatted(str.c_str());
-          }
-
-          // Draw received votes and their percentage (TEXT)
-          {
-            it_vote_percentage *= 100.0f;
-
-            // Format into string
-            const std::string str = fmt::format("{}. ??? ({:.0f}%)", i + 1, it_vote_percentage);
-
-            // Center text
-            const ImVec2 str_size = ImGui::CalcTextSize(str.c_str());
-            const ImVec2 str_pos  = ImVec2(sVoteBarRect.x, sVoteBarRect.y + y_diff) + (sVoteBarRect.GetWidthHeight() - str_size) / 2.0f;
-
-            ImGui::SetCursorPos(str_pos);
-            ImGui::TextUnformatted(str.c_str());
+            ImGui::TextUnformatted(format_array.data());
           }
         }
       }
@@ -275,83 +289,85 @@ namespace Extensions::D3D9::Overlay {
       const std::size_t num_active_effects = active_effects.size();
       if (num_active_effects == 0) return;
 
-      // Active effects display
-      {
-        ImGui::WithStyle _s1(ImGuiStyleVar_WindowPadding, ImVec2(5.0f, 5.0f));
-        ImGui::WithStyle _s2(ImGuiStyleVar_FramePadding, ImVec2(0.0f, 0.0f));
-        ImGui::WithStyle _s3(ImGuiStyleVar_WindowMinSize, ImVec2(0.0f, 0.0f));
-        ImGui::WithStyle _s4(ImGuiStyleVar_ItemSpacing, ImVec2(0.0f, 0.0f));
-        ImGui::WithStyle _s5(ImGuiStyleVar_ItemInnerSpacing, ImVec2(0.0f, 0.0f));
-        ImGui::WithStyle _s6(ImGuiStyleVar_WindowRounding, 5.0f);
+      // Static format array
+      static std::array<char, 4196> format_array{};
 
-        ImGui::SetNextWindowBgAlpha(0.4f);
-        ImGui::SetNextWindowPos(viewport->Pos + ImVec2(sVoteBarRect.x, sVoteBarRect.GetBottom() * 2.0f));
-        if (ImGui::Begin("##ActiveEffectsDisplay", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_AlwaysAutoResize)) {
-          const auto time_now = std::chrono::steady_clock::now();
+      ImGui::WithStyle _s1(ImGuiStyleVar_WindowPadding, ImVec2(5.0f, 5.0f));
+      ImGui::WithStyle _s2(ImGuiStyleVar_FramePadding, ImVec2(0.0f, 0.0f));
+      ImGui::WithStyle _s3(ImGuiStyleVar_WindowMinSize, ImVec2(0.0f, 0.0f));
+      ImGui::WithStyle _s4(ImGuiStyleVar_ItemSpacing, ImVec2(0.0f, 0.0f));
+      ImGui::WithStyle _s5(ImGuiStyleVar_ItemInnerSpacing, ImVec2(0.0f, 0.0f));
+      ImGui::WithStyle _s6(ImGuiStyleVar_WindowRounding, 5.0f);
 
-          for (std::size_t i = 0; i < num_active_effects; i++) {
-            const auto cursor_screen = ImGui::GetCursorScreenPos();
-            const auto cursor        = ImGui::GetCursorPos();
+      ImGui::SetNextWindowBgAlpha(0.4f);
+      ImGui::SetNextWindowPos(viewport->Pos + ImVec2(sVoteBarRect.x, sVoteBarRect.GetBottom() * 2.0f));
+      if (ImGui::Begin("##ActiveEffectsDisplay", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_AlwaysAutoResize)) {
+        const auto time_now = std::chrono::steady_clock::now();
 
-            const auto& effect              = active_effects[i];
-            const auto& ms_since_activation = std::chrono::duration_cast<std::chrono::milliseconds>(time_now - effect->GetTimeActivated());
-            const auto  ms_elapsed          = effect->GetDuration() - ms_since_activation;
-            if (ms_elapsed < 0ms) continue;
+        for (std::size_t i = 0; i < num_active_effects; i++) {
+          format_array.fill(NULL);
 
-            const float remaining_percent   = static_cast<float>(ms_since_activation.count()) / static_cast<float>(effect->GetDuration().count());
-            const float circle_timer_radius = ImGui::GetFontSize() / 1.35f;
+          const auto cursor_screen = ImGui::GetCursorScreenPos();
+          const auto cursor        = ImGui::GetCursorPos();
 
-            // Circle timer
+          const auto& effect              = active_effects[i];
+          const auto& ms_since_activation = std::chrono::duration_cast<std::chrono::milliseconds>(time_now - effect->GetTimeActivated());
+          const auto  ms_elapsed          = effect->GetDuration() - ms_since_activation;
+          if (ms_elapsed < 0ms) continue;
+
+          const float remaining_percent   = static_cast<float>(ms_since_activation.count()) / static_cast<float>(effect->GetDuration().count());
+          const float circle_timer_radius = ImGui::GetFontSize() / 1.35f;
+
+          // Circle timer
+          {
+            const ImVec2 arc   = ImVec2(cursor_screen + ImVec2(8.0f + circle_timer_radius, 4.0f + circle_timer_radius));
+            const float  a_min = IM_PI * 1.5f;
+            const float  a_max = (IM_PI * -0.5f) + remaining_percent * (IM_PI * 2.0f);
+
+            ImGui::GetWindowDrawList()->PathArcTo(arc - ImVec2(1.0f, -1.0f), circle_timer_radius, a_min, IM_PI * -0.5f);
+            ImGui::GetWindowDrawList()->PathStroke(IM_COL32(0, 0, 0, 100), ImDrawFlags_None, 4.0f);
+            ImGui::GetWindowDrawList()->PathArcTo(arc, circle_timer_radius, a_min, a_max);
+            ImGui::GetWindowDrawList()->PathStroke(ImGui::GetColorU32(ImGui::GetStyleColorVec4(ImGuiCol_ButtonHovered)), ImDrawFlags_None, 4.0f);
+
+            // Seconds inside circle
             {
-              const ImVec2 arc   = ImVec2(cursor_screen + ImVec2(8.0f + circle_timer_radius, 4.0f + circle_timer_radius));
-              const float  a_min = IM_PI * 1.5f;
-              const float  a_max = (IM_PI * -0.5f) + remaining_percent * (IM_PI * 2.0f);
+              fmt::format_to_n(format_array.data(), format_array.max_size(), "{}", std::chrono::duration_cast<std::chrono::seconds>(ms_elapsed).count());
 
-              ImGui::GetWindowDrawList()->PathArcTo(arc - ImVec2(1.0f, -1.0f), circle_timer_radius, a_min, IM_PI * -0.5f);
-              ImGui::GetWindowDrawList()->PathStroke(IM_COL32(0, 0, 0, 100), ImDrawFlags_None, 4.0f);
-              ImGui::GetWindowDrawList()->PathArcTo(arc, circle_timer_radius, a_min, a_max);
-              ImGui::GetWindowDrawList()->PathStroke(ImGui::GetColorU32(ImGui::GetStyleColorVec4(ImGuiCol_ButtonHovered)), ImDrawFlags_None, 4.0f);
+              const ImVec2 str_pos =
+                  cursor + ImVec2(8.5f + circle_timer_radius, circle_timer_radius / 1.85f) - ImVec2(ImGui::CalcTextSize(format_array.data()).x / 2.0f, 0.0f);
 
-              // Seconds inside circle
-              {
-                const auto str = fmt::format("{}", std::chrono::duration_cast<std::chrono::seconds>(ms_elapsed).count());
-
-                const ImVec2 str_pos =
-                    cursor + ImVec2(8.5f + circle_timer_radius, circle_timer_radius / 1.85f) - ImVec2(ImGui::CalcTextSize(str.c_str()).x / 2.0f, 0.0f);
-
-                ImGui::SetCursorPos(str_pos);
-                ImGui::TextUnformatted(str.c_str());
-              }
-            }
-
-            // Effect info
-            {
-              const ImVec2 name_pos = cursor + ImVec2(circle_timer_radius * 3.0f, 0.0f);
-              const float  wrap_pos = ImGui::GetFontSize() * 20.0f;
-              ImGui::PushTextWrapPos(wrap_pos + CONST_UI_PAD_SHADOW);
-
-              // Name
-              {
-                ImGui::SetCursorPos(name_pos);
-                ImGui::TextUnformatted(active_effects[i]->GetName().c_str());
-              }
-
-              const ImVec2 desc_pos = ImVec2(name_pos.x, ImGui::GetCursorPosY());
-
-              // Description
-              {
-                ImGui::WithStyle _s7(ImGuiStyleVar_Alpha, 0.75f);
-
-                ImGui::SetCursorPos(desc_pos);
-                ImGui::TextUnformatted(active_effects[i]->GetDescription().c_str());
-              }
-
-              ImGui::PopTextWrapPos();
+              ImGui::SetCursorPos(str_pos);
+              ImGui::TextUnformatted(format_array.data());
             }
           }
+
+          // Effect info
+          {
+            const ImVec2 name_pos = cursor + ImVec2(circle_timer_radius * 3.0f, 0.0f);
+            const float  wrap_pos = ImGui::GetFontSize() * 20.0f;
+            ImGui::PushTextWrapPos(wrap_pos + CONST_UI_PAD_SHADOW);
+
+            // Name
+            {
+              ImGui::SetCursorPos(name_pos);
+              ImGui::TextUnformatted(active_effects[i]->GetName().c_str());
+            }
+
+            const ImVec2 desc_pos = ImVec2(name_pos.x, ImGui::GetCursorPosY());
+
+            // Description
+            {
+              ImGui::WithStyle _s7(ImGuiStyleVar_Alpha, 0.75f);
+
+              ImGui::SetCursorPos(desc_pos);
+              ImGui::TextUnformatted(active_effects[i]->GetDescription().c_str());
+            }
+
+            ImGui::PopTextWrapPos();
+          }
         }
-        ImGui::End();
       }
+      ImGui::End();
     }
 #pragma endregion
 #pragma endregion

@@ -43,6 +43,15 @@ namespace Extensions::D3D9::Shared {
 #pragma region CHAOS
   /// CHAOS
 
+#pragma region MODE
+  /// MODE
+
+  // Possible modes
+  enum class ChaosMode : std::uint8_t { None, TwitchChat, SinglePlayer };
+
+  static ChaosMode g_ChaosMode = ChaosMode::None;
+#pragma endregion
+
 #pragma region TIMER
   /// TIMER
 
@@ -53,25 +62,30 @@ namespace Extensions::D3D9::Shared {
   enum class TimerResult : std::uint8_t { None, IdleTimerCompleted, VoteTimerCompleted, ActivationTimerCompleted };
 
   // Current status of the timer
-  TimerStatus g_ChaosTimerStatus = TimerStatus::None;
+  static TimerStatus g_ChaosTimerStatus = TimerStatus::None;
 #pragma endregion
 
   /// HELPERS
 
   // Called from 'D3D9.Base' when 'Start Chaos' is clicked
-  void StartChaos() {
-    if (!g_TwitchTalkStatus.second) return;
+  static void StartChaos(bool isTwitch) {
+    if (isTwitch) {
+      if (!g_TwitchTalkStatus.second) return;
+      g_ChaosMode = ChaosMode::TwitchChat;
+    } else {
+      g_ChaosMode = ChaosMode::SinglePlayer;
+    }
     g_ChaosTimerStatus = TimerStatus::IdleTimer;
   }
 
   // Called every frame to check chaos' status
-  bool IsChaosRunning() { return g_ChaosTimerStatus != TimerStatus::None; }
+  static bool IsChaosRunning() { return g_ChaosTimerStatus != TimerStatus::None; }
 
 #pragma endregion
 
 #pragma region OnExit
 
-  void OnExit() {
+  static void OnExit() {
     // Stop Chaos
     g_ChaosTimerStatus = TimerStatus::None;
     Game::IGameEffectsHandler::RemoveAllEffects();

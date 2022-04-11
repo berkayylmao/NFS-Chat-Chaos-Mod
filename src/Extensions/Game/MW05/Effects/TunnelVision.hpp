@@ -52,17 +52,18 @@ namespace Extensions::Game::MW05::Effects {
     }
 
     virtual void _draw(const ImGuiViewport* viewport) noexcept override {
-      static char  window_name[20] = {0};
-      std::int32_t window_id       = 0;
+      static std::array<char, 20> window_name{};
+      std::int32_t                window_id = 0;
 
       ImGui::WithColor _c1(ImGuiCol_WindowBg, IM_COL32_BLACK);
       for (const auto& rect : mRectangles) {
-        fmt::format_to_n(window_name, 20, "##TunnelVision_{}", window_id++);
+        window_name.fill(NULL);
+        fmt::format_to_n(window_name.data(), window_name.max_size(), "##TunnelVision_{}", window_id++);
 
         ImGui::SetNextWindowBgAlpha(1.0f);
         ImGui::SetNextWindowPos(viewport->Pos + rect.Min, ImGuiCond_Always);
         ImGui::SetNextWindowSize(rect.Max, ImGuiCond_Always);
-        ImGui::Begin(window_name, nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_NoBringToFrontOnFocus);
+        ImGui::Begin(window_name.data(), nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_NoBringToFrontOnFocus);
         ImGui::End();
       }
     };
