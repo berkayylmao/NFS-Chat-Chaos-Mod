@@ -285,7 +285,8 @@ namespace Extensions::D3D9::Menu {
 
     static constexpr char CONST_UI_ABOUT_GITHUB[]         = "https://github.com/berkayylmao/NFS-Chat-Chaos-Mod/";
     static constexpr char CONST_UI_ABOUT_GITHUB_RELEASE[] = "https://github.com/berkayylmao/NFS-Chat-Chaos-Mod/releases/latest";
-    static constexpr char CONST_UI_ABOUT_PAYPAL[]         = "https://www.paypal.me/berkayylmao";
+    static constexpr char CONST_UI_ABOUT_PAYPAL_DIRECT[]  = "https://www.paypal.me/berkayylmao";
+    static constexpr char CONST_UI_ABOUT_PAYPAL_DONATE[]  = "https://www.paypal.com/donate/?hosted_button_id=TFCVT5CTKDGB6";
     static constexpr char CONST_UI_ABOUT_KOFI[]           = "https://ko-fi.com/berkayylmao";
     static constexpr char CONST_UI_ABOUT_PATREON[]        = "https://www.patreon.com/berkayylmao";
 
@@ -310,7 +311,9 @@ namespace Extensions::D3D9::Menu {
             "Making and maintaining a mod like this requires a lot of time and energy. If you enjoyed this mod, please "
             "consider donating!");
         ImGui::PopTextWrapPos();
-        if (ImGui::SmallButton("PayPal: paypal.me/berkayylmao")) ShellExecuteA(NULL, NULL, details::CONST_UI_ABOUT_PAYPAL, NULL, NULL, SW_SHOW);
+        if (ImGui::SmallButton("PayPal Direct: paypal.me/berkayylmao")) ShellExecuteA(NULL, NULL, details::CONST_UI_ABOUT_PAYPAL_DIRECT, NULL, NULL, SW_SHOW);
+        if (ImGui::SmallButton("PayPal Donate: paypal.com/donate/?hosted_button_id=TFCVT5CTKDGB6"))
+          ShellExecuteA(NULL, NULL, details::CONST_UI_ABOUT_PAYPAL_DONATE, NULL, NULL, SW_SHOW);
         if (ImGui::SmallButton("Ko-Fi: ko-fi.com/berkayylmao")) ShellExecuteA(NULL, NULL, details::CONST_UI_ABOUT_KOFI, NULL, NULL, SW_SHOW);
         if (ImGui::SmallButton("Patreon: patreon.com/berkayylmao")) ShellExecuteA(NULL, NULL, details::CONST_UI_ABOUT_PATREON, NULL, NULL, SW_SHOW);
       }
@@ -325,7 +328,10 @@ namespace Extensions::D3D9::Menu {
           ImGui::BulletText("If you wish to keep your settings, copy the folder `ChatChaosMod` too!");
           ImGui::BulletText("Compatible with the following games:");
           ImGui::Indent();
-          { ImGui::BulletText("NFS Most Wanted v1.3 (English RELOADED)"); }
+          {
+            ImGui::BulletText("NFS Most Wanted v1.3 (English RELOADED)");
+            ImGui::BulletText("NFS Carbon Collector's Edition v1.4 (English RELOADED)");
+          }
           ImGui::Unindent();
         }
         ImGui::Unindent();
