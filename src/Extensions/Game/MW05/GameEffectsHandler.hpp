@@ -468,9 +468,9 @@ namespace Extensions::Game::MW05 {
             for (size_t _1 = 0; _1 < gameplay->GetNumCollections(); _1++) {
               auto* collection = gameplay->GetCollection(collection_key);
               // Enable cops
-              if (auto* var = collection->GetData<bool>(OpenCarbon::Attrib::StringToKey("CopsInRace"))) *var = true;
+              if (auto* var = collection->GetData<bool>(OpenMW::Attrib::StringToKey("CopsInRace"))) *var = true;
               // Incrase max heat level
-              if (auto* var = collection->GetData<float>(OpenCarbon::Attrib::StringToKey("MaxHeatLevel"))) *var = 10.0f;
+              if (auto* var = collection->GetData<float>(OpenMW::Attrib::StringToKey("MaxHeatLevel"))) *var = 10.0f;
               // Increase traffic density
               if (auto* var = collection->GetData<float>(OpenMW::Attrib::StringToKey("ForceTrafficDensity"))) *var = 100.0f;
               // Increase traffic level
