@@ -136,7 +136,7 @@ namespace Extensions::Game::MW05::Effects {
             }
           }
           // check for time alive
-          if ((pvehicle->GetOnScreenTime() + pvehicle->GetOffscreenTime()) > 5.0f) {
+          if ((pvehicle->GetOnScreenTime() + pvehicle->GetOffScreenTime()) > 5.0f) {
             pvehicle->Kill();
             it = mSpawnedBolts.erase(it);
             continue;

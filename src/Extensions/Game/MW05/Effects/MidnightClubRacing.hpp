@@ -59,11 +59,8 @@ namespace Extensions::Game::MW05::Effects {
 
       OpenMW::GRaceStatus::DisableBarriers();
 
-      if (auto* gps = OpenMW::GPS::Get()) {
+      if (auto* gps = OpenMW::GPS::Get())
         if (gps->mState == OpenMW::eGPSState::Down) OpenSpeed::MW05::Game::NavigatePlayerTo(race_status->mNextCheckpoint, nullptr);
-      }
-
-      __EXECUTE_EVERY_X_SECONDS__(10.0f);
 
       if (auto* params = race_status->mRaceParms) {
         if (auto* record = params->mRaceRecord) {
