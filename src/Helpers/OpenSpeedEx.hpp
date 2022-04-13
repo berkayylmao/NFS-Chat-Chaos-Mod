@@ -23,6 +23,7 @@
 #pragma once
 #include "Helpers/Random.hpp"
 #include "Extensions/Game/MW05/MW05.hpp"
+#include "Extensions/Game/Carbon/Carbon.hpp"
 #pragma warning(push)
 #pragma warning(disable : 4505)  // Unreferenced local function has been removed
 
@@ -309,5 +310,24 @@ namespace OpenSpeed::MW05 {
     }
   }  // namespace TimeOfDayLightingEx
 }  // namespace OpenSpeed::MW05
+namespace OpenSpeed::Carbon {
+  namespace PVehicleEx {
+    static bool ChangePlayerVehicle(Attrib::Gen::pvehicle& instance, VehicleCustomizations* customizations) {
+      auto* pvehicle = PVehicleEx::GetPlayerInstance();
+      if (!pvehicle) return false;
+
+      if (!PVehicleEx::ChangePVehicleInto(pvehicle, instance, customizations).WasSuccessful) return false;
+      return true;
+    }
+    static bool ChangePlayerVehicle(Attrib::StringKey vehicleKey, VehicleCustomizations* customizations) {
+      if (vehicleKey == 0) return false;
+
+      auto instance = Attrib::Gen::pvehicle::TryGetInstance(vehicleKey);
+      if (!instance.mCollection) return false;
+
+      return ChangePlayerVehicle(instance, customizations);
+    }
+  }  // namespace PVehicleEx
+}  // namespace OpenSpeed::Carbon
 
 #pragma warning(pop)

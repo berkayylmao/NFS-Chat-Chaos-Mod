@@ -15,8 +15,12 @@
 
 # Build results
 [Dd]ebug/
+[Dd]ebug - MW05/
+[Dd]ebug - Carbon/
 [Dd]ebugPublic/
 [Rr]elease/
+[Rr]elease - MW05/
+[Rr]elease - Carbon/
 [Rr]eleases/
 x64/
 x86/

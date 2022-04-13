@@ -25,6 +25,7 @@
 #include "Extensions/D3D9/D3D9.Base.hpp"
 #include "Extensions/DInput8/DInput8.hpp"
 #include "Extensions/Game/MW05/GameEffectsHandler.hpp"
+#include "Extensions/Game/Carbon/GameEffectsHandler.hpp"
 #include "Extensions/WndProc/DontStopGameOnFocussLoss.hpp"
 #include "Extensions/WndProc/WindowedModeImprovements.hpp"
 
@@ -41,6 +42,12 @@ namespace ChaosMod {
         *reinterpret_cast<bool*>(0x926064) = true;
         MemoryEditor::Get().LockMemory(0x926064);
         break;
+      case OpenSpeed::SpeedGame::Carbon:
+        // SkipFE
+        MemoryEditor::Get().UnlockMemory(0xA9E620, 4);
+        *reinterpret_cast<bool*>(0xA9E620) = true;
+        MemoryEditor::Get().LockMemory(0xA9E620);
+        break;
     }
 #endif
   }
@@ -56,6 +63,7 @@ namespace ChaosMod {
           g_GameEffectsHandler = std::make_unique<Extensions::Game::MW05::GameEffectsHandler>();
           break;
         case OpenSpeed::SpeedGame::Carbon:
+          g_GameEffectsHandler = std::make_unique<Extensions::Game::Carbon::GameEffectsHandler>();
           break;
         default:
           // No compatible game was found! Shutting down mod.
