@@ -95,7 +95,7 @@ using namespace std::chrono_literals;
 #define __CONCAT__(a, b)       __CONCAT_INNER__(a, b)
 
 #define __EXECUTE_EVERY_X_SECONDS__(fSecond)                            \
-  static float __CONCAT__(__seconds_passed__, __LINE__) = 0.0f;         \
+  static float __CONCAT__(__seconds_passed__, __LINE__) = fSecond;      \
   __CONCAT__(__seconds_passed__, __LINE__) += ImGui::GetIO().DeltaTime; \
   if (__CONCAT__(__seconds_passed__, __LINE__) < fSecond) return;       \
   __CONCAT__(__seconds_passed__, __LINE__) = 0.0f
