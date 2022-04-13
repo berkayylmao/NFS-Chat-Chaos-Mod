@@ -1,5 +1,6 @@
 <p align="center">
 <img src=".gitdocs/UI_Main.png?raw=true" />
+<img src=".gitdocs/UI_About.png?raw=true" />
 </p>
 
 ## NFS Chat Chaos Mod
@@ -13,10 +14,12 @@ Welcome to the official NFS Chat Chaos Mod repository!
   - Disable the ability to reset the player's car or be auto-reset.
   - Increase the maximum heat level to 10.
   - Force traffic density to be at max.
+  - Force enable cops in all races.
   - Force the game moment camera to be always on.
 
 ## Which NFS games does it support?
 - **NFS Most Wanted 2005**: v1.3 - RELOADED, English
+- **NFS Most Wanted Carbon (Collector's Edition)**: v1.4 - RELOADED, English
 
 ## How do I install it?
 1. [Click here](https://github.com/berkayylmao/NFS-Chat-Chaos-Mod/releases/latest).
