@@ -19,7 +19,7 @@ Welcome to the official NFS Chat Chaos Mod repository!
 
 ## Which NFS games does it support?
 - **NFS Most Wanted 2005**: v1.3 - RELOADED, English
-- **NFS Most Wanted Carbon (Collector's Edition)**: v1.4 - RELOADED, English
+- **NFS Carbon (Collector's Edition)**: v1.4 - RELOADED, English
 
 ## How do I install it?
 1. [Click here](https://github.com/berkayylmao/NFS-Chat-Chaos-Mod/releases/latest).
