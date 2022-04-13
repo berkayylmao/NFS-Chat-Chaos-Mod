@@ -49,6 +49,7 @@
 #include <OpenSpeed/Game.MW05/Types/IDamageable.h>
 #include <OpenSpeed/Game.MW05/Types/IEngine.h>
 #include <OpenSpeed/Game.MW05/Types/InputPlayer.h>
+#include <OpenSpeed/Game.MW05/Types/IRenderable.h>
 #include <OpenSpeed/Game.MW05/Types/ITransmission.h>
 #include <OpenSpeed/Game.MW05/Types/LocalPlayer.h>
 #include <OpenSpeed/Game.MW05/Types/Physics.h>

@@ -77,6 +77,7 @@
 #include "Extensions/Game/MW05/Effects/JellyCars.hpp"
 #include "Extensions/Game/MW05/Effects/TheJavaExperience.hpp"
 #include "Extensions/Game/MW05/Effects/Flashbang.hpp"
+#include "Extensions/Game/MW05/Effects/Impostor.hpp"
 #include "Extensions/Game/MW05/Effects/ToTheMoon.hpp"
 #include "Extensions/Game/MW05/Effects/PaperCars.hpp"
 #include "Extensions/Game/MW05/Effects/YoBroIsThatASupra.hpp"
@@ -108,6 +109,7 @@
 #include "Extensions/Game/MW05/Effects/ImTIREd.hpp"
 #include "Extensions/Game/MW05/Effects/MaybeInvertedSteering.hpp"
 #include "Extensions/Game/MW05/Effects/DeliveryBoy.hpp"
+#include "Extensions/Game/MW05/Effects/ElNoSabe.hpp"
 
 // Modifiers
 #include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
@@ -295,6 +297,7 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::JellyCars());
       IGameEffectsHandler::AddEffect(new Effects::TheJavaExperience());
       IGameEffectsHandler::AddEffect(new Effects::Flashbang());
+      IGameEffectsHandler::AddEffect(new Effects::Impostor());
       IGameEffectsHandler::AddEffect(new Effects::ToTheMoon());
       IGameEffectsHandler::AddEffect(new Effects::PaperCars());
       IGameEffectsHandler::AddEffect(new Effects::YoBroIsThatASupra());
@@ -326,6 +329,7 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::ImTIREd());
       IGameEffectsHandler::AddEffect(new Effects::MaybeInvertedSteering());
       IGameEffectsHandler::AddEffect(new Effects::DeliveryBoy());
+      IGameEffectsHandler::AddEffect(new Effects::ElNoSabe());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),
@@ -387,7 +391,7 @@ namespace Extensions::Game::MW05 {
         *reinterpret_cast<std::uintptr_t*>(addr) = reinterpret_cast<std::uintptr_t>(&details::DisableResetForPlayer::CodeCave);
         MemoryEditor::Get().LockMemory(addr);
       }
-      // Force traffic density to max
+      // Force change attribute values
       {
         // Force AITrafficManager::ComputeDensity() to 100
         {
@@ -463,6 +467,10 @@ namespace Extensions::Game::MW05 {
             auto collection_key = gameplay->GetFirstCollection();
             for (size_t _1 = 0; _1 < gameplay->GetNumCollections(); _1++) {
               auto* collection = gameplay->GetCollection(collection_key);
+              // Enable cops
+              if (auto* var = collection->GetData<bool>(OpenCarbon::Attrib::StringToKey("CopsInRace"))) *var = true;
+              // Incrase max heat level
+              if (auto* var = collection->GetData<float>(OpenCarbon::Attrib::StringToKey("MaxHeatLevel"))) *var = 10.0f;
               // Increase traffic density
               if (auto* var = collection->GetData<float>(OpenMW::Attrib::StringToKey("ForceTrafficDensity"))) *var = 100.0f;
               // Increase traffic level
