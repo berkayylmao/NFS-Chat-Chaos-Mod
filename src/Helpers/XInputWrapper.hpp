@@ -144,11 +144,10 @@ class XInputWrapper {
   void StartUpdater() {
     mKeepRunningUpdater = true;
     mUpdaterThread      = std::thread(&XInputWrapper::Refresh, this);
-    mUpdaterThread.detach();
   }
   void StopUpdater() {
     mKeepRunningUpdater = false;
-    mUpdaterThread.join();
+    if (mUpdaterThread.joinable()) mUpdaterThread.join();
   }
 
  public:
