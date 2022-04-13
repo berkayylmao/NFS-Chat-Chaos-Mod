@@ -29,7 +29,7 @@ namespace Extensions::Game::MW05::Effects {
    protected:
     virtual bool _activate() noexcept override {
       OpenMW::PVehicleEx::ForEachInstance([](OpenMW::PVehicle* pvehicle) {
-        auto force = Random::Get().Generate(3.0f, 10.0f);
+        auto force = Random::Get().Generate(9.0f, 19.0f);
         if (Random::Get().Generate(0, 1)) force *= -1.0f;
 
         pvehicle->GetRigidBody()->SetAngularVelocity(pvehicle->GetRigidBody()->GetAngularVelocity() + OpenMW::UMath::Vector3(0.0f, 0.0f, force));
