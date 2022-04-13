@@ -110,6 +110,7 @@
 #include "Extensions/Game/MW05/Effects/MaybeInvertedSteering.hpp"
 #include "Extensions/Game/MW05/Effects/DeliveryBoy.hpp"
 #include "Extensions/Game/MW05/Effects/ElNoSabe.hpp"
+#include "Extensions/Game/MW05/Effects/FlatCars.hpp"
 
 // Modifiers
 #include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
@@ -330,6 +331,7 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::MaybeInvertedSteering());
       IGameEffectsHandler::AddEffect(new Effects::DeliveryBoy());
       IGameEffectsHandler::AddEffect(new Effects::ElNoSabe());
+      IGameEffectsHandler::AddEffect(new Effects::FlatCars());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),

@@ -510,6 +510,7 @@
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\EnjoyTheScenery.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\ExperienceTheLag.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\Flashbang.hpp" />
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\FlatCars.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\HowsYourCarRunning.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\IntoTheVoid.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\JellyCars.hpp" />
@@ -559,6 +560,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\EnjoyTheScenery.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\FastAndFuriousNOS.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\Flashbang.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\FlatCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\GASGASGAS.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\GigaRubberband.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\GuessWhosBack.hpp" />

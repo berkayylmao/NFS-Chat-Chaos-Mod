@@ -538,6 +538,12 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\ElNoSabe.hpp">
       <Filter>Extensions\Game\MW05\Effects</Filter>
     </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\FlatCars.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\FlatCars.hpp">
+      <Filter>Extensions\Game\Carbon\Effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="NFS_ChatChaosMod.licenseheader" />

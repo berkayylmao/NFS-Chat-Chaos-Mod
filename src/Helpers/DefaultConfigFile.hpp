@@ -189,8 +189,8 @@ namespace ChaosMod::DefaultConfigFile {
       "\"Name\":\"Tunnel Vision\",\"Description\":\"You only need to look forward "
       "anyway\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":12,\"Duration\":45.0,\"IncompatibleWith\":[]},{"
       "\"Name\":\"Tall Cars\",\"Description\":\"More headroom is always "
-      "good\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[]},{\"Name\":"
-      "\"I\'m TIREd\",\"Description\":\"Get it? haHaa\\n(Blows the tires of all "
+      "good\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[86]},{"
+      "\"Name\":\"I\'m TIREd\",\"Description\":\"Get it? haHaa\\n(Blows the tires of all "
       "cars)\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":24,\"Duration\":30.0,\"IncompatibleWith\":[]},{"
       "\"Name\":\"Maybe Inverted Steering\",\"Description\":\"Inverts steering, but only "
       "sometimes\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":9,\"Duration\":50.0,\"IncompatibleWith\":[23]},{"
@@ -198,5 +198,7 @@ namespace ChaosMod::DefaultConfigFile {
       "hand\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":15,\"Duration\":10.0,\"IncompatibleWith\":[16]},{"
       "\"Name\":\"!elnosabe\",\"Description\":\"PepeLaugh Broadcaster seems to be not acquainted with vital intelligence..\\nPepeLaugh Broadcaster seems to be "
       "not acquainted with vital intelligence..\\nPepeLaugh Broadcaster seems to be not acquainted with vital intelligence..\\n(Increases lap "
-      "amount)\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":30,\"Duration\":5.0,\"IncompatibleWith\":[]}]}";
+      "amount)\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":30,\"Duration\":5.0,\"IncompatibleWith\":[]},{"
+      "\"Name\":\"Flat Cars\",\"Description\":\"Cross really did step on you "
+      "huh\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[81]}]}";
 }

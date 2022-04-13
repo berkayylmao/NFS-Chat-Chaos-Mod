@@ -35,12 +35,14 @@ namespace Extensions::Game::Carbon::Modifiers {
     static constexpr float CONST_NOT_USED_MARKER = -123.456f;
 
     const CarScaleVector sRCCarsScale    = CarScaleVector(0.4f, 0.4f, 0.4f);
+    const CarScaleVector sFlatCarsScale  = CarScaleVector(0.001f, CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER);
     const CarScaleVector sTallCarsScale  = CarScaleVector(4.0f, CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER);
     const CarScaleVector sWideCarsScale  = CarScaleVector(CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER, 4.0f);
     const CarScaleVector sPaperCarsScale = CarScaleVector(CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER, 0.001f);
     CarScaleVector       mJellyCarsScale;
 
     bool mRCCarsEnabled;
+    bool mFlatCarsEnabled;
     bool mTallCarsEnabled;
     bool mWideCarsEnabled;
     bool mPaperCarsEnabled;
@@ -92,7 +94,10 @@ namespace Extensions::Game::Carbon::Modifiers {
       else if (mPaperCarsEnabled)
         OpenCarbon::Variables::CarScaleMatrix.GetField().v1.z = sPaperCarsScale.z;
 
-      if (mTallCarsEnabled) OpenCarbon::Variables::CarScaleMatrix.GetField().v2.x *= sTallCarsScale.x;
+      if (mFlatCarsEnabled)
+        OpenCarbon::Variables::CarScaleMatrix.GetField().v2.x *= sFlatCarsScale.x;
+      else if (mTallCarsEnabled)
+        OpenCarbon::Variables::CarScaleMatrix.GetField().v2.x *= sTallCarsScale.x;
 
       if (mJellyCarsEnabled) {
         _transformJelly();
@@ -132,6 +137,15 @@ namespace Extensions::Game::Carbon::Modifiers {
     }
     void DisableWideCars() {
       mWideCarsEnabled = false;
+      _decEnabled();
+    }
+
+    void EnableFlatCars() {
+      mFlatCarsEnabled = true;
+      _incEnabled();
+    }
+    void DisableFlatCars() {
+      mFlatCarsEnabled = false;
       _decEnabled();
     }
 
