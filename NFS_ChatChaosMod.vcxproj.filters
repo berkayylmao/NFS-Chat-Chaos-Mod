@@ -559,6 +559,12 @@
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\IfYouCantBeatThemKillThem.hpp">
       <Filter>Extensions\Game\Carbon\Effects</Filter>
     </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\ConvoyTime.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\ConvoyTime.hpp">
+      <Filter>Extensions\Game\Carbon\Effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="NFS_ChatChaosMod.licenseheader" />

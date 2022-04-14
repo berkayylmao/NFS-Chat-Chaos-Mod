@@ -109,6 +109,7 @@
 //#include "Extensions/Game/Carbon/Effects/MaybeInvertedSteering.hpp"
 //#include "Extensions/Game/Carbon/Effects/DeliveryBoy.hpp"
 #include "Extensions/Game/Carbon/Effects/FlatCars.hpp"
+#include "Extensions/Game/Carbon/Effects/ConvoyTime.hpp"
 
 // Modifiers
 #include "Extensions/Game/Carbon/Modifiers/CarScaleModifier.hpp"
@@ -302,6 +303,7 @@ namespace Extensions::Game::Carbon {
       IGameEffectsHandler::AddEffect(new Effects::MaybeInvertedSteering());
       IGameEffectsHandler::AddEffect(new Effects::DeliveryBoy());*/
       IGameEffectsHandler::AddEffect(new Effects::FlatCars());
+      IGameEffectsHandler::AddEffect(new Effects::ConvoyTime());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),

@@ -163,8 +163,8 @@ namespace ChaosMod::DefaultConfigFile {
       "\"Name\":\"Crazy Taxi\",\"Description\":\"Need a "
       "cab?\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":15,\"Duration\":10.0,\"IncompatibleWith\":[16]},{"
       "\"Name\":\"Giga Rubberband\",\"Description\":\"He\'s always one step ahead of "
-      "you\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":14,\"Duration\":60.0,\"IncompatibleWith\":[]},{\"Name\":"
-      "\"Mega Rubberband\",\"Description\":\"You thought Earl was "
+      "you\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":14,\"Duration\":60.0,\"IncompatibleWith\":[87]},{"
+      "\"Name\":\"Mega Rubberband\",\"Description\":\"You thought Earl was "
       "hard?\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":20,\"Duration\":40.0,\"IncompatibleWith\":[]},{"
       "\"Name\":\"Guess Who\'s Back\",\"Description\":\"Cross wants to have a talk with "
       "you\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":20,\"Duration\":10.0,\"IncompatibleWith\":[]},{\"Name\":"
@@ -200,5 +200,7 @@ namespace ChaosMod::DefaultConfigFile {
       "not acquainted with vital intelligence..\\nPepeLaugh Broadcaster seems to be not acquainted with vital intelligence..\\n(Increases lap "
       "amount)\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":30,\"Duration\":5.0,\"IncompatibleWith\":[]},{"
       "\"Name\":\"Flat Cars\",\"Description\":\"Cross really did step on you "
-      "huh\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[81]}]}";
+      "huh\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[81]},{\"Name\":"
+      "\"Convoy Time\",\"Description\":\"Line up boys\\n(Creates a convoy behind the "
+      "player)\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":5,\"Duration\":45.0,\"IncompatibleWith\":[68]}]}";
 }

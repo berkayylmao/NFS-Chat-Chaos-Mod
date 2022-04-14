@@ -111,6 +111,7 @@
 #include "Extensions/Game/MW05/Effects/DeliveryBoy.hpp"
 #include "Extensions/Game/MW05/Effects/ElNoSabe.hpp"
 #include "Extensions/Game/MW05/Effects/FlatCars.hpp"
+#include "Extensions/Game/MW05/Effects/ConvoyTime.hpp"
 
 // Modifiers
 #include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
@@ -332,6 +333,7 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::DeliveryBoy());
       IGameEffectsHandler::AddEffect(new Effects::ElNoSabe());
       IGameEffectsHandler::AddEffect(new Effects::FlatCars());
+      IGameEffectsHandler::AddEffect(new Effects::ConvoyTime());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),

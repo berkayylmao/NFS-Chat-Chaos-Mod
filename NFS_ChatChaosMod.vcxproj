@@ -501,6 +501,7 @@
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\BlackOut.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\BlurPowerups.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\BopIt.hpp" />
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\ConvoyTime.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\CrazyTaxi.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\CruiseControl.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\DesignatedDriver.hpp" />
@@ -555,6 +556,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\CameraSwitcheroo.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\Chernobyl.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BluetoothController.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\ConvoyTime.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\CrazyTaxi.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\CrossEyedRider.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\DeliveryBoy.hpp" />
