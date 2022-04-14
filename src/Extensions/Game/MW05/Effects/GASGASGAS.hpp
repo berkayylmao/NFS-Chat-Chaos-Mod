@@ -54,12 +54,14 @@ namespace Extensions::Game::MW05::Effects {
       auto* input = player_vehicle->mInput | OpenMW::InputEx::AsInputPlayer;
       if (!input) return;
 
-      // Disable braking
-      if (player_vehicle->GetSpeed() >= 0.1f) input->SetControlBrake(0.0f);
-      input->SetControlHandBrake(0.0f);
-      // Force gas
-      input->SetControlGas(1.0f);
-      input->SetControlNOS(true);
+      float steering = input->GetControls().mSteering;
+      input->ClearInput();
+      auto& controls      = input->GetControls();
+      controls.mBrake     = 0.0f;
+      controls.mHandBrake = 0.0f;
+      controls.mGas       = 1.0f;
+      controls.mNOS       = true;
+      controls.mSteering  = steering;
     }
 
    public:
