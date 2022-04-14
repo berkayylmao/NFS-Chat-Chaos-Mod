@@ -27,8 +27,10 @@
 namespace Extensions::Game::MW05::Effects {
   class EARFQUAKE : public IGameEffect {
    protected:
-    virtual bool _activate() noexcept override { return XInputWrapper::Get().Rumble(0.25f, 0.5f); }
-    virtual bool _deactivate() noexcept override { return XInputWrapper::Get().StopRumble(); }
+    virtual bool _deactivate() noexcept override {
+      if (XInputWrapper::Get().IsConnected()) return XInputWrapper::Get().StopRumble();
+      return true;
+    }
     virtual void _activeTick() noexcept override {
       // Shake player camera
       {
@@ -54,6 +56,8 @@ namespace Extensions::Game::MW05::Effects {
           pvehicle->GetRigidBody()->SetLinearVelocity(velocity);
         });
       }
+      // Vibrate controller
+      XInputWrapper::Get().Rumble(Random::Get().Generate(0.0f, 1.0f), Random::Get().Generate(0.0f, 1.0f));
     }
 
    public:
