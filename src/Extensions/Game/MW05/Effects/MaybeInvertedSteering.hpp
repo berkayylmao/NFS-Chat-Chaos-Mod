@@ -38,7 +38,7 @@ namespace Extensions::Game::MW05::Effects {
         controls.mSteering = -controls.mSteering;
       }
 
-      __EXECUTE_EVERY_X_SECONDS__(3.0f);
+      __EXECUTE_EVERY_X_SECONDS__(Random::Get().Generate(2.0f, 5.0f));
       if (Random::Get().Generate(0, 1) == 1) mWillInvert = !mWillInvert;
     }
 
