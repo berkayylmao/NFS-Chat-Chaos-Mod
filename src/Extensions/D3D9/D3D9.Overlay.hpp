@@ -334,7 +334,7 @@ namespace Extensions::D3D9::Overlay {
               fmt::format_to_n(format_array.data(), format_array.max_size(), "{}", std::chrono::duration_cast<std::chrono::seconds>(ms_elapsed).count());
 
               const ImVec2 str_pos =
-                  cursor + ImVec2(8.5f + circle_timer_radius, circle_timer_radius / 1.85f) - ImVec2(ImGui::CalcTextSize(format_array.data()).x / 2.0f, 0.0f);
+                  cursor + ImVec2(8.5f + circle_timer_radius, circle_timer_radius / 2.0f) - ImVec2(ImGui::CalcTextSize(format_array.data()).x / 2.0f, 0.0f);
 
               ImGui::SetCursorPos(str_pos);
               ImGui::TextUnformatted(format_array.data());
