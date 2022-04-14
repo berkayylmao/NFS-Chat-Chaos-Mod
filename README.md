@@ -26,9 +26,11 @@ Welcome to the official NFS Chat Chaos Mod repository!
 2. Download the "NFS-Chat-Chaos-Mod.zip" file.
 3. Extract the zip file into the game folder.
 
-**You need to be running Windows 7 SP1 or newer!**
-
-**You also need to have "[Microsoft Visual C++ Redistributable for Visual Studio 2015, 2017 and 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)" installed.**
+- **You need to be running Windows 7 SP1 or newer!**
+- **You need [DirectX End-User Runtimes (June 2010)](https://www.microsoft.com/en-us/download/details.aspx?id=8109) installed.**
+- **You also need the latest [DirectX End-User Runtimes](https://www.microsoft.com/en-us/download/details.aspx?id=35) installed.**
+- **You also need to have [Microsoft Visual C++ Redistributable for Visual Studio 2015, 2017,2019, and 2022 x86](https://aka.ms/vs/17/release/vc_redist.x86.exe) installed.**
+- **You also need to have [Microsoft Visual C++ Redistributable for Visual Studio 2015, 2017,2019, and 2022 x64](https://aka.ms/vs/17/release/vc_redist.x64.exe) installed.**
 
 ## ... and how do I use it?
 Simple:
