@@ -49,11 +49,10 @@ namespace Extensions::Game::MW05::Effects {
       customizations.WriteRideIntoRecord(&ride_info);
       customizations.mTunings[0]   = OpenMW::Physics::Tunings();
       customizations.mActiveTuning = OpenMW::eCustomTuningType::Setting1;
-      // Swap tuning
-      auto car_key = db_car_record->mVehicleKey;
-      if (!OpenMW::PVehicleEx::ChangePlayerVehicle(car_key, &customizations)) return false;
+      // Change car
+      if (!OpenMW::PVehicleEx::ChangePlayerVehicle(db_car_record->mVehicleKey, &customizations)) return false;
       // Save to DB
-      OpenMW::FEDatabaseEx::ChangeCarData(db_car_record, car_key, &customizations);
+      OpenMW::FEDatabaseEx::ChangeCarData(db_car_record, db_car_record->mVehicleKey, &customizations);
       return true;
     }
 
