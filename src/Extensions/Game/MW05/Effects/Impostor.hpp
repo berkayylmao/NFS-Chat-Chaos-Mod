@@ -78,6 +78,8 @@ namespace Extensions::Game::MW05::Effects {
 
    protected:
     virtual bool _specialCooldownConditionSatisfied() const noexcept override {
+      if (!OpenMW::GameStatusEx::HasFinishedPrologue()) return false;
+
       auto* race_status = OpenMW::GRaceStatus::Get();
       if (!race_status) return false;
 

@@ -483,8 +483,11 @@ namespace Extensions::Game::MW05 {
           }
         }).detach();
       }
-      // Register GRaceStatus::mPlayMode change handler
-      { std::thread(OpenSpeed::MW05::GameStatusEx::details::timeUpdateThreadFn).detach(); }
+      // Start game updaters
+      {
+        std::thread(OpenMW::GameStatusEx::details::prologueUpdateThreadFn).detach();
+        std::thread(OpenMW::GameStatusEx::details::statusUpdateThreadFn).detach();
+      }
       // Patches to make mw05 run the effect handler
       {
         MemoryEditor::Get().Make(MemoryEditor::MakeType::Call, 0x443DD9, reinterpret_cast<std::uintptr_t>(&details::OverrideHeatLevelConstraints::CodeCave));

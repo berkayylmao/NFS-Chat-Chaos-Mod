@@ -27,7 +27,9 @@
 namespace Extensions::Game::MW05::Effects {
   class FAK500 : public IGameEffect {
    protected:
-    virtual bool _specialCooldownConditionSatisfied() const noexcept override { return !OpenMW::GameStatusEx::IsInPursuit(); }
+    virtual bool _specialCooldownConditionSatisfied() const noexcept override {
+      return OpenMW::GameStatusEx::HasFinishedPrologue() && !OpenMW::GameStatusEx::IsInPursuit();
+    }
 
     virtual bool _activate() noexcept override {
       auto car_key  = OpenMW::Attrib::StringToKey("clk500");

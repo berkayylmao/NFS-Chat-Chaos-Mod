@@ -27,7 +27,9 @@
 namespace Extensions::Game::MW05::Effects {
   class POVYouAreVolkswagenDuringEmissionTests : public IGameEffect {
    protected:
-    virtual bool _specialCooldownConditionSatisfied() const noexcept override { return !OpenMW::GameStatusEx::IsInPursuit(); }
+    virtual bool _specialCooldownConditionSatisfied() const noexcept override {
+      return OpenMW::GameStatusEx::HasFinishedPrologue() && !OpenMW::GameStatusEx::IsInPursuit();
+    }
 
     virtual bool _activate() noexcept override {
       auto* pvehicle = OpenMW::PVehicleEx::GetPlayerInstance();

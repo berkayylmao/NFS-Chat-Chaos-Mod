@@ -52,6 +52,7 @@ namespace OpenSpeed {
 
     namespace GameStatusEx {
       namespace details {
+        static bool                  sFinishedPrologue;
         static bool                  sInPursuit;
         static GRaceStatus::PlayMode sPlayMode;
         static bool                  sProcessedPlayMode;
@@ -60,7 +61,24 @@ namespace OpenSpeed {
         static std::chrono::time_point<std::chrono::steady_clock> sRoamingTP{};
         static std::chrono::time_point<std::chrono::steady_clock> sRaceTP{};
 
-        static void timeUpdateThreadFn() {
+        static void prologueUpdateThreadFn() {
+          sFinishedPrologue = false;
+
+          for (;;) {
+            std::this_thread::sleep_for(1s);
+
+            auto* db = cFrontEndDatabase::Get();
+            if (!db) continue;
+
+            if (auto* profile = db->GetUserProfile()) {
+              if (profile->mPlayersCarStable.CareerRecords[0].mHandle != 0xFF) {
+                sFinishedPrologue = true;
+                break;
+              }
+            }
+          }
+        }
+        static void statusUpdateThreadFn() {
           for (;;) {
             std::this_thread::sleep_for(1s);
 
@@ -104,6 +122,7 @@ namespace OpenSpeed {
         }
       }  // namespace details
 
+      static bool HasFinishedPrologue() { return details::sFinishedPrologue; }
       static bool IsInPursuit() { return details::sInPursuit; }
       static bool IsRacing() { return details::sProcessedPlayMode && details::sPlayMode == GRaceStatus::PlayMode::Racing; }
       static bool IsRoaming() { return details::sProcessedPlayMode && details::sPlayMode == GRaceStatus::PlayMode::Roaming; }
@@ -322,7 +341,9 @@ namespace OpenSpeed {
         static std::chrono::time_point<std::chrono::steady_clock> sRoamingTP{};
         static std::chrono::time_point<std::chrono::steady_clock> sRaceTP{};
 
-        static void timeUpdateThreadFn() {
+        static void statusUpdateThreadFn() {
+          sInPursuit = sProcessedPlayMode = false;
+
           for (;;) {
             std::this_thread::sleep_for(1s);
 

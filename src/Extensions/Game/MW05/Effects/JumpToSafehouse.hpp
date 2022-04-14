@@ -27,6 +27,8 @@
 namespace Extensions::Game::MW05::Effects {
   class JumpToSafehouse : public IGameEffect {
    protected:
+    virtual bool _specialCooldownConditionSatisfied() const noexcept override { return OpenMW::GameStatusEx::HasFinishedPrologue(); }
+
     virtual bool _activate() noexcept override {
       OpenMW::Game::JumpToSafehouse();
       FMODWrapper::Get().PlaySoundFX(FMODWrapper::SoundFX::KEKW);
