@@ -26,23 +26,25 @@
 
 namespace Extensions::Game::MW05::Effects {
   class AXEDeodorant : public IGameEffect {
-    const OpenMW::UMath::Vector3 mDangerZone = OpenMW::UMath::Vector3(30.0f, 30.0f, 30.0f);
+    const OpenMW::UMath::Vector3 mDangerZone = OpenMW::UMath::Vector3(40.0f, 40.0f, 40.0f);
+
+    bool IsInsideDangerZone(const OpenMW::UMath::Vector3& player, const OpenMW::UMath::Vector3& other) {
+      const auto min = player - mDangerZone;
+      const auto max = player + mDangerZone;
+      return other.x > min.x && other.x < max.x && other.y > min.y && other.y < max.y && other.z > min.z && other.z < max.z;
+    }
 
    protected:
     virtual void _activeTick() noexcept override {
       auto* player_vehicle = OpenMW::PVehicleEx::GetPlayerInstance();
       if (!player_vehicle) return;
 
-      const auto& player_pos      = player_vehicle->GetRigidBody()->GetPosition();
-      const auto  danger_zone_min = player_pos - mDangerZone;
-      const auto  danger_zone_max = player_pos + mDangerZone;
-
+      const auto& player_pos = player_vehicle->GetRigidBody()->GetPosition();
       OpenMW::PVehicleEx::ForEachInstance([=](OpenMW::PVehicle* pvehicle) {
         if (pvehicle->IsPlayer() || pvehicle->IsOwnedByPlayer()) return;
 
         const auto& pos = pvehicle->GetRigidBody()->GetPosition();
-        if (pos.x > danger_zone_min.x && pos.x < danger_zone_max.x && pos.y > danger_zone_min.y && pos.y < danger_zone_max.y && pos.z > danger_zone_min.z &&
-            pos.z < danger_zone_max.z) {
+        if (IsInsideDangerZone(player_pos, pos)) {
           const auto v = (player_pos - pos).Normalize();
 
           pvehicle->GetRigidBody()->SetLinearVelocity(OpenMW::UMath::Vector3(

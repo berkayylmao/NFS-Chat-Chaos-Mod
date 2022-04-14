@@ -26,23 +26,32 @@
 
 namespace Extensions::Game::Carbon::Effects {
   class SuperSeducer : public IGameEffect {
+    const OpenCarbon::UMath::Vector3 mPassiveZone    = OpenCarbon::UMath::Vector3(10.0f, 10.0f, 10.0f);
     const OpenCarbon::UMath::Vector3 mAttractionZone = OpenCarbon::UMath::Vector3(60.0f, 60.0f, 60.0f);
+
+    bool IsInsidePassiveZone(const OpenCarbon::UMath::Vector3& player, const OpenCarbon::UMath::Vector3& other) {
+      const auto min = player - mPassiveZone;
+      const auto max = player + mPassiveZone;
+      return other.x > min.x && other.x < max.x && other.y > min.y && other.y < max.y && other.z > min.z && other.z < max.z;
+    }
+    bool IsInsideAttractionZone(const OpenCarbon::UMath::Vector3& player, const OpenCarbon::UMath::Vector3& other) {
+      const auto min = player - mAttractionZone;
+      const auto max = player + mAttractionZone;
+      return other.x > min.x && other.x < max.x && other.y > min.y && other.y < max.y && other.z > min.z && other.z < max.z;
+    }
 
    protected:
     virtual void _activeTick() noexcept override {
       OpenCarbon::PVehicle* player_vehicle = OpenCarbon::PVehicleEx::GetPlayerInstance();
       if (!player_vehicle) return;
 
-      const auto& player_pos          = player_vehicle->GetRigidBody()->GetPosition();
-      const auto  attraction_zone_min = player_pos - mAttractionZone;
-      const auto  attraction_zone_max = player_pos + mAttractionZone;
+      const auto& player_pos = player_vehicle->GetRigidBody()->GetPosition();
 
       OpenCarbon::PVehicleEx::ForEachInstance([=](OpenCarbon::PVehicle* pvehicle) {
         if (pvehicle->IsPlayer() || pvehicle->IsOwnedByPlayer()) return;
 
         const auto& pos = pvehicle->GetRigidBody()->GetPosition();
-        if (pos.x > attraction_zone_min.x && pos.x < attraction_zone_max.x && pos.y > attraction_zone_min.y && pos.y < attraction_zone_max.y &&
-            pos.z > attraction_zone_min.z && pos.z < attraction_zone_max.z) {
+        if (IsInsideAttractionZone(player_pos, pos) && !IsInsidePassiveZone(player_pos, pos)) {
           const auto v = (player_pos - pos).Normalize();
 
           pvehicle->GetRigidBody()->SetLinearVelocity(OpenCarbon::UMath::Vector3(

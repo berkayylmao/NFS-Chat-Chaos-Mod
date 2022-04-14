@@ -26,30 +26,39 @@
 
 namespace Extensions::Game::MW05::Effects {
   class SuperSeducer : public IGameEffect {
-    const OpenMW::UMath::Vector3 mAttractionZone = OpenMW::UMath::Vector3(60.0f, 60.0f, 60.0f);
+    const OpenMW::UMath::Vector3 mPassiveZone    = OpenMW::UMath::Vector3(10.0f, 10.0f, 10.0f);
+    const OpenMW::UMath::Vector3 mAttractionZone = OpenMW::UMath::Vector3(100.0f, 100.0f, 100.0f);
+
+    bool IsInsidePassiveZone(const OpenMW::UMath::Vector3& player, const OpenMW::UMath::Vector3& other) {
+      const auto min = player - mPassiveZone;
+      const auto max = player + mPassiveZone;
+      return other.x > min.x && other.x < max.x && other.y > min.y && other.y < max.y && other.z > min.z && other.z < max.z;
+    }
+    bool IsInsideAttractionZone(const OpenMW::UMath::Vector3& player, const OpenMW::UMath::Vector3& other) {
+      const auto min = player - mAttractionZone;
+      const auto max = player + mAttractionZone;
+      return other.x > min.x && other.x < max.x && other.y > min.y && other.y < max.y && other.z > min.z && other.z < max.z;
+    }
 
    protected:
     virtual void _activeTick() noexcept override {
       OpenMW::PVehicle* player_vehicle = OpenMW::PVehicleEx::GetPlayerInstance();
       if (!player_vehicle) return;
 
-      const auto& player_pos          = player_vehicle->GetRigidBody()->GetPosition();
-      const auto  attraction_zone_min = player_pos - mAttractionZone;
-      const auto  attraction_zone_max = player_pos + mAttractionZone;
+      const auto& player_pos = player_vehicle->GetRigidBody()->GetPosition();
 
       OpenMW::PVehicleEx::ForEachInstance([=](OpenMW::PVehicle* pvehicle) {
         if (pvehicle->IsPlayer() || pvehicle->IsOwnedByPlayer()) return;
 
         const auto& pos = pvehicle->GetRigidBody()->GetPosition();
-        if (pos.x > attraction_zone_min.x && pos.x < attraction_zone_max.x && pos.y > attraction_zone_min.y && pos.y < attraction_zone_max.y &&
-            pos.z > attraction_zone_min.z && pos.z < attraction_zone_max.z) {
+        if (IsInsideAttractionZone(player_pos, pos) && !IsInsidePassiveZone(player_pos, pos)) {
           const auto v = (player_pos - pos).Normalize();
 
           pvehicle->GetRigidBody()->SetLinearVelocity(OpenMW::UMath::Vector3(
               // x
-              v.x * 25.0f,
+              v.x * 50.0f,
               // y
-              v.y * 25.0f,
+              v.y * 50.0f,
               // z
               v.z * 10.0f));
         }
