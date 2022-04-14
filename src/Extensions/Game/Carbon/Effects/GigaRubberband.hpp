@@ -32,10 +32,9 @@ namespace Extensions::Game::Carbon::Effects {
     virtual bool _specialCooldownConditionSatisfied() const noexcept override { return OpenCarbon::GameStatusEx::IsRacing(); }
 
     virtual bool _activate() noexcept override {
-      if (!OpenCarbon::GameStatusEx::IsRacing()) return false;
-
       auto* race_status = OpenCarbon::GRaceStatus::Get();
       if (!race_status) return false;
+      if (race_status->mPlayMode != OpenCarbon::GRaceStatus::PlayMode::Racing) return false;
 
       auto* player_vehicle = OpenCarbon::PVehicleEx::GetPlayerInstance();
       if (!player_vehicle) return false;

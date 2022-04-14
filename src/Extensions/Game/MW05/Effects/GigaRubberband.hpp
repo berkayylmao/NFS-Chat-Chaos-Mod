@@ -32,10 +32,9 @@ namespace Extensions::Game::MW05::Effects {
     virtual bool _specialCooldownConditionSatisfied() const noexcept override { return OpenMW::GameStatusEx::IsRacing(); }
 
     virtual bool _activate() noexcept override {
-      if (!OpenMW::GameStatusEx::IsRacing()) return false;
-
       auto* race_status = OpenMW::GRaceStatus::Get();
       if (!race_status) return false;
+      if (race_status->mPlayMode != OpenMW::GRaceStatus::PlayMode::Racing) return false;
 
       auto* player_vehicle = OpenMW::PVehicleEx::GetPlayerInstance();
       if (!player_vehicle) return false;
