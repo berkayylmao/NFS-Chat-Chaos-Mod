@@ -25,7 +25,7 @@
 #include "Helpers/OpenSpeedEx.hpp"
 // Effects
 #include "Extensions/Game/Carbon/Effects/ThanosSnap.hpp"
-//#include "Extensions/Game/Carbon/Effects/IfYouCantBeatThemKillThem.hpp"
+#include "Extensions/Game/Carbon/Effects/IfYouCantBeatThemKillThem.hpp"
 //#include "Extensions/Game/Carbon/Effects/EnterTheMatrix.hpp"
 #include "Extensions/Game/Carbon/Effects/EARFQUAKE.hpp"
 #include "Extensions/Game/Carbon/Effects/Sbinnala.hpp"
@@ -40,7 +40,6 @@
 #include "Extensions/Game/Carbon/Effects/CruiseControl.hpp"
 #include "Extensions/Game/Carbon/Effects/SchoolZone.hpp"
 #include "Extensions/Game/Carbon/Effects/YouAreSafeThisTime.hpp"
-//#include "Extensions/Game/Carbon/Effects/DeveloperMode.hpp"
 //#include "Extensions/Game/Carbon/Effects/TheMagnumOpus.hpp"
 //#include "Extensions/Game/Carbon/Effects/POVYouAreVolkswagenDuringEmissionTests.hpp"
 #include "Extensions/Game/Carbon/Effects/DontLookBackInAnger.hpp"
@@ -55,9 +54,9 @@
 #include "Extensions/Game/Carbon/Effects/Snitch.hpp"
 #include "Extensions/Game/Carbon/Effects/TurnUpTheHeat.hpp"
 #include "Extensions/Game/Carbon/Effects/TurnDownTheHeat.hpp"
-#include "Extensions/Game/Carbon/Effects/INeedSomeHelp.hpp"
+#include "Extensions/Game/Carbon/Effects/INeedSomeHelp.hpp"*/
 #include "Extensions/Game/Carbon/Effects/SlotMachine.hpp"
-#include "Extensions/Game/Carbon/Effects/STONKS.hpp"*/
+//#include "Extensions/Game/Carbon/Effects/STONKS.hpp"
 #include "Extensions/Game/Carbon/Effects/Magneto.hpp"
 /*#include "Extensions/Game/Carbon/Effects/Superhot.hpp"
 #include "Extensions/Game/Carbon/Effects/BrakesJustSlowYouDown.hpp"*/
@@ -77,9 +76,10 @@
 #include "Extensions/Game/Carbon/Effects/JellyCars.hpp"
 #include "Extensions/Game/Carbon/Effects/TheJavaExperience.hpp"
 #include "Extensions/Game/Carbon/Effects/Flashbang.hpp"
+//#include "Extensions/Game/Carbon/Effects/Impostor.hpp"
 #include "Extensions/Game/Carbon/Effects/ToTheMoon.hpp"
 #include "Extensions/Game/Carbon/Effects/PaperCars.hpp"
-//#include "Extensions/Game/Carbon/Effects/YoBroIsThatASupra.hpp"
+#include "Extensions/Game/Carbon/Effects/YoBroIsThatASupra.hpp"
 //#include "Extensions/Game/Carbon/Effects/TankMode.hpp"
 //#include "Extensions/Game/Carbon/Effects/DoILookBetterInThisDress.hpp"
 #include "Extensions/Game/Carbon/Effects/AXEDeodorant.hpp"
@@ -91,7 +91,7 @@
 #include "Extensions/Game/Carbon/Effects/EnjoyTheScenery.hpp"
 //#include "Extensions/Game/Carbon/Effects/InsaneTraffic.hpp"
 #include "Extensions/Game/Carbon/Effects/CrazyTaxi.hpp"
-//#include "Extensions/Game/Carbon/Effects/GigaRubberband.hpp"
+#include "Extensions/Game/Carbon/Effects/GigaRubberband.hpp"
 //#include "Extensions/Game/Carbon/Effects/MegaRubberband.hpp"
 //#include "Extensions/Game/Carbon/Effects/GuessWhosBack.hpp"
 //#include "Extensions/Game/Carbon/Effects/YoureGoingTheWrongWay.hpp"
@@ -218,7 +218,7 @@ namespace Extensions::Game::Carbon {
     virtual void SetupEffects() const noexcept override {
       IGameEffectsHandler::RemoveAllEffects();
       IGameEffectsHandler::AddEffect(new Effects::ThanosSnap());
-      // IGameEffectsHandler::AddEffect(new Effects::IfYouCantBeatThemKillThem());
+      IGameEffectsHandler::AddEffect(new Effects::IfYouCantBeatThemKillThem());
       // IGameEffectsHandler::AddEffect(new Effects::EnterTheMatrix());
       IGameEffectsHandler::AddEffect(new Effects::EARFQUAKE());
       IGameEffectsHandler::AddEffect(new Effects::Sbinnala());
@@ -233,8 +233,7 @@ namespace Extensions::Game::Carbon {
       IGameEffectsHandler::AddEffect(new Effects::CruiseControl());
       IGameEffectsHandler::AddEffect(new Effects::SchoolZone());
       IGameEffectsHandler::AddEffect(new Effects::YouAreSafeThisTime());
-      /*IGameEffectsHandler::AddEffect(new Effects::DeveloperMode());
-      IGameEffectsHandler::AddEffect(new Effects::TheMagnumOpus());
+      /*IGameEffectsHandler::AddEffect(new Effects::TheMagnumOpus());
       IGameEffectsHandler::AddEffect(new Effects::POVYouAreVolkswagenDuringEmissionTests());*/
       IGameEffectsHandler::AddEffect(new Effects::DontLookBackInAnger());
       IGameEffectsHandler::AddEffect(new Effects::PowerPointPresentation());
@@ -248,9 +247,9 @@ namespace Extensions::Game::Carbon {
       IGameEffectsHandler::AddEffect(new Effects::Snitch());
       IGameEffectsHandler::AddEffect(new Effects::TurnUpTheHeat());
       IGameEffectsHandler::AddEffect(new Effects::TurnDownTheHeat());
-      IGameEffectsHandler::AddEffect(new Effects::INeedSomeHelp());
+      IGameEffectsHandler::AddEffect(new Effects::INeedSomeHelp());*/
       IGameEffectsHandler::AddEffect(new Effects::SlotMachine());
-      IGameEffectsHandler::AddEffect(new Effects::STONKS());*/
+      // IGameEffectsHandler::AddEffect(new Effects::STONKS());
       IGameEffectsHandler::AddEffect(new Effects::Magneto());
       /* IGameEffectsHandler::AddEffect(new Effects::Superhot());
       IGameEffectsHandler::AddEffect(new Effects::BrakesJustSlowYouDown());*/
@@ -270,10 +269,11 @@ namespace Extensions::Game::Carbon {
       IGameEffectsHandler::AddEffect(new Effects::JellyCars());
       IGameEffectsHandler::AddEffect(new Effects::TheJavaExperience());
       IGameEffectsHandler::AddEffect(new Effects::Flashbang());
+      // IGameEffectsHandler::AddEffect(new Effects::Impostor());
       IGameEffectsHandler::AddEffect(new Effects::ToTheMoon());
       IGameEffectsHandler::AddEffect(new Effects::PaperCars());
-      /*IGameEffectsHandler::AddEffect(new Effects::YoBroIsThatASupra());
-      IGameEffectsHandler::AddEffect(new Effects::TankMode());
+      IGameEffectsHandler::AddEffect(new Effects::YoBroIsThatASupra());
+      /*IGameEffectsHandler::AddEffect(new Effects::TankMode());
       IGameEffectsHandler::AddEffect(new Effects::DoILookBetterInThisDress());*/
       IGameEffectsHandler::AddEffect(new Effects::AXEDeodorant());
       IGameEffectsHandler::AddEffect(new Effects::SuperSeducer());
@@ -284,8 +284,8 @@ namespace Extensions::Game::Carbon {
       IGameEffectsHandler::AddEffect(new Effects::EnjoyTheScenery());
       // IGameEffectsHandler::AddEffect(new Effects::InsaneTraffic());
       IGameEffectsHandler::AddEffect(new Effects::CrazyTaxi());
-      /*IGameEffectsHandler::AddEffect(new Effects::GigaRubberband());
-      IGameEffectsHandler::AddEffect(new Effects::MegaRubberband());
+      IGameEffectsHandler::AddEffect(new Effects::GigaRubberband());
+      /* IGameEffectsHandler::AddEffect(new Effects::MegaRubberband());
       IGameEffectsHandler::AddEffect(new Effects::GuessWhosBack());
       IGameEffectsHandler::AddEffect(new Effects::YoureGoingTheWrongWay());
       IGameEffectsHandler::AddEffect(new Effects::BailMeOut());*/
@@ -430,6 +430,8 @@ namespace Extensions::Game::Carbon {
           }
         }).detach();
       }
+      // Register GRaceStatus::mPlayMode change handler
+      { std::thread(OpenCarbon::GameStatusEx::details::timeUpdateThreadFn).detach(); }
       // Patches to make mw05 run the effect handler
       {
         MemoryEditor::Get().Make(MemoryEditor::MakeType::Call, 0x449A91, reinterpret_cast<std::uintptr_t>(&details::OverrideHeatLevelConstraints::CodeCave));

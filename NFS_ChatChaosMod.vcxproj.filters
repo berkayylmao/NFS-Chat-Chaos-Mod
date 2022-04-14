@@ -544,6 +544,21 @@
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\FlatCars.hpp">
       <Filter>Extensions\Game\Carbon\Effects</Filter>
     </ClInclude>
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\YoBroIsThatASupra.hpp">
+      <Filter>Extensions\Game\Carbon\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\SlotMachine.hpp">
+      <Filter>Extensions\Game\Carbon\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\Impostor.hpp">
+      <Filter>Extensions\Game\Carbon\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\GigaRubberband.hpp">
+      <Filter>Extensions\Game\Carbon\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\IfYouCantBeatThemKillThem.hpp">
+      <Filter>Extensions\Game\Carbon\Effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="NFS_ChatChaosMod.licenseheader" />

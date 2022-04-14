@@ -511,7 +511,10 @@
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\ExperienceTheLag.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\Flashbang.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\FlatCars.hpp" />
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\GigaRubberband.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\HowsYourCarRunning.hpp" />
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\IfYouCantBeatThemKillThem.hpp" />
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\Impostor.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\IntoTheVoid.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\JellyCars.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\JesusTakeTheWheel.hpp" />
@@ -525,6 +528,7 @@
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\RKO.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\Sbinnala.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\SchoolZone.hpp" />
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\SlotMachine.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\SuperSeducer.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\TallCars.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\Teasing.hpp" />
@@ -534,6 +538,7 @@
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\ToTheMoon.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\TunnelVision.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\WideCars.hpp" />
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\YoBroIsThatASupra.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\YouAreSafeThisTime.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\YouShouldHaveSaved.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\GameEffectsHandler.hpp" />

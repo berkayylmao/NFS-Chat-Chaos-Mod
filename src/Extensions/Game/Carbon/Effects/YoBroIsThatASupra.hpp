@@ -25,29 +25,31 @@
 #include "Helpers/OpenSpeedEx.hpp"
 
 namespace Extensions::Game::Carbon::Effects {
-  class CrazyTaxi : public IGameEffect {
+  class YoBroIsThatASupra : public IGameEffect {
    protected:
     virtual bool _specialCooldownConditionSatisfied() const noexcept override { return !OpenCarbon::GameStatusEx::IsInPursuit(); }
 
     virtual bool _activate() noexcept override {
-      auto traftaxi =
-          std::pair<OpenCarbon::Attrib::StringKey, OpenCarbon::CarType>(OpenCarbon::Attrib::StringToKey("traftaxi"), OpenCarbon::CarType::GENERIC_TRAFTAXI);
-      auto instance = OpenCarbon::Attrib::Gen::pvehicle::TryGetInstance(traftaxi.first);
+      auto car_key = OpenCarbon::Attrib::StringToKey("supra");
+
+      auto instance = OpenCarbon::Attrib::Gen::pvehicle::TryGetInstance(car_key);
       if (!instance.mCollection) return false;
 
       // Install random parts
-      OpenCarbon::RideInfo ride_info(traftaxi.second);
-      ride_info.SetRandomPaint();
+      OpenCarbon::RideInfo ride_info(OpenCarbon::CarType::TOYOTA_SUPRA);
       ride_info.SetStockParts();
+      ride_info.SetRandomPaint();
       ride_info.SetRandomParts();
       OpenCarbon::VehicleCustomizations customizations;
       customizations.ReadFrom(ride_info);
-      // Swap car
-      if (!OpenCarbon::PVehicleEx::ChangePlayerVehicle(traftaxi.first, &customizations)) return false;
+      // Change car
+      if (!OpenCarbon::PVehicleEx::ChangePlayerVehicle(car_key, &customizations)) return false;
+
+      FMODWrapper::Get().PlaySoundFX(FMODWrapper::SoundFX::YoBroIsThatASupra);
       return true;
     }
 
    public:
-    explicit CrazyTaxi() : IGameEffect(67) {}
+    explicit YoBroIsThatASupra() : IGameEffect(56) {}
   };
 }  // namespace Extensions::Game::Carbon::Effects

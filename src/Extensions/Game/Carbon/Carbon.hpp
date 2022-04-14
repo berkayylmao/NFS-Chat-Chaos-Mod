@@ -29,7 +29,10 @@
 #include <OpenSpeed/Game.Carbon/Types/Attrib/Gen/trafficpattern.h>
 #include <OpenSpeed/Game.Carbon/Types/Attrib/Layouts/trafficpatternlayout.h>
 #include <OpenSpeed/Game.Carbon/Types/Game.h>
+#include <OpenSpeed/Game.Carbon/Types/GRaceStatus.h>
 #include <OpenSpeed/Game.Carbon/Types/ICollisionBody.h>
+#include <OpenSpeed/Game.Carbon/Types/IRenderable.h>
+#include <OpenSpeed/Game.Carbon/Types/IVehicleAI.h>
 #include <OpenSpeed/Game.Carbon/Types/Physics.h>
 #include <OpenSpeed/Game.Carbon/Types/RideInfo.h>
 #include <OpenSpeed/Game.Carbon/Types/VehicleCustomizations.h>

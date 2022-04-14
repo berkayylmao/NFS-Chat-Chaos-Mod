@@ -25,29 +25,22 @@
 #include "Helpers/OpenSpeedEx.hpp"
 
 namespace Extensions::Game::Carbon::Effects {
-  class CrazyTaxi : public IGameEffect {
+  class IfYouCantBeatThemKillThem : public IGameEffect {
    protected:
-    virtual bool _specialCooldownConditionSatisfied() const noexcept override { return !OpenCarbon::GameStatusEx::IsInPursuit(); }
+    virtual bool _specialCooldownConditionSatisfied() const noexcept override {
+      return OpenCarbon::GameStatusEx::SecondsSinceStartedRacing() > 5 || OpenCarbon::GameStatusEx::SecondsSinceStartedPursuit() > 5;
+    }
 
     virtual bool _activate() noexcept override {
-      auto traftaxi =
-          std::pair<OpenCarbon::Attrib::StringKey, OpenCarbon::CarType>(OpenCarbon::Attrib::StringToKey("traftaxi"), OpenCarbon::CarType::GENERIC_TRAFTAXI);
-      auto instance = OpenCarbon::Attrib::Gen::pvehicle::TryGetInstance(traftaxi.first);
-      if (!instance.mCollection) return false;
+      OpenCarbon::PVehicleEx::ForEachInstance([](OpenCarbon::PVehicle* pvehicle) {
+        if (!pvehicle->IsPlayer() && !pvehicle->IsOwnedByPlayer()) OpenCarbon::Game::BlowEngine(pvehicle);
+      });
 
-      // Install random parts
-      OpenCarbon::RideInfo ride_info(traftaxi.second);
-      ride_info.SetRandomPaint();
-      ride_info.SetStockParts();
-      ride_info.SetRandomParts();
-      OpenCarbon::VehicleCustomizations customizations;
-      customizations.ReadFrom(ride_info);
-      // Swap car
-      if (!OpenCarbon::PVehicleEx::ChangePlayerVehicle(traftaxi.first, &customizations)) return false;
+      FMODWrapper::Get().PlaySoundFX(FMODWrapper::SoundFX::IfYouCantBeatThemKillThem);
       return true;
     }
 
    public:
-    explicit CrazyTaxi() : IGameEffect(67) {}
+    explicit IfYouCantBeatThemKillThem() : IGameEffect(1) {}
   };
 }  // namespace Extensions::Game::Carbon::Effects
