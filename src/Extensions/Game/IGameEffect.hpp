@@ -132,7 +132,17 @@ namespace Extensions::Game {
     /// Effect overlay
 
     inline void Draw(const ImGuiViewport* pMainViewport) {
-      if (GetStatus() == Status::Active) _draw(pMainViewport);
+      if (GetStatus() != Status::Active) return;
+
+      if (this->GetElapsedTime() < 2000) {
+        float alpha = 1.0f - (static_cast<float>(this->GetElapsedTime()) / 2000.0f);
+
+        ImGui::WithStyle _s1(ImGuiStyleVar_Alpha, alpha);
+        ImGui::SetNextWindowBgAlpha(alpha);
+        ImGui::ShowNotice(this->GetName().c_str());
+      }
+
+      _draw(pMainViewport);
     }
 
     /// Limits

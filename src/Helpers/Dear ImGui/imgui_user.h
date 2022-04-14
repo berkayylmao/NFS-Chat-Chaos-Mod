@@ -80,7 +80,8 @@ namespace ImGui {
   };
 
   IMGUI_API void LoadStyle();
-  IMGUI_API bool FullWidthButton(const char* const str);
+  IMGUI_API void ShowNotice(const char* notice);
+  IMGUI_API bool FullWidthButton(const char* str);
   IMGUI_API bool InputTextWithHintAlways(const char* label, const char* hint, char* buf, std::size_t buf_size, ImGuiInputTextFlags flags = 0,
                                          ImGuiInputTextCallback callback = nullptr, void* user_data = nullptr);
 }  // namespace ImGui

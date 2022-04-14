@@ -156,7 +156,20 @@ namespace ImGui {
     style.Colors[ImGuiCol_NavWindowingDimBg]     = ImVec4(0.80f, 0.80f, 0.80f, 0.20f);
     style.Colors[ImGuiCol_ModalWindowDimBg]      = ImVec4(0.80f, 0.80f, 0.80f, 0.35f);
   }
-  IMGUI_API bool FullWidthButton(const char* const label) {
+  IMGUI_API void ShowNotice(const char* notice) {
+    WithStyle _s1(ImGuiStyleVar_WindowPadding, ImVec2(5.0f, 5.0f));
+    WithStyle _s2(ImGuiStyleVar_FramePadding, ImVec2(0.0f, 0.0f));
+    WithStyle _s3(ImGuiStyleVar_WindowMinSize, ImVec2(0.0f, 0.0f));
+    WithStyle _s4(ImGuiStyleVar_ItemSpacing, ImVec2(0.0f, 0.0f));
+    WithStyle _s5(ImGuiStyleVar_ItemInnerSpacing, ImVec2(0.0f, 0.0f));
+    WithStyle _s6(ImGuiStyleVar_WindowRounding, 5.0f);
+
+    ImGui::SetNextWindowPos(ImGui::GetMainViewport()->Size / 2.0f - ImGui::CalcTextSize(notice) / 2.0f);
+    if (ImGui::Begin(notice, nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_AlwaysAutoResize))
+      ImGui::TextUnformatted(notice);
+    ImGui::End();
+  }
+  IMGUI_API bool FullWidthButton(const char* label) {
     const ImVec2 available_region = ImGui::GetContentRegionAvail();
     const ImVec2 label_size       = ImGui::CalcTextSize(label);
     const ImVec2 button_size      = label_size.x > available_region.x ? label_size + (ImGui::GetStyle().FramePadding * 2.0f) : available_region;
