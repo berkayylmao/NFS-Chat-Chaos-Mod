@@ -61,7 +61,7 @@ namespace Extensions::Game::MW05::Effects {
         if (auto* var = collection->GetData<float>(OpenMW::Attrib::StringToKey("FogSunFalloff"))) *var = 1.0f;
       });
 
-      ChaosMod::GetD3D9Device()->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
+      ChaosMod::GetD3D9Device()->SetRenderState(D3DRS_FILLMODE, D3DFILL_POINT);
       return true;
     }
     virtual bool _deactivate() noexcept override {

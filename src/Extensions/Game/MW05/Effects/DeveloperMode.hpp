@@ -45,7 +45,7 @@ namespace Extensions::Game::MW05::Effects {
       // Change car
       if (!OpenMW::PVehicleEx::ChangePlayerVehicle(OpenMW::Attrib::StringToKey("speedtest"), nullptr)) return false;
       // Enable wireframe mode
-      ChaosMod::GetD3D9Device()->SetRenderState(D3DRS_FILLMODE, D3DFILL_POINT);
+      ChaosMod::GetD3D9Device()->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
       return true;
     }
     virtual bool _deactivate() noexcept override {
