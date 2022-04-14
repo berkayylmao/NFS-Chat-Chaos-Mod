@@ -430,8 +430,8 @@ namespace Extensions::Game::Carbon {
           }
         }).detach();
       }
-      // Register GRaceStatus::mPlayMode change handler
-      { std::thread(OpenCarbon::GameStatusEx::details::timeUpdateThreadFn).detach(); }
+      // Start game status updaters
+      { std::thread(OpenCarbon::GameStatusEx::details::statusUpdateThreadFn).detach(); }
       // Patches to make mw05 run the effect handler
       {
         MemoryEditor::Get().Make(MemoryEditor::MakeType::Call, 0x449A91, reinterpret_cast<std::uintptr_t>(&details::OverrideHeatLevelConstraints::CodeCave));
