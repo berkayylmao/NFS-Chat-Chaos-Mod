@@ -36,7 +36,7 @@ namespace Extensions::Game::MW05::Modifiers {
 
     const CarScaleVector sRCCarsScale    = CarScaleVector(0.4f, 0.4f, 0.4f);
     const CarScaleVector sFlatCarsScale  = CarScaleVector(0.1f, CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER);
-    const CarScaleVector sTallCarsScale  = CarScaleVector(4.0f, CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER);
+    const CarScaleVector sTallCarsScale  = CarScaleVector(3.0f, CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER);
     const CarScaleVector sWideCarsScale  = CarScaleVector(CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER, 4.0f);
     const CarScaleVector sPaperCarsScale = CarScaleVector(CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER, 0.001f);
     CarScaleVector       mJellyCarsScale;
