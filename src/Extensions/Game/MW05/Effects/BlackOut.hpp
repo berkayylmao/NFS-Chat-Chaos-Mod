@@ -33,7 +33,7 @@ namespace Extensions::Game::MW05::Effects {
    protected:
     virtual bool _activate() noexcept override {
       mShownDuration                     = 0.0f;
-      OpenMW::Variables::Tweak_GameSpeed = 100.0f;
+      OpenMW::Variables::Tweak_GameSpeed = 10.0f;
 
       return true;
     }
