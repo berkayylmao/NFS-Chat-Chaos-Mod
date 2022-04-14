@@ -46,7 +46,12 @@ namespace OpenSpeed {
 
         record->mVehicleKey = record->mFEKey = vehicleKey;
         db->GetCareerSettings().CurrentCar   = record->mHandle;
-        if (customization) *db->GetUserProfile()->mPlayersCarStable.GetCustomizationRecordByHandle(record->mCustomization) = *customization;
+        if (customization) {
+          if (auto* db_customization = db->GetUserProfile()->mPlayersCarStable.GetCustomizationRecordByHandle(record->mCustomization)) {
+            customization->mHandle = db_customization->mHandle;
+            *db_customization      = *customization;
+          }
+        }
       }
     }  // namespace FEDatabaseEx
 
