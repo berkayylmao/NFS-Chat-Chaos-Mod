@@ -216,10 +216,11 @@ namespace Extensions::D3D9::Overlay {
           // Draw received votes and their percentage (TEXT)
           {
             if (Shared::g_ChaosMode == Shared::ChaosMode::SinglePlayer) {
-              auto rnd = Random::Get().Generate(0, 1) * Random::Get().Generate(0, 100);
+              auto rnd = Random::Get().Generate(0, 100);
               if (rnd > 98) {
-                sEffectsBeingVoted[it->first]++;
-                sVotesReceived++;
+                rnd = Random::Get().Generate(1, 10);
+                sEffectsBeingVoted[it->first] += rnd;
+                sVotesReceived += rnd;
               }
             }
 
