@@ -27,6 +27,29 @@
 namespace Extensions::Game::MW05::Effects {
   class CruiseControl : public IGameEffect {
     float mSpeed;
+    bool  mIsColliding;
+
+    void updateIsColliding(OpenMW::PVehicle* pvehicle) {
+      static float timer = 0.0f;
+
+      bool is_colliding = pvehicle->IsCollidingWithSoftBarrier();
+
+      auto* rb = pvehicle->GetRigidBody() | OpenMW::RigidBodyEx::AsRigidBody;
+      if (rb) {
+        is_colliding |= rb->mData->GetStatusPrev(OpenMW::RigidBody::Volatile::Status::CollisionWorld);
+        is_colliding |= rb->mData->GetStatusPrev(OpenMW::RigidBody::Volatile::Status::CollisionGround);
+      }
+
+      if (is_colliding) {
+        mIsColliding = true;
+      } else {
+        timer += ImGui::GetIO().DeltaTime;
+        if (timer > 1.0f) {
+          mIsColliding = false;
+          timer        = 0.0f;
+        }
+      }
+    }
 
    protected:
     virtual bool _activate() noexcept override {
@@ -40,10 +63,11 @@ namespace Extensions::Game::MW05::Effects {
       auto* pvehicle = OpenMW::PVehicleEx::GetPlayerInstance();
       if (!pvehicle) return;
 
-      pvehicle->SetSpeed(mSpeed);
+      updateIsColliding(pvehicle);
+      if (pvehicle->mWheelsOnGround == 4 && !mIsColliding) pvehicle->SetSpeed(mSpeed);
     }
 
    public:
-    explicit CruiseControl() : IGameEffect(13), mSpeed(0) {}
+    explicit CruiseControl() : IGameEffect(13), mSpeed(0), mIsColliding(false) {}
   };
 }  // namespace Extensions::Game::MW05::Effects

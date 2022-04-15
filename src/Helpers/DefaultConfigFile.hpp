@@ -53,7 +53,7 @@ namespace ChaosMod::DefaultConfigFile {
       "frames\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":12,\"Duration\":40.0,\"IncompatibleWith\":[]},{"
       "\"Name\":\"Cruise Control\",\"Description\":\"YEEHAW\\n(Locks player\'s "
       "velocity)\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":20,\"Duration\":5,\"IncompatibleWith\":[14,47]},{"
-      "\"Name\":\"School Zone\",\"Description\":\"Locks the speed of all cars to "
+      "\"Name\":\"School Zone\",\"Description\":\"Limits the speed of all cars to "
       "30KM/"
       "H\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":20,\"Duration\":10.0,\"IncompatibleWith\":[13,47]},{"
       "\"Name\":\"You\'re Safe This Time\",\"Description\":\"Nothing "
