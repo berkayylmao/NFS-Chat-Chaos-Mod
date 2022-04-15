@@ -32,21 +32,19 @@
 class Random {
   std::mt19937 mRNGEngine;
 
-  Random() : mRNGEngine(std::random_device{}()) {}
-
- public:
-  std::mt19937& GetGenerator() {
-    thread_local static std::array<std::uint32_t, std::mt19937::state_size> data;
-    thread_local static std::random_device                                  rd;
+  Random() : mRNGEngine(std::random_device{}()) {
+    std::array<std::uint32_t, std::mt19937::state_size> data;
+    std::random_device                                  rd;
     // seed rngengine
     std::generate(std::begin(data), std::end(data), std::ref(rd));
     std::seed_seq seed(std::begin(data), std::end(data));
     mRNGEngine.seed(seed);
-
-    return mRNGEngine;
   }
-  std::int32_t Generate(std::int32_t min, std::int32_t max) { return std::uniform_int_distribution<std::int32_t>(min, max)(GetGenerator()); }
-  float        Generate(float min, float max) { return std::uniform_real_distribution<float>(min, std::nextafter(max, FLT_MAX))(GetGenerator()); }
+
+ public:
+  std::mt19937& GetGenerator() { return mRNGEngine; }
+  std::int32_t  Generate(std::int32_t min, std::int32_t max) { return std::uniform_int_distribution<std::int32_t>(min, max)(GetGenerator()); }
+  float         Generate(float min, float max) { return std::uniform_real_distribution<float>(min, std::nextafter(max, FLT_MAX))(GetGenerator()); }
 
   std::vector<std::int32_t> GenerateUniqueRange(std::size_t amount, std::int32_t min, std::int32_t max) {
     assert(std::abs(max - min) >= static_cast<std::int32_t>(amount) && "Unique range requested with incorrect arguments!!");
