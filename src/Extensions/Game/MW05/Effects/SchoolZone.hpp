@@ -28,7 +28,9 @@ namespace Extensions::Game::MW05::Effects {
   class SchoolZone : public IGameEffect {
    protected:
     virtual void _activeTick() noexcept override {
-      OpenMW::PVehicleEx::ForEachInstance([](OpenMW::PVehicle* pvehicle) { pvehicle->SetSpeed(8.4f); });
+      OpenMW::PVehicleEx::ForEachInstance([](OpenMW::PVehicle* pvehicle) {
+        if (pvehicle->mWheelsOnGround == 4 && pvehicle->GetSpeed() > 8.5f) pvehicle->SetSpeed(8.4f);
+      });
     }
 
    public:

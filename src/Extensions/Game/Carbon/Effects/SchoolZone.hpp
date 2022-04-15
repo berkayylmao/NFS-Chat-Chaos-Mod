@@ -28,7 +28,9 @@ namespace Extensions::Game::Carbon::Effects {
   class SchoolZone : public IGameEffect {
    protected:
     virtual void _activeTick() noexcept override {
-      OpenCarbon::PVehicleEx::ForEachInstance([](OpenCarbon::PVehicle* pvehicle) { pvehicle->SetSpeed(8.4f); });
+      OpenCarbon::PVehicleEx::ForEachInstance([](OpenCarbon::PVehicle* pvehicle) {
+        if (pvehicle->mWheelsOnGround == 4 && pvehicle->GetSpeed() > 8.5f) pvehicle->SetSpeed(8.4f);
+      });
     }
 
    public:
