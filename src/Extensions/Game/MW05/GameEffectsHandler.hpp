@@ -229,7 +229,6 @@ namespace Extensions::Game::MW05 {
           push ebp
           mov ebp, esp
           pushad
-          mov esi, ecx // backup
           mov eax, [edx] // action argument
           push eax
           push ecx
