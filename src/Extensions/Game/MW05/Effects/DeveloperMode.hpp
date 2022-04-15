@@ -35,6 +35,8 @@ namespace Extensions::Game::MW05::Effects {
     virtual bool _activate() noexcept override {
       auto* pvehicle = OpenMW::PVehicleEx::GetPlayerInstance();
       if (!pvehicle) return false;
+
+      mSavedVehicleKey = 0;
       // Save player car
       {
         // Get vehicle key
