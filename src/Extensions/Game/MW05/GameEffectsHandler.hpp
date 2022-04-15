@@ -114,6 +114,7 @@
 #include "Extensions/Game/MW05/Effects/ConvoyTime.hpp"
 #include "Extensions/Game/MW05/Effects/InvisibleCars.hpp"
 #include "Extensions/Game/MW05/Effects/TimeFlies.hpp"
+#include "Extensions/Game/MW05/Effects/TruckRain.hpp"
 
 // Modifiers
 #include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
@@ -338,6 +339,7 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::ConvoyTime());
       IGameEffectsHandler::AddEffect(new Effects::InvisibleCars());
       IGameEffectsHandler::AddEffect(new Effects::TimeFlies());
+      IGameEffectsHandler::AddEffect(new Effects::TruckRain());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),
