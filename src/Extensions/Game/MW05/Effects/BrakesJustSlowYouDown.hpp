@@ -22,20 +22,18 @@
 
 #pragma once
 #include "pch.h"
-#include "Helpers/OpenSpeedEx.hpp"
+#include "Extensions/Game/MW05/Modifiers/InputModifier.hpp"
 
 namespace Extensions::Game::MW05::Effects {
   class BrakesJustSlowYouDown : public IGameEffect {
    protected:
-    virtual void _activeTick() noexcept override {
-      auto* pvehicle = OpenMW::PVehicleEx::GetPlayerInstance();
-      if (!pvehicle) return;
-
-      auto* input = pvehicle->mInput | OpenMW::InputEx::AsInputPlayer;
-      if (!input) return;
-
-      if (pvehicle->GetSpeed() >= 0.1f) input->SetControlBrake(0.0f);
-      input->SetControlHandBrake(0.0f);
+    virtual bool _activate() noexcept override {
+      Modifiers::InputModifier::Get().SetIgnoreBraking(true);
+      return true;
+    }
+    virtual bool _deactivate() noexcept override {
+      Modifiers::InputModifier::Get().SetIgnoreBraking(false);
+      return true;
     }
 
    public:

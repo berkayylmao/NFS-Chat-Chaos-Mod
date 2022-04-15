@@ -577,6 +577,9 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TeleportToOldBridge.hpp">
       <Filter>Extensions\Game\MW05\Effects</Filter>
     </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Modifiers\InputModifier.hpp">
+      <Filter>Extensions\Game\MW05\Modifiers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="NFS_ChatChaosMod.licenseheader" />

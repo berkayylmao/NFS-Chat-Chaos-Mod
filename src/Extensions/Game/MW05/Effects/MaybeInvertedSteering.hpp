@@ -22,27 +22,21 @@
 
 #pragma once
 #include "pch.h"
-#include "Helpers/OpenSpeedEx.hpp"
+#include "Extensions/Game/MW05/Modifiers/InputModifier.hpp"
 
 namespace Extensions::Game::MW05::Effects {
   class MaybeInvertedSteering : public IGameEffect {
-    bool mWillInvert;
-
    protected:
-    virtual void _activeTick() noexcept override {
-      if (mWillInvert) {
-        auto* input = OpenMW::InputEx::GetPlayerInstance() | OpenMW::InputEx::AsInputPlayer;
-        if (!input) return;
-
-        auto& controls     = input->GetControls();
-        controls.mSteering = -controls.mSteering;
-      }
-
-      __EXECUTE_EVERY_X_SECONDS__(Random::Get().Generate(2.0f, 5.0f));
-      if (Random::Get().Generate(0, 1) == 1) mWillInvert = !mWillInvert;
+    virtual bool _activate() noexcept override {
+      Modifiers::InputModifier::Get().SetInvertedSteeringRandomizer(true);
+      return true;
+    }
+    virtual bool _deactivate() noexcept override {
+      Modifiers::InputModifier::Get().SetInvertedSteeringRandomizer(false);
+      return true;
     }
 
    public:
-    explicit MaybeInvertedSteering() : IGameEffect(83), mWillInvert(false) {}
+    explicit MaybeInvertedSteering() : IGameEffect(83) {}
   };
 }  // namespace Extensions::Game::MW05::Effects

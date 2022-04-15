@@ -25,6 +25,7 @@
 
 #include <OpenSpeed/Game.MW05/MW05.h>
 #include <OpenSpeed/Game.MW05/Extensions.h>
+#include <OpenSpeed/Game.MW05/Types/ActionData.h>
 #include <OpenSpeed/Game.MW05/Types/Attrib.h>
 #include <OpenSpeed/Game.MW05/Types/Attrib/Gen/gameplay.h>
 #include <OpenSpeed/Game.MW05/Types/Attrib/Gen/timeofdaylighting.h>

@@ -22,17 +22,18 @@
 
 #pragma once
 #include "pch.h"
-#include "Helpers/OpenSpeedEx.hpp"
+#include "Extensions/Game/MW05/Modifiers/InputModifier.hpp"
 
 namespace Extensions::Game::MW05::Effects {
   class LookMaNoHands : public IGameEffect {
    protected:
-    virtual void _activeTick() noexcept override {
-      auto* input = OpenMW::InputEx::GetPlayerInstance() | OpenMW::InputEx::AsInputPlayer;
-      if (!input) return;
-
-      auto& controls     = input->GetControls();
-      controls.mSteering = 0.0f;
+    virtual bool _activate() noexcept override {
+      Modifiers::InputModifier::Get().SetIgnoreSteering(true);
+      return true;
+    }
+    virtual bool _deactivate() noexcept override {
+      Modifiers::InputModifier::Get().SetIgnoreSteering(false);
+      return true;
     }
 
    public:

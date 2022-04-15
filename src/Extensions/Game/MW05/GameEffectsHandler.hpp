@@ -119,6 +119,7 @@
 
 // Modifiers
 #include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
+#include "Extensions/Game/MW05/Modifiers/InputModifier.hpp"
 
 namespace Extensions::Game::MW05 {
 #pragma warning(push)
@@ -222,6 +223,28 @@ namespace Extensions::Game::MW05 {
         return reinterpret_cast<float(__cdecl*)(float, float, float)>(0x402060)(_unk, minHeatLevel, maxHeatLevel);
       }
     }  // namespace OverrideHeatLevelConstraints
+    namespace InputPlayerOverride {
+      static void __declspec(naked) CodeCave() {
+        _asm {
+          push ebp
+          mov ebp, esp
+          pushad
+          mov esi, ecx // backup
+          mov eax, [edx] // action argument
+          push eax
+          push ecx
+          call Modifiers::InputModifier::Get
+          mov ecx, eax
+          call Modifiers::InputModifier::ParseAction
+          popad
+          call dword ptr [eax+0x30]
+          test al, al
+          mov esp, ebp
+          pop ebp
+          retn 4
+        }
+      }
+    }  // namespace InputPlayerOverride
 
     namespace MainLoop {
       static void __cdecl CodeCave() {
@@ -350,6 +373,7 @@ namespace Extensions::Game::MW05 {
     virtual void SetupModifiers() const noexcept override {
       IGameEffectsHandler::RemoveAllModifiers();
       IGameEffectsHandler::AddModifier(&Modifiers::CarScaleModifier::Get());
+      IGameEffectsHandler::AddModifier(&Modifiers::InputModifier::Get());
     }
 
     virtual void Init() const noexcept override {
@@ -500,6 +524,7 @@ namespace Extensions::Game::MW05 {
       }
       // Patches to make mw05 run the effect handler
       {
+        MemoryEditor::Get().Make(MemoryEditor::MakeType::Call, 0x6A89EA, reinterpret_cast<std::uintptr_t>(&details::InputPlayerOverride::CodeCave));
         MemoryEditor::Get().Make(MemoryEditor::MakeType::Call, 0x443DD9, reinterpret_cast<std::uintptr_t>(&details::OverrideHeatLevelConstraints::CodeCave));
         MemoryEditor::Get().Make(MemoryEditor::MakeType::Call, 0x6242AF, reinterpret_cast<std::uintptr_t>(&details::DisableEffectsOnUnload::CodeCave));
         MemoryEditor::Get().Make(MemoryEditor::MakeType::Call, 0x663D35, reinterpret_cast<std::uintptr_t>(&details::MainLoop::CodeCave));

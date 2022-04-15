@@ -22,17 +22,18 @@
 
 #pragma once
 #include "pch.h"
-#include "Helpers/OpenSpeedEx.hpp"
+#include "Extensions/Game/MW05/Modifiers/InputModifier.hpp"
 
 namespace Extensions::Game::MW05::Effects {
   class CrossEyedRider : public IGameEffect {
    protected:
-    virtual void _activeTick() noexcept override {
-      auto* input = OpenMW::InputEx::GetPlayerInstance() | OpenMW::InputEx::AsInputPlayer;
-      if (!input) return;
-
-      auto& controls     = input->GetControls();
-      controls.mSteering = -controls.mSteering;
+    virtual bool _activate() noexcept override {
+      Modifiers::InputModifier::Get().SetInvertedSteering(true);
+      return true;
+    }
+    virtual bool _deactivate() noexcept override {
+      Modifiers::InputModifier::Get().SetInvertedSteering(false);
+      return true;
     }
 
    public:

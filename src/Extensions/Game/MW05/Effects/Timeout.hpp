@@ -22,24 +22,17 @@
 
 #pragma once
 #include "pch.h"
-#include "Helpers/OpenSpeedEx.hpp"
+#include "Extensions/Game/MW05/Modifiers/InputModifier.hpp"
 
 namespace Extensions::Game::MW05::Effects {
   class Timeout : public IGameEffect {
    protected:
     virtual bool _activate() noexcept override {
-      auto* input = OpenMW::InputEx::GetPlayerInstance() | OpenMW::InputEx::AsInputPlayer;
-      if (!input) return false;
-
-      input->BlockInput(true);
-      input->ClearInput();
+      Modifiers::InputModifier::Get().SetIgnoreInput(true);
       return true;
     }
     virtual bool _deactivate() noexcept override {
-      auto* input = OpenMW::InputEx::GetPlayerInstance() | OpenMW::InputEx::AsInputPlayer;
-      if (!input) return false;
-
-      input->BlockInput(false);
+      Modifiers::InputModifier::Get().SetIgnoreInput(false);
       return true;
     }
 

@@ -640,6 +640,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\YoureGoingTheWrongWay.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\YouShouldHaveSaved.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Modifiers\CarScaleModifier.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Modifiers\InputModifier.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\MW05.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\GameEffectsHandler.hpp" />
     <ClInclude Include="src\Extensions\WndProc\DontStopGameOnFocussLoss.hpp" />
