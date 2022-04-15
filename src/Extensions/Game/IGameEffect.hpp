@@ -108,7 +108,14 @@ namespace Extensions::Game {
     /// Activation
 
     bool Activate() {
+#if defined(_DEBUG)
+      OutputDebugStringA(fmt::format("IGameEffect: '{}'->Activate() was called\n", GetName()).c_str());
+#endif
       if (GetStatus() == Status::InActivateQueue && _activate()) {
+#if defined(_DEBUG)
+        OutputDebugStringA(fmt::format("IGameEffect: '{}' successfully activated\n", GetName()).c_str());
+#endif
+
         mTimeActivated = std::chrono::steady_clock::now();
         SetStatus(Status::Active);
         return true;
@@ -116,7 +123,14 @@ namespace Extensions::Game {
       return false;
     }
     bool Deactivate() {
+#if defined(_DEBUG)
+      OutputDebugStringA(fmt::format("IGameEffect: '{}'->Deactivate() was called\n", GetName()).c_str());
+#endif
       if (GetStatus() == Status::InDeactivateQueue && _deactivate()) {
+#if defined(_DEBUG)
+        OutputDebugStringA(fmt::format("IGameEffect: '{}' successfully deactivated\n", GetName()).c_str());
+#endif
+
         SetStatus(Status::Inactive);
         return true;
       }

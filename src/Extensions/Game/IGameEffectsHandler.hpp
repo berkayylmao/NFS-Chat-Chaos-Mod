@@ -88,7 +88,13 @@ namespace Extensions::Game {
           continue;
         }
 
+#if defined(_DEBUG)
+        OutputDebugStringA(fmt::format("IGameEffectsHandler: Activating '{}'\n", effect->GetName()).c_str());
+#endif
         if (effect->Activate()) {
+#if defined(_DEBUG)
+          OutputDebugStringA(fmt::format("IGameEffectsHandler: Activated '{}'\n", effect->GetName()).c_str());
+#endif
           // Manage cooldowns
           DecreaseEffectCooldowns();
           effect->ResetRemainingCooldown();
@@ -115,7 +121,13 @@ namespace Extensions::Game {
           continue;
         }
 
+#if defined(_DEBUG)
+        OutputDebugStringA(fmt::format("IGameEffectsHandler: Deactivating '{}'\n", effect->GetName()).c_str());
+#endif
         if (effect->Deactivate()) {
+#if defined(_DEBUG)
+          OutputDebugStringA(fmt::format("IGameEffectsHandler: Deactivated '{}'\n", effect->GetName()).c_str());
+#endif
           // Manage lists
           g_ActiveEffects.erase(std::remove(std::begin(g_ActiveEffects), std::end(g_ActiveEffects), effect), std::end(g_ActiveEffects));
           it = g_DeactivateQueue.erase(it);
