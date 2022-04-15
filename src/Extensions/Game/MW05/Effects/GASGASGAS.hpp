@@ -31,8 +31,6 @@ namespace Extensions::Game::MW05::Effects {
       auto* input = OpenMW::InputEx::GetPlayerInstance() | OpenMW::InputEx::AsInputPlayer;
       if (!input) return false;
 
-      input->ClearInput();
-
       OpenMW::Variables::Tweak_InfiniteNOS = true;
       return true;
     }
