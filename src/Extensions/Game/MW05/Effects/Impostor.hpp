@@ -90,7 +90,7 @@ namespace Extensions::Game::MW05::Effects {
       auto* player_vehicle = OpenMW::PVehicleEx::GetPlayerInstance();
       if (!player_vehicle) return false;
 
-      auto* player = OpenMW::IPlayer::GetPlayer();
+      auto* player = OpenMW::PlayerEx::GetPlayerInstance();
       if (!player) return false;
 
       auto* race_status = OpenMW::GRaceStatus::Get();

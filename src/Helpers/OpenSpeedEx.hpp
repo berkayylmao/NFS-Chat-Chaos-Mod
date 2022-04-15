@@ -166,7 +166,7 @@ namespace OpenSpeed {
     namespace GenericMessageEx {
       static bool DisplayMessage(const std::string& text, IGenericMessage::FEngTypes messageType = IGenericMessage::FEngTypes::Type1,
                                  const std::string& iconName = "", bool hideMessages = false) {
-        auto* player = IPlayer::GetPlayer();
+        auto* player = PlayerEx::GetPlayerInstance();
         if (!player) return false;
 
         auto* hud = static_cast<FEngHud*>(player->GetHud());
