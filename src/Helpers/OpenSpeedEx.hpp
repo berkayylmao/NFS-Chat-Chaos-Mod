@@ -259,7 +259,7 @@ namespace OpenSpeed {
     namespace PVehicleEx {
       static bool ChangePlayerVehicle(Attrib::StringKey vehicleKey, FECustomizationRecord* customizations) {
         if (vehicleKey == 0) return false;
-        if (GameStatusEx::SecondsSinceStartedRacing() < 10 || GameStatusEx::SecondsSinceStartedRoaming() < 10) return false;
+        if (GameStatusEx::SecondsSinceStartedRacing() < 10 && GameStatusEx::SecondsSinceStartedRoaming() < 10) return false;
 
         auto* pvehicle = PVehicleEx::GetPlayerInstance();
         if (!pvehicle) return false;

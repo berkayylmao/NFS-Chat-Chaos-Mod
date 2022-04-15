@@ -30,7 +30,7 @@ namespace Extensions::Game::MW05::Effects {
 
    protected:
     virtual bool _activate() noexcept override {
-      if (OpenMW::GameStatusEx::SecondsSinceStartedRacing() < 10 || OpenMW::GameStatusEx::SecondsSinceStartedRoaming() < 10) return false;
+      if (OpenMW::GameStatusEx::SecondsSinceStartedRacing() < 10 && OpenMW::GameStatusEx::SecondsSinceStartedRoaming() < 10) return false;
 
       mAlreadyBlewEngine = false;
       return true;
