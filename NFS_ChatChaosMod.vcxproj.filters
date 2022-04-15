@@ -565,6 +565,9 @@
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\ConvoyTime.hpp">
       <Filter>Extensions\Game\Carbon\Effects</Filter>
     </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\InvisibleCars.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="NFS_ChatChaosMod.licenseheader" />

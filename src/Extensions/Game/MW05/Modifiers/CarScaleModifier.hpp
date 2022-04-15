@@ -186,6 +186,9 @@ namespace Extensions::Game::MW05::Modifiers {
       _decEnabled();
     }
 
+    void PushEnabled() { _incEnabled(); }
+    void PopEnabled() { _decEnabled(); }
+
     virtual void OnTick() override {
       if (mCountEnabled > 0) _onTick();
     }
