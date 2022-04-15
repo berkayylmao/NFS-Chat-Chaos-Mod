@@ -259,12 +259,12 @@ namespace OpenSpeed {
     namespace PVehicleEx {
       static bool ChangePlayerVehicle(Attrib::StringKey vehicleKey, FECustomizationRecord* customizations) {
         if (vehicleKey == 0) return false;
-        if (GameStatusEx::SecondsSinceStartedRacing() < 10 && GameStatusEx::SecondsSinceStartedRoaming() < 10) return false;
+        if (GameStatusEx::SecondsSinceStartedRacing() < 2 && GameStatusEx::SecondsSinceStartedRoaming() < 2) return false;
 
         auto* pvehicle = PVehicleEx::GetPlayerInstance();
         if (!pvehicle) return false;
 
-        auto* player = IPlayer::GetPlayer();
+        auto* player = PlayerEx::GetPlayerInstance();
         if (!player) return false;
 
         auto* hud = static_cast<FEngHud*>(player->GetHud());
@@ -272,8 +272,7 @@ namespace OpenSpeed {
 
         if (!PVehicleEx::ChangePVehicleInto(pvehicle, vehicleKey, customizations).WasSuccessful) return false;
 
-        auto* race_status = GRaceStatus::Get();
-        if (race_status && race_status->mPlayMode == GRaceStatus::PlayMode::Racing) GenericMessageEx::DisplayMessage("Leaderboard will be fixed shortly");
+        if (GameStatusEx::IsRacing()) GenericMessageEx::DisplayMessage("Leaderboard will be fixed shortly");
 
         EAXSound::ReStartRace();
         return true;
