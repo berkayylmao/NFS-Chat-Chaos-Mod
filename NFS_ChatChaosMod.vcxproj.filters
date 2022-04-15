@@ -568,6 +568,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\InvisibleCars.hpp">
       <Filter>Extensions\Game\MW05\Effects</Filter>
     </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\TimeFlies.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NFS_ChatChaosMod.licenseheader" />
