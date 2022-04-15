@@ -28,23 +28,21 @@ namespace Extensions::Game::MW05::Effects {
   class FastAndFuriousNOS : public IGameEffect {
    protected:
     virtual bool _activate() noexcept override {
-      auto* pvehicle = OpenMW::PVehicleEx::GetPlayerInstance();
-      if (!pvehicle) return false;
-
-      OpenMW::Physics::Tunings new_tunings;
-      // Get current tuning (if exists)
-      if (auto* tunings = pvehicle->GetTunings()) new_tunings = *tunings;
-      // Update NOS tuning
-      new_tunings.mNOS = 2.5f;
-      // Apply tuning
-      pvehicle->SetTunings(new_tunings);
-
       OpenMW::Variables::Tweak_InfiniteNOS = true;
       return true;
     }
     virtual bool _deactivate() noexcept override {
       OpenMW::Variables::Tweak_InfiniteNOS = false;
       return true;
+    }
+    virtual void _activeTick() noexcept override {
+      auto* pvehicle = OpenMW::PVehicleEx::GetPlayerInstance();
+      if (!pvehicle) return;
+
+      auto* input = pvehicle->mInput | OpenMW::InputEx::AsInputPlayer;
+      if (!input) return;
+
+      if (input->mControls.mGas > 0.5f && input->mControls.mNOS && pvehicle->mWheelsOnGround > 2) pvehicle->SetSpeed(pvehicle->GetSpeed() + 1.0f);
     }
 
    public:
