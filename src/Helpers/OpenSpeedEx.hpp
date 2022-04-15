@@ -259,9 +259,16 @@ namespace OpenSpeed {
     namespace PVehicleEx {
       static bool ChangePlayerVehicle(Attrib::StringKey vehicleKey, FECustomizationRecord* customizations) {
         if (vehicleKey == 0) return false;
+        if (GameStatusEx::SecondsSinceStartedRacing() < 10 || GameStatusEx::SecondsSinceStartedRoaming() < 10) return false;
 
         auto* pvehicle = PVehicleEx::GetPlayerInstance();
         if (!pvehicle) return false;
+
+        auto* player = IPlayer::GetPlayer();
+        if (!player) return false;
+
+        auto* hud = static_cast<FEngHud*>(player->GetHud());
+        if (!hud && (!hud->pSpeedometer || !hud->pTachometer || !hud->pTachometerDrag)) return false;
 
         if (!PVehicleEx::ChangePVehicleInto(pvehicle, vehicleKey, customizations).WasSuccessful) return false;
 

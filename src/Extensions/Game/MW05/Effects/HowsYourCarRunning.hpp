@@ -28,6 +28,8 @@ namespace Extensions::Game::MW05::Effects {
   class HowsYourCarRunning : public IGameEffect {
    protected:
     virtual bool _activate() noexcept override {
+      if (OpenMW::GameStatusEx::SecondsSinceStartedRacing() < 5 || OpenMW::GameStatusEx::SecondsSinceStartedRoaming() < 5) return false;
+
       auto* pvehicle = OpenMW::PVehicleEx::GetPlayerInstance();
       if (!pvehicle) return false;
 
