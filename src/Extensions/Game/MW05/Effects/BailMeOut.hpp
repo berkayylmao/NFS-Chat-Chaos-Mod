@@ -36,8 +36,10 @@ namespace Extensions::Game::MW05::Effects {
       auto* ai = pvehicle->GetAIVehiclePtr() | OpenMW::AIVehicleEx::AsAIVehicleHuman;
       if (!ai || !ai->GetPursuit()) return false;
 
+      std::int32_t bounty = ai->GetPendingRepPointsNormal() + ai->GetPendingRepPointsFromCopDestruction();
       ai->GetPursuit()->BailPursuit();
       OpenMW::Variables::TheOneCopManager->ResetCopsForRestart(true);
+      OpenMW::Game::AwardPlayerBounty(bounty);
       return true;
     }
 
