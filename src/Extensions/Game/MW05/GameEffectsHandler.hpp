@@ -115,6 +115,7 @@
 #include "Extensions/Game/MW05/Effects/InvisibleCars.hpp"
 #include "Extensions/Game/MW05/Effects/TimeFlies.hpp"
 #include "Extensions/Game/MW05/Effects/TruckRain.hpp"
+#include "Extensions/Game/MW05/Effects/TeleportToOldBridge.hpp"
 
 // Modifiers
 #include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
@@ -340,6 +341,7 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::InvisibleCars());
       IGameEffectsHandler::AddEffect(new Effects::TimeFlies());
       IGameEffectsHandler::AddEffect(new Effects::TruckRain());
+      IGameEffectsHandler::AddEffect(new Effects::TeleportToOldBridge());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),

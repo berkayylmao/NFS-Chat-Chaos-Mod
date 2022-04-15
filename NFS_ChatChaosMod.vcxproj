@@ -616,6 +616,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TallCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TankMode.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\Teasing.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\TeleportToOldBridge.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TheJavaExperience.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\ThePSPExperience.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TimeFlies.hpp" />

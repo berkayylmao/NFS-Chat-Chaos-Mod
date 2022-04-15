@@ -568,8 +568,13 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\InvisibleCars.hpp">
       <Filter>Extensions\Game\MW05\Effects</Filter>
     </ClInclude>
-    <ClInclude Include="src\Extensions\Game\MW05\Effects\TruckRain.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TimeFlies.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\TruckRain.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\TeleportToOldBridge.hpp">
       <Filter>Extensions\Game\MW05\Effects</Filter>
     </ClInclude>
   </ItemGroup>
