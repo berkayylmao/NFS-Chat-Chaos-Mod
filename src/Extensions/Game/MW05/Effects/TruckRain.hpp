@@ -67,7 +67,7 @@ namespace Extensions::Game::MW05::Effects {
         position.z += 10.0f;
         direction.x *= -1.0f;
 
-        auto* new_pvehicle = OpenMW::PVehicle::Construct(OpenMW::VehicleParams(OpenMW::DriverClass::None, OpenMW::Attrib::StringToKey("cs_semi"), direction,
+        auto* new_pvehicle = OpenMW::PVehicle::Construct(OpenMW::VehicleParams(OpenMW::DriverClass::None, OpenMW::Attrib::StringToKey("semi_con"), direction,
                                                                                position, nullptr, OpenMW::eVehicleParamFlags::None)) |
                              OpenMW::PVehicleEx::ValidatePVehicle;
         if (!new_pvehicle) return;
