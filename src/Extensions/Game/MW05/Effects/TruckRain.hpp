@@ -68,8 +68,7 @@ namespace Extensions::Game::MW05::Effects {
         direction.x *= -1.0f;
 
         auto* new_pvehicle = OpenMW::PVehicle::Construct(OpenMW::VehicleParams(OpenMW::DriverClass::None, OpenMW::Attrib::StringToKey("semi_con"), direction,
-                                                                               position, nullptr, OpenMW::eVehicleParamFlags::None)) |
-                             OpenMW::PVehicleEx::ValidatePVehicle;
+                                                                               position, nullptr, OpenMW::eVehicleParamFlags::None));
         if (!new_pvehicle) return;
         new_pvehicle->GetRigidBody()->SetMass(1000.0f);
 
