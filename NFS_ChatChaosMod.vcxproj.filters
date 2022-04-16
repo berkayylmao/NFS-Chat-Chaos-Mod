@@ -417,7 +417,6 @@
     <ClInclude Include="src\Extensions\WndProc\WindowedModeImprovements.hpp">
       <Filter>Extensions\WndProc</Filter>
     </ClInclude>
-    <ClInclude Include="src\Main.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\YouShouldHaveSaved.hpp">
       <Filter>Extensions\Game\Carbon\Effects</Filter>
     </ClInclude>
@@ -637,6 +636,10 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\RandomBoxes.hpp">
       <Filter>Extensions\Game\MW05\Effects</Filter>
     </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\BouncyCastle.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Main.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NFS_ChatChaosMod.licenseheader" />
