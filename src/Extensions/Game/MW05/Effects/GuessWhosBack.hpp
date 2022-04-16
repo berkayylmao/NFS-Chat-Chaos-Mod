@@ -37,14 +37,19 @@ namespace Extensions::Game::MW05::Effects {
       OpenMW::UMath::Vector3 direction;
       player_vehicle->GetRigidBody()->GetForwardVector(direction);
 
-      position.x -= direction.x * 7.5f;
-      position.y -= direction.y * 7.5f;
+      position.x -= direction.x * 10.0f;
+      position.y -= direction.y * 10.0f;
 
       OpenMW::Variables::TheOneCopManager->LockoutCops(false);
       // Create cross
       mSpawned = OpenMW::PVehicle::Construct(OpenMW::VehicleParams(OpenMW::DriverClass::Cop, OpenMW::Attrib::StringToKey("copsport"), direction, position,
                                                                    nullptr, OpenMW::eVehicleParamFlags::SnapToGround));
       if (!mSpawned) return false;
+      if (!mSpawned->SetVehicleOnGround(position, direction)) {
+        mSpawned->Kill();
+        return false;
+      }
+
       if (auto* ai_cop = mSpawned->GetAIVehiclePtr() | OpenMW::AIVehicleEx::AsAIVehicleCopCar)
         ai_cop->StartPursuit(OpenMW::AITarget::Construct(player_vehicle), player_vehicle);
       OpenMW::Variables::TheOneCopManager->PursueAtHeatLevel(10);
