@@ -220,7 +220,7 @@
       <ConformanceMode>true</ConformanceMode>
       <RuntimeTypeInfo>
       </RuntimeTypeInfo>
-      <AdditionalOptions>/d1reportSingleClassLayoutVehicleParams %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/d1reportSingleClassLayoutAIVehicleHuman %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -538,6 +538,8 @@
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\ThePSPExperience.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\ToTheMoon.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\TunnelVision.hpp" />
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\TurnDownTheHeat.hpp" />
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\TurnUpTheHeat.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\WideCars.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\YoBroIsThatASupra.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\YouAreSafeThisTime.hpp" />

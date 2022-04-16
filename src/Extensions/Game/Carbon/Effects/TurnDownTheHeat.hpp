@@ -21,21 +21,28 @@
 */
 
 #pragma once
-#pragma warning(push, 0)  // disable any warnings from OpenSpeed
+#include "pch.h"
+#include "Helpers/OpenSpeedEx.hpp"
 
-#include <OpenSpeed/Game.Carbon/Carbon.h>
-#include <OpenSpeed/Game.Carbon/Extensions.h>
-#include <OpenSpeed/Game.Carbon/Types/Attrib.h>
-#include <OpenSpeed/Game.Carbon/Types/Attrib/Gen/trafficpattern.h>
-#include <OpenSpeed/Game.Carbon/Types/Attrib/Layouts/trafficpatternlayout.h>
-#include <OpenSpeed/Game.Carbon/Types/Game.h>
-#include <OpenSpeed/Game.Carbon/Types/GRaceStatus.h>
-#include <OpenSpeed/Game.Carbon/Types/ICollisionBody.h>
-#include <OpenSpeed/Game.Carbon/Types/IRenderable.h>
-#include <OpenSpeed/Game.Carbon/Types/Physics.h>
-#include <OpenSpeed/Game.Carbon/Types/RideInfo.h>
-#include <OpenSpeed/Game.Carbon/Types/VehicleCustomizations.h>
+namespace Extensions::Game::Carbon::Effects {
+  class TurnDownTheHeat : public IGameEffect {
+   protected:
+    virtual bool _specialCooldownConditionSatisfied() const noexcept override {
+      auto* ai = OpenCarbon::AIVehicleEx::GetPlayerInstance() | OpenCarbon::AIVehicleEx::AsAIVehicleHuman;
+      if (!ai || !ai->GetPursuit()) return false;
 
-namespace OpenCarbon = OpenSpeed::Carbon;
+      return ai->GetHeat() > 1.0f;
+    }
 
-#pragma warning(pop)  // restore warnings
+    virtual bool _activate() noexcept override {
+      auto* ai = OpenCarbon::AIVehicleEx::GetPlayerInstance() | OpenCarbon::AIVehicleEx::AsAIVehicleHuman;
+      if (!ai) return false;
+
+      ai->SetHeat(std::max(1.0f, ai->GetHeat() - 1.0f));
+      return true;
+    }
+
+   public:
+    explicit TurnDownTheHeat() : IGameEffect(30) {}
+  };
+}  // namespace Extensions::Game::Carbon::Effects

@@ -51,10 +51,10 @@
 #include "Extensions/Game/Carbon/Effects/JumpToSafehouse.hpp"
 #include "Extensions/Game/Carbon/Effects/JumpToCarLot.hpp"
 /*#include "Extensions/Game/Carbon/Effects/FAK500.hpp"
-#include "Extensions/Game/Carbon/Effects/Snitch.hpp"
+#include "Extensions/Game/Carbon/Effects/Snitch.hpp"*/
 #include "Extensions/Game/Carbon/Effects/TurnUpTheHeat.hpp"
 #include "Extensions/Game/Carbon/Effects/TurnDownTheHeat.hpp"
-#include "Extensions/Game/Carbon/Effects/INeedSomeHelp.hpp"*/
+//#include "Extensions/Game/Carbon/Effects/INeedSomeHelp.hpp"
 #include "Extensions/Game/Carbon/Effects/SlotMachine.hpp"
 //#include "Extensions/Game/Carbon/Effects/STONKS.hpp"
 #include "Extensions/Game/Carbon/Effects/Magneto.hpp"
@@ -245,10 +245,10 @@ namespace Extensions::Game::Carbon {
       IGameEffectsHandler::AddEffect(new Effects::JumpToSafehouse());
       IGameEffectsHandler::AddEffect(new Effects::JumpToCarLot());
       /*IGameEffectsHandler::AddEffect(new Effects::FAK500());
-      IGameEffectsHandler::AddEffect(new Effects::Snitch());
+      IGameEffectsHandler::AddEffect(new Effects::Snitch());*/
       IGameEffectsHandler::AddEffect(new Effects::TurnUpTheHeat());
       IGameEffectsHandler::AddEffect(new Effects::TurnDownTheHeat());
-      IGameEffectsHandler::AddEffect(new Effects::INeedSomeHelp());*/
+      // IGameEffectsHandler::AddEffect(new Effects::INeedSomeHelp());
       IGameEffectsHandler::AddEffect(new Effects::SlotMachine());
       // IGameEffectsHandler::AddEffect(new Effects::STONKS());
       IGameEffectsHandler::AddEffect(new Effects::Magneto());
