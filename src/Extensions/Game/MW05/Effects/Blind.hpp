@@ -32,7 +32,7 @@ namespace Extensions::Game::MW05::Effects {
 
       ImGui::SetNextWindowBgAlpha(1.0f);
       ImGui::SetNextWindowPos(viewport->Pos, ImGuiCond_Always);
-      ImGui::SetNextWindowSize(viewport->Size, ImGuiCond_Always);
+      ImGui::SetNextWindowSize(viewport->Size * 2.0f, ImGuiCond_Always);
       ImGui::Begin("##blind_effect_window", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoInputs);
       ImGui::End();
     };

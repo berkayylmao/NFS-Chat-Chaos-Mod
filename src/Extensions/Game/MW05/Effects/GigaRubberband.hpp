@@ -26,7 +26,19 @@
 
 namespace Extensions::Game::MW05::Effects {
   class GigaRubberband : public IGameEffect {
-    OpenMW::PVehicle* mTargetPVehicle;
+    OpenMW::GRacerInfo* mPlayerRacerInfo;
+    OpenMW::PVehicle*   mTargetPVehicle;
+    OpenMW::GRacerInfo* mTargetRacerInfo;
+
+    void makeTargetAheadOfPlayer() {
+      mTargetRacerInfo->mCheckpointsHitThisLap = mPlayerRacerInfo->mCheckpointsHitThisLap;
+      mTargetRacerInfo->mDistanceDriven        = mPlayerRacerInfo->mDistanceDriven + 100.0f;
+      mTargetRacerInfo->mDistToNextCheckpoint  = std::max(0.0f, mPlayerRacerInfo->mDistToNextCheckpoint - 100.0f);
+      mTargetRacerInfo->mLapsCompleted         = mPlayerRacerInfo->mLapsCompleted;
+      mTargetRacerInfo->mPctLapComplete        = std::min(100.0f, mPlayerRacerInfo->mPctLapComplete);
+      mTargetRacerInfo->mPctRaceComplete       = std::min(100.0f, mPlayerRacerInfo->mPctRaceComplete);
+      mTargetRacerInfo->mPointTotal            = mPlayerRacerInfo->mPointTotal + 100;
+    }
 
    protected:
     virtual bool _specialCooldownConditionSatisfied() const noexcept override { return OpenMW::GameStatusEx::IsRacing(); }
@@ -39,7 +51,6 @@ namespace Extensions::Game::MW05::Effects {
       auto* player_vehicle = OpenMW::PVehicleEx::GetPlayerInstance();
       if (!player_vehicle) return false;
 
-      OpenMW::GRacerInfo       player_racer_info;
       std::vector<std::size_t> available_ids;
 
       for (std::int32_t i = 0; i < race_status->mRacerCount; i++) {
@@ -49,36 +60,28 @@ namespace Extensions::Game::MW05::Effects {
         const auto& racer = race_status->mRacerInfo[i];
         // Get available ids
         if (handle == player_vehicle->GetOwnerHandle())
-          player_racer_info = race_status->mRacerInfo[i];
+          mPlayerRacerInfo = &race_status->mRacerInfo[i];
         else if (!racer.mKnockedOut && !racer.mBusted && !racer.mEngineBlown)
           available_ids.push_back(i);
       }
+      if (!mPlayerRacerInfo) return false;
 
       // Shuffle available ids
       std::shuffle(available_ids.begin(), available_ids.end(), Random::Get().GetGenerator());
-      auto& target_racer = race_status->mRacerInfo[available_ids[0]];
+      mTargetRacerInfo = &race_status->mRacerInfo[available_ids[0]];
+      if (!mTargetRacerInfo) return false;
 
       OpenMW::PVehicleEx::ForEachInstance([&](OpenMW::PVehicle* pvehicle) {
-        if (pvehicle->GetOwnerHandle() == target_racer.mhSimable) mTargetPVehicle = pvehicle;
+        if (pvehicle->GetOwnerHandle() == mTargetRacerInfo->mhSimable) mTargetPVehicle = pvehicle;
       });
 
       if (!mTargetPVehicle) return false;
-      // Make sure target is ahead of player
-      target_racer.mCheckpointsHitThisLap = player_racer_info.mCheckpointsHitThisLap;
-      target_racer.mDistanceDriven        = player_racer_info.mDistanceDriven;
-      target_racer.mDistToNextCheckpoint  = player_racer_info.mDistToNextCheckpoint;
-      target_racer.mLapsCompleted         = player_racer_info.mLapsCompleted;
-      target_racer.mPctLapComplete        = player_racer_info.mPctLapComplete;
-      target_racer.mPctRaceComplete       = player_racer_info.mPctRaceComplete;
-      target_racer.mPointTotal            = player_racer_info.mPointTotal;
-      // Stop car
-      mTargetPVehicle->ForceStopOn(OpenMW::IVehicle::ForceStopType::ForceStop);
-
-      return true;
-    }
-    virtual bool _deactivate() noexcept override {
-      if (!mTargetPVehicle) return true;
-      mTargetPVehicle->ForceStopOff(OpenMW::IVehicle::ForceStopType::ForceStop);
+      makeTargetAheadOfPlayer();
+      mTargetRacerInfo->mBusted      = false;
+      mTargetRacerInfo->mDNF         = false;
+      mTargetRacerInfo->mEngineBlown = false;
+      mTargetRacerInfo->mKnockedOut  = false;
+      mTargetRacerInfo->mTotalled    = false;
 
       return true;
     }
@@ -90,22 +93,18 @@ namespace Extensions::Game::MW05::Effects {
       if (!player_vehicle) return;
       auto* player_rb = player_vehicle->GetRigidBody() | OpenMW::RigidBodyEx::AsRigidBody;
       if (!player_rb) return;
-      auto* target_rb = mTargetPVehicle->GetRigidBody() | OpenMW::RigidBodyEx::AsRigidBody;
-      if (!target_rb) return;
 
-      auto                   position = player_rb->GetPosition();
-      const auto&            rotation = player_rb->GetRotation();
+      OpenMW::UMath::Vector3 position = player_rb->GetPosition();
       OpenMW::UMath::Vector3 direction;
       player_rb->GetForwardVector(direction);
 
       position.x += direction.x * 10.0f;
       position.y += direction.y * 10.0f;
-
-      target_rb->SetPosition(position);
-      target_rb->SetRotation(rotation);
+      mTargetPVehicle->SetVehicleOnGround(position, direction);
+      makeTargetAheadOfPlayer();
     }
 
    public:
-    explicit GigaRubberband() : IGameEffect(68), mTargetPVehicle(nullptr) {}
+    explicit GigaRubberband() : IGameEffect(68), mPlayerRacerInfo(nullptr), mTargetPVehicle(nullptr), mTargetRacerInfo(nullptr) {}
   };
 }  // namespace Extensions::Game::MW05::Effects

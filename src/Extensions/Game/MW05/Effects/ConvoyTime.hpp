@@ -27,11 +27,6 @@
 namespace Extensions::Game::MW05::Effects {
   class ConvoyTime : public IGameEffect {
    protected:
-    virtual bool _deactivate() noexcept override {
-      OpenMW::PVehicleEx::ForEachInstance([=](OpenMW::PVehicle* pvehicle) { pvehicle->ForceStopOff(OpenMW::IVehicle::ForceStopType::ForceStop); });
-      return true;
-    }
-
     virtual void _activeTick() noexcept override {
       auto* player_vehicle = OpenMW::PVehicleEx::GetPlayerInstance();
       if (!player_vehicle) return;
@@ -40,21 +35,17 @@ namespace Extensions::Game::MW05::Effects {
       if (!player_rb) return;
 
       OpenMW::UMath::Vector3 position = player_rb->GetPosition();
-      const auto&            rotation = player_rb->GetRotation();
       OpenMW::UMath::Vector3 direction;
       player_rb->GetForwardVector(direction);
 
-      OpenMW::PVehicleEx::ForEachInstance([=](OpenMW::PVehicle* pvehicle) mutable {
-        if (pvehicle->GetOwnerHandle() == player_vehicle->GetOwnerHandle()) return;
+      OpenMW::PVehicleEx::ForEachInstance([&](OpenMW::PVehicle* pvehicle) {
+        if (!pvehicle || pvehicle->IsPlayer() || pvehicle->IsOwnedByPlayer()) return;
+        if (!pvehicle->mRenderable || !pvehicle->mRenderable->IsRenderable()) return;
 
         position.x -= direction.x * 8.0f;
         position.y -= direction.y * 8.0f;
 
-        auto* target_rb = pvehicle->GetRigidBody();
-        target_rb->SetPosition(position);
-        if (auto* p = target_rb | OpenMW::RigidBodyEx::AsRigidBody) p->SetRotation(rotation);
-
-        pvehicle->ForceStopOn(OpenMW::IVehicle::ForceStopType::ForceStop);
+        pvehicle->SetVehicleOnGround(position, direction);
       });
     }
 

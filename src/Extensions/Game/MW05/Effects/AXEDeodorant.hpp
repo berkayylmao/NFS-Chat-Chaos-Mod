@@ -39,21 +39,22 @@ namespace Extensions::Game::MW05::Effects {
       auto* player_vehicle = OpenMW::PVehicleEx::GetPlayerInstance();
       if (!player_vehicle) return;
 
-      const auto& player_pos = player_vehicle->GetRigidBody()->GetPosition();
-      OpenMW::PVehicleEx::ForEachInstance([=](OpenMW::PVehicle* pvehicle) {
-        if (pvehicle->IsPlayer() || pvehicle->IsOwnedByPlayer()) return;
+      auto* player_rb = player_vehicle->GetRigidBody() | OpenMW::RigidBodyEx::AsRigidBody;
+      if (!player_rb || !player_rb->mData.mRef || !*player_rb->mData.mRef) return;
 
-        const auto& pos = pvehicle->GetRigidBody()->GetPosition();
+      auto        player_rb_idx = player_rb->mData->index;
+      const auto& player_pos    = player_rb->GetPosition();
+      auto        player_speed  = std::abs(player_vehicle->GetSpeed());
+
+      OpenMW::RigidBodyEx::ForEachInstance([=](OpenMW::RigidBody::Volatile* rv) {
+        if (rv->index == player_rb_idx) return;
+
+        const auto& pos = rv->position;
         if (IsInsideDangerZone(player_pos, pos)) {
           const auto v = (player_pos - pos).Normalize();
+          const auto f = std::min(-20.0f, -player_speed);
 
-          pvehicle->GetRigidBody()->SetLinearVelocity(OpenMW::UMath::Vector3(
-              // x
-              v.x * -40.0f,
-              // y
-              v.y * -40.0f,
-              // z
-              0.0f));
+          rv->linearVelocity = v * f;
         }
       });
     }

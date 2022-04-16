@@ -36,16 +36,16 @@ namespace Extensions::Game::MW05::Effects {
       // top
       mRectangles.push_back(ImRect(0.0f, 0.0f, size.x, size.y / 2.0f - square_px / 2.0f));
       // left
-      mRectangles.push_back(ImRect(0.0f, 0.0f, size.x / 2.0f - square_px / 2.0f, size.y));
+      mRectangles.push_back(ImRect(0.0f, 0.0f, size.x / 2.0f - square_px / 2.0f, size.y * 2.0f));
       // right
       {
         float x = size.x / 2.0f + square_px / 2.0f;
-        mRectangles.push_back(ImRect(x, 0.0f, size.x - x, size.y));
+        mRectangles.push_back(ImRect(x, 0.0f, size.x - x, size.y * 2.0f));
       }
       // bottom
       {
         float y = size.y / 2.0f + square_px / 2.0f;
-        mRectangles.push_back(ImRect(0.0f, y, size.x, size.y - y));
+        mRectangles.push_back(ImRect(0.0f, y, size.x, size.y * 2.0f));
       }
 
       return true;
