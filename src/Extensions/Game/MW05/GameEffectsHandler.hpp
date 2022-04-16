@@ -123,6 +123,11 @@
 #include "Extensions/Game/MW05/Effects/TeleportToRandomCar.hpp"
 #include "Extensions/Game/MW05/Effects/TeleportToRandomRacer.hpp"
 #include "Extensions/Game/MW05/Effects/TeleportToRandomCop.hpp"
+#include "Extensions/Game/MW05/Effects/PopAllTires.hpp"
+#include "Extensions/Game/MW05/Effects/PopARandomTire.hpp"
+#include "Extensions/Game/MW05/Effects/SpinToWin.hpp"
+#include "Extensions/Game/MW05/Effects/GetBackHere.hpp"
+#include "Extensions/Game/MW05/Effects/Blind.hpp"
 
 // Modifiers
 #include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
@@ -378,6 +383,11 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::TeleportToRandomCar());
       IGameEffectsHandler::AddEffect(new Effects::TeleportToRandomCop());
       IGameEffectsHandler::AddEffect(new Effects::TeleportToRandomRacer());
+      IGameEffectsHandler::AddEffect(new Effects::PopAllTires());
+      IGameEffectsHandler::AddEffect(new Effects::PopARandomTire());
+      IGameEffectsHandler::AddEffect(new Effects::SpinToWin());
+      IGameEffectsHandler::AddEffect(new Effects::GetBackHere());
+      IGameEffectsHandler::AddEffect(new Effects::Blind());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),

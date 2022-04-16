@@ -556,12 +556,14 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BailMeOut.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BIGCARS.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BlackOut.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\Blind.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BlurPowerups.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BopIt.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BrakesJustSlowYouDown.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\CameraSwitcheroo.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\Chernobyl.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BluetoothController.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\GetBackHere.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\ConvoyTime.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\CrazyTaxi.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\CrossEyedRider.hpp" />
@@ -609,6 +611,8 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\NeverBusted.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\PaperCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\PepegaTruck.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\PopAllTires.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\PopARandomTire.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\PotatoPC.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\POVYouAreVolkswagenDuringEmissionTests.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\PowerPointPresentation.hpp" />
@@ -617,6 +621,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\RCCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\RKO.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\SlotMachine.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\SpinToWin.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\StickShiftPro.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\STONKS.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\SuddentlyItsADragRace.hpp" />

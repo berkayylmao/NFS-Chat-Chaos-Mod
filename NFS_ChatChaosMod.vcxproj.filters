@@ -616,6 +616,21 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TeleportToRandomRacer.hpp">
       <Filter>Extensions\Game\MW05\Effects</Filter>
     </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\PopAllTires.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\PopARandomTire.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\SpinToWin.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\GetBackHere.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\Blind.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="NFS_ChatChaosMod.licenseheader" />
