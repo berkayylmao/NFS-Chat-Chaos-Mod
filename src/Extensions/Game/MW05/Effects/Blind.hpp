@@ -38,6 +38,6 @@ namespace Extensions::Game::MW05::Effects {
     };
 
    public:
-    explicit Blind() : IGameEffect(102) {}
+    explicit Blind() : IGameEffect(103) {}
   };
 }  // namespace Extensions::Game::MW05::Effects
