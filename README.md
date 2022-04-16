@@ -11,6 +11,7 @@ Welcome to the official NFS Chat Chaos Mod repository!
 - All effects have their own cooldown and duration values which can be customized in-game.
   ![.gitdocs/UI_EffectsConfig.png?raw=true](.gitdocs/UI_EffectsConfig.png?raw=true)
 - It will also:
+  - Disable the ability to pause the game.
   - Disable the ability to reset the player's car or be auto-reset.
   - Increase the maximum heat level to 10.
   - Force traffic density to be at max.
