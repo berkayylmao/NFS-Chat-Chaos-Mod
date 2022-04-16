@@ -110,6 +110,9 @@
 //#include "Extensions/Game/Carbon/Effects/DeliveryBoy.hpp"
 #include "Extensions/Game/Carbon/Effects/FlatCars.hpp"
 #include "Extensions/Game/Carbon/Effects/ConvoyTime.hpp"
+#include "Extensions/Game/Carbon/Effects/BIGCARS.hpp"
+#include "Extensions/Game/Carbon/Effects/LimoCars.hpp"
+#include "Extensions/Game/Carbon/Effects/FlippedCars.hpp"
 
 // Modifiers
 #include "Extensions/Game/Carbon/Modifiers/CarScaleModifier.hpp"
@@ -304,6 +307,9 @@ namespace Extensions::Game::Carbon {
       IGameEffectsHandler::AddEffect(new Effects::DeliveryBoy());*/
       IGameEffectsHandler::AddEffect(new Effects::FlatCars());
       IGameEffectsHandler::AddEffect(new Effects::ConvoyTime());
+      IGameEffectsHandler::AddEffect(new Effects::BIGCARS());
+      IGameEffectsHandler::AddEffect(new Effects::LimoCars());
+      IGameEffectsHandler::AddEffect(new Effects::FlippedCars());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),
