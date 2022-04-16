@@ -28,7 +28,7 @@ namespace Extensions::Game::MW05::Effects {
   class SpinToWin : public IGameEffect {
    protected:
     virtual void _activeTick() noexcept override {
-      __EXECUTE_EVERY_X_SECONDS__(0.5f);
+      __EXECUTE_EVERY_X_SECONDS__(0.1f);
 
       OpenMW::PVehicleEx::ForEachInstance([=](OpenMW::PVehicle* pvehicle) {
         auto* rb = pvehicle->GetRigidBody();
