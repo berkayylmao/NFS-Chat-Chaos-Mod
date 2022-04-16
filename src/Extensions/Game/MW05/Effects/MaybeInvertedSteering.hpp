@@ -33,6 +33,7 @@ namespace Extensions::Game::MW05::Effects {
     }
     virtual bool _deactivate() noexcept override {
       Modifiers::InputModifier::Get().SetInvertedSteeringRandomizer(false);
+      Modifiers::InputModifier::Get().SetInvertedSteering(false);
       return true;
     }
 
