@@ -116,6 +116,9 @@
 #include "Extensions/Game/MW05/Effects/TimeFlies.hpp"
 #include "Extensions/Game/MW05/Effects/TruckRain.hpp"
 #include "Extensions/Game/MW05/Effects/TeleportToOldBridge.hpp"
+#include "Extensions/Game/MW05/Effects/BIGCARS.hpp"
+#include "Extensions/Game/MW05/Effects/LimoCars.hpp"
+#include "Extensions/Game/MW05/Effects/FlippedCars.hpp"
 
 // Modifiers
 #include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
@@ -229,7 +232,7 @@ namespace Extensions::Game::MW05 {
           push ebp
           mov ebp, esp
           pushad
-          mov eax, [edx] // action argument
+          mov eax, [edx]  // action argument
           push eax
           push ecx
           call Modifiers::InputModifier::Get
@@ -364,6 +367,9 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::TimeFlies());
       IGameEffectsHandler::AddEffect(new Effects::TruckRain());
       IGameEffectsHandler::AddEffect(new Effects::TeleportToOldBridge());
+      IGameEffectsHandler::AddEffect(new Effects::BIGCARS());
+      IGameEffectsHandler::AddEffect(new Effects::LimoCars());
+      IGameEffectsHandler::AddEffect(new Effects::FlippedCars());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),

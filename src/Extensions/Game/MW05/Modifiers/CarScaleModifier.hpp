@@ -35,18 +35,22 @@ namespace Extensions::Game::MW05::Modifiers {
     static constexpr float CONST_NOT_USED_MARKER = -123.456f;
 
     const CarScaleVector sRCCarsScale    = CarScaleVector(0.4f, 0.4f, 0.4f);
+    const CarScaleVector sBigCarsScale   = CarScaleVector(1.6f, 1.6f, 1.6f);
     const CarScaleVector sFlatCarsScale  = CarScaleVector(0.1f, CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER);
     const CarScaleVector sTallCarsScale  = CarScaleVector(3.0f, CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER);
+    const CarScaleVector sLongCarsScale  = CarScaleVector(CONST_NOT_USED_MARKER, 2.0f, CONST_NOT_USED_MARKER);
     const CarScaleVector sWideCarsScale  = CarScaleVector(CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER, 4.0f);
     const CarScaleVector sPaperCarsScale = CarScaleVector(CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER, 0.001f);
     CarScaleVector       mJellyCarsScale;
 
     bool mRCCarsEnabled;
+    bool mBigCarsEnabled;
     bool mFlatCarsEnabled;
     bool mTallCarsEnabled;
+    bool mLongCarsEnabled;
     bool mWideCarsEnabled;
     bool mPaperCarsEnabled;
-    bool mReversedCarsEnabled;
+    bool mFlippedCarsEnabled;
     bool mJellyCarsEnabled;
 
     std::uint32_t mCountEnabled;
@@ -87,17 +91,23 @@ namespace Extensions::Game::MW05::Modifiers {
         OpenMW::Variables::CarScaleMatrix.GetField().v0.y = sRCCarsScale.y;
         OpenMW::Variables::CarScaleMatrix.GetField().v1.z = sRCCarsScale.z;
         OpenMW::Variables::CarScaleMatrix.GetField().v2.x = sRCCarsScale.x;
+      } else if (mBigCarsEnabled) {
+        OpenMW::Variables::CarScaleMatrix.GetField().v0.y = sBigCarsScale.y;
+        OpenMW::Variables::CarScaleMatrix.GetField().v1.z = sBigCarsScale.z;
+        OpenMW::Variables::CarScaleMatrix.GetField().v2.x = sBigCarsScale.x;
       }
-
-      if (mWideCarsEnabled)
-        OpenMW::Variables::CarScaleMatrix.GetField().v1.z *= sWideCarsScale.z;
-      else if (mPaperCarsEnabled)
-        OpenMW::Variables::CarScaleMatrix.GetField().v1.z = sPaperCarsScale.z;
 
       if (mFlatCarsEnabled)
         OpenMW::Variables::CarScaleMatrix.GetField().v2.x *= sFlatCarsScale.x;
       else if (mTallCarsEnabled)
         OpenMW::Variables::CarScaleMatrix.GetField().v2.x *= sTallCarsScale.x;
+
+      if (mLongCarsEnabled) OpenMW::Variables::CarScaleMatrix.GetField().v0.y = sLongCarsScale.y;
+
+      if (mWideCarsEnabled)
+        OpenMW::Variables::CarScaleMatrix.GetField().v1.z *= sWideCarsScale.z;
+      else if (mPaperCarsEnabled)
+        OpenMW::Variables::CarScaleMatrix.GetField().v1.z = sPaperCarsScale.z;
 
       if (mJellyCarsEnabled) {
         _transformJelly();
@@ -106,7 +116,7 @@ namespace Extensions::Game::MW05::Modifiers {
         OpenMW::Variables::CarScaleMatrix.GetField().v2.x *= mJellyCarsScale.x;
       }
 
-      if (mReversedCarsEnabled) {
+      if (mFlippedCarsEnabled) {
         OpenMW::Variables::CarScaleMatrix.GetField().v0.y *= -1.0f;
         OpenMW::Variables::CarScaleMatrix.GetField().v1.z *= -1.0f;
       }
@@ -131,12 +141,12 @@ namespace Extensions::Game::MW05::Modifiers {
       _decEnabled();
     }
 
-    void EnableWideCars() {
-      mWideCarsEnabled = true;
+    void EnableBigCars() {
+      mBigCarsEnabled = true;
       _incEnabled();
     }
-    void DisableWideCars() {
-      mWideCarsEnabled = false;
+    void DisableBigCars() {
+      mBigCarsEnabled = false;
       _decEnabled();
     }
 
@@ -158,6 +168,24 @@ namespace Extensions::Game::MW05::Modifiers {
       _decEnabled();
     }
 
+    void EnableLongCars() {
+      mLongCarsEnabled = true;
+      _incEnabled();
+    }
+    void DisableLongCars() {
+      mLongCarsEnabled = false;
+      _decEnabled();
+    }
+
+    void EnableWideCars() {
+      mWideCarsEnabled = true;
+      _incEnabled();
+    }
+    void DisableWideCars() {
+      mWideCarsEnabled = false;
+      _decEnabled();
+    }
+
     void EnablePaperCars() {
       mPaperCarsEnabled = true;
       _incEnabled();
@@ -167,12 +195,12 @@ namespace Extensions::Game::MW05::Modifiers {
       _decEnabled();
     }
 
-    void EnableReversedCars() {
-      mReversedCarsEnabled = true;
+    void EnableFlippedCars() {
+      mFlippedCarsEnabled = true;
       _incEnabled();
     }
-    void DisableReversedCars() {
-      mReversedCarsEnabled = false;
+    void DisableFlippedCars() {
+      mFlippedCarsEnabled = false;
       _decEnabled();
     }
 
@@ -197,11 +225,13 @@ namespace Extensions::Game::MW05::Modifiers {
     explicit CarScaleModifier() :
         mCountEnabled(0),
         mRCCarsEnabled(false),
+        mBigCarsEnabled(false),
         mFlatCarsEnabled(false),
         mTallCarsEnabled(false),
+        mLongCarsEnabled(false),
         mWideCarsEnabled(false),
         mPaperCarsEnabled(false),
-        mReversedCarsEnabled(false),
+        mFlippedCarsEnabled(false),
         mJellyCarsEnabled(false),
         mJellyCarsScale(CarScaleVector(1.0f, 1.0f, 1.0f)) {}
 

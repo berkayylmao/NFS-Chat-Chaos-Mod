@@ -22,29 +22,21 @@
 
 #pragma once
 #include "pch.h"
-#include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
+#include "Extensions/Game/Carbon/Modifiers/CarScaleModifier.hpp"
 
-namespace Extensions::Game::MW05::Effects {
-  class DontLookBackInAnger : public IGameEffect {
+namespace Extensions::Game::Carbon::Effects {
+  class BIGCARS : public IGameEffect {
    protected:
     virtual bool _activate() noexcept override {
-      MemoryEditor::Get().UnlockMemory(0x6B6890, 4);
-      *reinterpret_cast<std::uint32_t*>(0x6B6890) = 0xC301F083;
-      MemoryEditor::Get().LockMemory(0x6B6890);
-
-      Modifiers::CarScaleModifier::Get().EnableFlippedCars();
+      Modifiers::CarScaleModifier::Get().EnableBigCars();
       return true;
     }
     virtual bool _deactivate() noexcept override {
-      MemoryEditor::Get().UnlockMemory(0x6B6890, 4);
-      *reinterpret_cast<std::uint32_t*>(0x6B6890) = 0x02DC81D9;
-      MemoryEditor::Get().LockMemory(0x6B6890);
-
-      Modifiers::CarScaleModifier::Get().DisableFlippedCars();
+      Modifiers::CarScaleModifier::Get().DisableBigCars();
       return true;
     }
 
    public:
-    explicit DontLookBackInAnger() : IGameEffect(19) {}
+    explicit BIGCARS() : IGameEffect(92) {}
   };
-}  // namespace Extensions::Game::MW05::Effects
+}  // namespace Extensions::Game::Carbon::Effects

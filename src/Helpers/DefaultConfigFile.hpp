@@ -65,7 +65,7 @@ namespace ChaosMod::DefaultConfigFile {
       "\"Name\":\"POV: You\'re Volkswagen During Emission Tests\",\"Description\":\"Permanently uninstalls all parts from the player\'s "
       "car\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":42,\"Duration\":10.0,\"IncompatibleWith\":[16]},{"
       "\"Name\":\"Don\'t Look Back In Anger\",\"Description\":\"Locks camera to look "
-      "behind\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":7,\"Duration\":60.0,\"IncompatibleWith\":[]},{"
+      "behind\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":7,\"Duration\":60.0,\"IncompatibleWith\":[94]},{"
       "\"Name\":\"PowerPoint Presentation\",\"Description\":\"2 frames per second "
       "Hhhehehe\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":19,\"Duration\":15.0,\"IncompatibleWith\":[21]},{"
       "\"Name\":\"Potato PC\",\"Description\":\"15 frames per second "
@@ -125,8 +125,8 @@ namespace ChaosMod::DefaultConfigFile {
       "\"Name\":\"Wide Cars\",\"Description\":\"IT\'S HIM "
       "widepeepoHappy\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[55]"
       "},{\"Name\":\"RC Cars\",\"Description\":\"Re-Volt\'s back baby "
-      "R-)\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[]},{\"Name\":"
-      "\"Jelly "
+      "R-)\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[93]},{"
+      "\"Name\":\"Jelly "
       "Cars\",\"Description\":\"O_o\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,"
       "\"IncompatibleWith\":[]},{\"Name\":\"The Java Experience\",\"Description\":\"Java cures "
       "cancer\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":20,\"Duration\":60.0,\"IncompatibleWith\":[63]},{"
@@ -210,5 +210,11 @@ namespace ChaosMod::DefaultConfigFile {
       "\"Truck Rain\",\"Description\":\"Heavy rain "
       "today\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":7,\"Duration\":60.0,\"IncompatibleWith\":[]},{"
       "\"Name\":\"Teleport To Old Bridge\",\"Description\":\"So is the game finished now or "
-      "what?\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":16,\"Duration\":10.0,\"IncompatibleWith\":[]}]}";
+      "what?\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":16,\"Duration\":10.0,\"IncompatibleWith\":[]},{"
+      "\"Name\":\"BIG CARS\",\"Description\":\"BIG "
+      "CHONGUS\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[49]},{"
+      "\"Name\":\"Limo Cars\",\"Description\":\"Hey, I\'d like a 6-inch sub "
+      "please\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[]},{"
+      "\"Name\":\"Flipped Cars\",\"Description\":\"Just like the last time Uncle Crock had his truck "
+      "towed\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[19]}]}";
 }

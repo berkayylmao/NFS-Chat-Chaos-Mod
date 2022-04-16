@@ -28,11 +28,11 @@ namespace Extensions::Game::Carbon::Effects {
   class DontLookBackInAnger : public IGameEffect {
    protected:
     virtual bool _activate() noexcept override {
-      Modifiers::CarScaleModifier::Get().EnableReversedCars();
+      Modifiers::CarScaleModifier::Get().EnableFlippedCars();
       return true;
     }
     virtual bool _deactivate() noexcept override {
-      Modifiers::CarScaleModifier::Get().DisableReversedCars();
+      Modifiers::CarScaleModifier::Get().DisableFlippedCars();
       return true;
     }
 

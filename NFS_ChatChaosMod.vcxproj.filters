@@ -586,6 +586,24 @@
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\TurnUpTheHeat.hpp">
       <Filter>Extensions\Game\Carbon\Effects</Filter>
     </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\BIGCARS.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\LimoCars.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\FlippedCars.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\LimoCars.hpp">
+      <Filter>Extensions\Game\Carbon\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\BIGCARS.hpp">
+      <Filter>Extensions\Game\Carbon\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\FlippedCars.hpp">
+      <Filter>Extensions\Game\Carbon\Effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="NFS_ChatChaosMod.licenseheader" />

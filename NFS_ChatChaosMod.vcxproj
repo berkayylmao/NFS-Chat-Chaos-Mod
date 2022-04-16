@@ -498,6 +498,7 @@
     <ClInclude Include="src\Extensions\DInput8\DInput8.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Carbon.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\AXEDeodorant.hpp" />
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\BIGCARS.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\BlackOut.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\BlurPowerups.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\BopIt.hpp" />
@@ -512,6 +513,7 @@
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\ExperienceTheLag.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\Flashbang.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\FlatCars.hpp" />
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\FlippedCars.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\GigaRubberband.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\HowsYourCarRunning.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\IfYouCantBeatThemKillThem.hpp" />
@@ -521,6 +523,7 @@
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\JesusTakeTheWheel.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\JumpToCarLot.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\JumpToSafehouse.hpp" />
+    <ClInclude Include="src\Extensions\Game\Carbon\Effects\LimoCars.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\Magneto.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\PaperCars.hpp" />
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\PotatoPC.hpp" />
@@ -551,6 +554,7 @@
     <ClInclude Include="src\Extensions\Game\IGameplayModifier.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\AXEDeodorant.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BailMeOut.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\BIGCARS.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BlackOut.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BlurPowerups.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\BopIt.hpp" />
@@ -570,6 +574,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\FastAndFuriousNOS.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\Flashbang.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\FlatCars.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\FlippedCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\GASGASGAS.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\GigaRubberband.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\GuessWhosBack.hpp" />
@@ -596,6 +601,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\JumpToSafehouse.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\LightCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\LightCops.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\LimoCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\Magneto.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\MaybeInvertedSteering.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\MegaRubberband.hpp" />
