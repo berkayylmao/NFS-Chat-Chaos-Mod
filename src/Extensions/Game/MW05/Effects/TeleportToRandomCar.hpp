@@ -35,7 +35,7 @@ namespace Extensions::Game::MW05::Effects {
 
       auto  count  = OpenMW::PVehicle::GetInstancesCount();
       auto* target = OpenMW::PVehicle::GetInstance(Random::Get().Generate(0, count)) | OpenMW::PVehicleEx::ValidatePVehicle;
-      if (target->IsPlayer() || target->IsOwnedByPlayer()) return;
+      if (target->IsPlayer() || target->IsOwnedByPlayer()) return false;
 
       // No Speed
       target->SetSpeed(0);
