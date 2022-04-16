@@ -37,9 +37,13 @@ namespace Extensions::Game::MW05::Effects {
       if (cops.size() == 0) return false;
 
       auto* cop = cops[Random::Get().Generate(0, cops.size() - 1)];
-      // No Speed
-      cop->SetSpeed(0);
-      player_vehicle->SetSpeed(0);
+      if (!cop || cop->IsPlayer() || cop->IsOwnedByPlayer()) return false;
+      if (!cop->mRenderable || !cop->mRenderable->IsRenderable()) return false;
+      if (cop->GetSpeed() < 1.0f) return false;
+
+      // Minimal Speed
+      cop->SetSpeed(1.0f);
+      player_vehicle->SetSpeed(1.0f);
       // Same direction (if possible)
       {
         auto* player_rb = player_vehicle->GetRigidBody() | OpenMW::RigidBodyEx::AsRigidBody;
@@ -48,6 +52,7 @@ namespace Extensions::Game::MW05::Effects {
       }
       // Same position
       player_vehicle->GetRigidBody()->SetPosition(cop->GetRigidBody()->GetPosition());
+      cop->GetRigidBody()->SetLinearVelocity(OpenMW::UMath::Vector3(0.0f, 0.0f, 10.0f));
       return true;
     }
 

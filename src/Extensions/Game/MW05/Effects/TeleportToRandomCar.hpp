@@ -35,11 +35,13 @@ namespace Extensions::Game::MW05::Effects {
 
       auto  count  = OpenMW::PVehicle::GetInstancesCount();
       auto* target = OpenMW::PVehicle::GetInstance(Random::Get().Generate(0, count)) | OpenMW::PVehicleEx::ValidatePVehicle;
-      if (target->IsPlayer() || target->IsOwnedByPlayer()) return false;
+      if (!target || target->IsPlayer() || target->IsOwnedByPlayer()) return false;
+      if (!target->mRenderable || !target->mRenderable->IsRenderable()) return false;
+      if (target->GetSpeed() < 1.0f) return false;
 
-      // No Speed
-      target->SetSpeed(0);
-      player_vehicle->SetSpeed(0);
+      // Minimal Speed
+      target->SetSpeed(1.0f);
+      player_vehicle->SetSpeed(1.0f);
       // Same direction (if possible)
       {
         auto* player_rb = player_vehicle->GetRigidBody() | OpenMW::RigidBodyEx::AsRigidBody;
@@ -48,6 +50,7 @@ namespace Extensions::Game::MW05::Effects {
       }
       // Same position
       player_vehicle->GetRigidBody()->SetPosition(target->GetRigidBody()->GetPosition());
+      target->GetRigidBody()->SetLinearVelocity(OpenMW::UMath::Vector3(0.0f, 0.0f, 10.0f));
       return true;
     }
 
