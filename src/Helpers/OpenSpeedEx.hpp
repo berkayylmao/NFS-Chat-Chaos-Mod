@@ -268,7 +268,7 @@ namespace OpenSpeed {
         if (!player) return false;
 
         auto* hud = static_cast<FEngHud*>(player->GetHud());
-        if (!hud || (!hud->pSpeedometer || !hud->pTachometer || !hud->pTachometerDrag)) return false;
+        if (!hud || (!hud->pSpeedometer && !hud->pTachometer && !hud->pTachometerDrag)) return false;
 
         if (!PVehicleEx::ChangePVehicleInto(pvehicle, vehicleKey, customizations).WasSuccessful) return false;
 
