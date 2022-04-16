@@ -248,6 +248,7 @@ namespace Extensions::Game::MW05 {
           mov ecx, eax
           call Modifiers::InputModifier::ParseAction
           popad
+          push edx
           call dword ptr [eax+0x30]
           test al, al
           mov esp, ebp
@@ -400,6 +401,32 @@ namespace Extensions::Game::MW05 {
     }
 
     virtual void Init() const noexcept override {
+      // Expand memory pools
+      {
+        std::uintptr_t addr1 = 0x5F7396;
+        std::uintptr_t addr2 = 0x5F73B2;
+        std::uintptr_t addr3 = 0x665FDC;
+        std::uintptr_t addr4 = 0x8F5790;
+        std::uintptr_t addr5 = 0x8F7EF0;
+
+        MemoryEditor::Get().UnlockMemory(addr1, sizeof(std::uint16_t));
+        MemoryEditor::Get().UnlockMemory(addr2, sizeof(std::uint16_t));
+        MemoryEditor::Get().UnlockMemory(addr3, sizeof(std::uint8_t));
+        MemoryEditor::Get().UnlockMemory(addr4, sizeof(std::uint32_t));
+        MemoryEditor::Get().UnlockMemory(addr5, sizeof(std::uint32_t));
+
+        *reinterpret_cast<std::uint16_t*>(addr1) = 0x2C80;
+        *reinterpret_cast<std::uint16_t*>(addr2) = 0x2C80;
+        *reinterpret_cast<std::uint8_t*>(addr3)  = 0x80;
+        *reinterpret_cast<std::uint32_t*>(addr4) = 0xBE6E0;
+        *reinterpret_cast<std::uint32_t*>(addr5) = 0x1CC00;
+
+        MemoryEditor::Get().LockMemory(addr1);
+        MemoryEditor::Get().LockMemory(addr2);
+        MemoryEditor::Get().LockMemory(addr3);
+        MemoryEditor::Get().LockMemory(addr4);
+        MemoryEditor::Get().LockMemory(addr5);
+      }
       // Car skin fix (for PVehicle spawning during races) (from ExOpts)
       {
         std::uintptr_t addr = 0x75D2B6;
