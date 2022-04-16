@@ -27,14 +27,16 @@
 namespace Extensions::Game::MW05::Effects {
   class TurnDownTheHeat : public IGameEffect {
    protected:
-    virtual bool _specialCooldownConditionSatisfied() const noexcept override { return OpenMW::GameStatusEx::IsInPursuit(); }
+    virtual bool _specialCooldownConditionSatisfied() const noexcept override {
+      auto* ai = OpenMW::AIVehicleEx::GetPlayerInstance() | OpenMW::AIVehicleEx::AsAIVehicleHuman;
+      if (!ai || !ai->GetPursuit()) return false;
+
+      return ai->GetHeat() > 1.0f;
+    }
 
     virtual bool _activate() noexcept override {
-      auto* pvehicle = OpenMW::PVehicleEx::GetPlayerInstance();
-      if (!pvehicle) return false;
-
-      auto* ai = pvehicle->GetAIVehiclePtr() | OpenMW::AIVehicleEx::AsAIVehicleHuman;
-      if (!ai || !ai->GetPursuit()) return false;
+      auto* ai = OpenMW::AIVehicleEx::GetPlayerInstance() | OpenMW::AIVehicleEx::AsAIVehicleHuman;
+      if (!ai) return false;
 
       ai->SetHeat(std::max(1.0f, ai->GetHeat() - 1.0f));
       return true;
