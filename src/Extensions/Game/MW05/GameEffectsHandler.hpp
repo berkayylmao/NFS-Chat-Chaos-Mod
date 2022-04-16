@@ -128,6 +128,8 @@
 #include "Extensions/Game/MW05/Effects/SpinToWin.hpp"
 #include "Extensions/Game/MW05/Effects/GetBackHere.hpp"
 #include "Extensions/Game/MW05/Effects/Blind.hpp"
+#include "Extensions/Game/MW05/Effects/Graviton.hpp"
+#include "Extensions/Game/MW05/Effects/RandomBoxes.hpp"
 
 // Modifiers
 #include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
@@ -389,6 +391,8 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::SpinToWin());
       IGameEffectsHandler::AddEffect(new Effects::GetBackHere());
       IGameEffectsHandler::AddEffect(new Effects::Blind());
+      IGameEffectsHandler::AddEffect(new Effects::Graviton());
+      IGameEffectsHandler::AddEffect(new Effects::RandomBoxes());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),

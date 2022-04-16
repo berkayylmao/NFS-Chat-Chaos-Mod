@@ -185,6 +185,7 @@
       <ConformanceMode>true</ConformanceMode>
       <RuntimeTypeInfo>
       </RuntimeTypeInfo>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -221,6 +222,7 @@
       <RuntimeTypeInfo>
       </RuntimeTypeInfo>
       <AdditionalOptions>/d1reportSingleClassLayoutAIVehicleHuman %(AdditionalOptions)</AdditionalOptions>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -340,6 +342,7 @@
       <ConformanceMode>true</ConformanceMode>
       <RuntimeTypeInfo>
       </RuntimeTypeInfo>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -384,6 +387,7 @@
       <ConformanceMode>true</ConformanceMode>
       <RuntimeTypeInfo>
       </RuntimeTypeInfo>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -579,6 +583,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\FlippedCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\GASGASGAS.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\GigaRubberband.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\Graviton.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\GuessWhosBack.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\HeavyCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\HeavyCops.hpp" />
@@ -618,6 +623,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\PowerPointPresentation.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\RainbowRoad.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\DoABarrelRoll.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\RandomBoxes.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\RCCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\RKO.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\SlotMachine.hpp" />

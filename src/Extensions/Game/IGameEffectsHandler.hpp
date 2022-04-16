@@ -82,27 +82,31 @@ namespace Extensions::Game {
       std::scoped_lock _l(g_MutexQueue);
 
       for (auto it = std::begin(g_ActivateQueue); it != std::end(g_ActivateQueue);) {
-        const auto& effect = *it;
-        if (effect->GetStatus() != IGameEffect::Status::InActivateQueue) {
-          it = g_ActivateQueue.erase(it);
-          continue;
-        }
+        try {
+          const auto& effect = *it;
+          if (effect->GetStatus() != IGameEffect::Status::InActivateQueue) {
+            it = g_ActivateQueue.erase(it);
+            continue;
+          }
 
 #if defined(_DEBUG)
-        OutputDebugStringA(fmt::format("IGameEffectsHandler: Activating '{}'\n", effect->GetName()).c_str());
+          OutputDebugStringA(fmt::format("IGameEffectsHandler: Activating '{}'\n", effect->GetName()).c_str());
 #endif
-        if (effect->Activate()) {
+          if (effect->Activate()) {
 #if defined(_DEBUG)
-          OutputDebugStringA(fmt::format("IGameEffectsHandler: Activated '{}'\n", effect->GetName()).c_str());
+            OutputDebugStringA(fmt::format("IGameEffectsHandler: Activated '{}'\n", effect->GetName()).c_str());
 #endif
-          // Manage cooldowns
-          DecreaseEffectCooldowns();
-          effect->ResetRemainingCooldown();
+            // Manage cooldowns
+            DecreaseEffectCooldowns();
+            effect->ResetRemainingCooldown();
 
-          // Manage lists
-          g_ActiveEffects.push_back(effect);
-          it = g_ActivateQueue.erase(it);
-        } else {
+            // Manage lists
+            g_ActiveEffects.push_back(effect);
+            it = g_ActivateQueue.erase(it);
+          } else {
+            it++;
+          }
+        } catch (...) {
           it++;
         }
       }
@@ -115,23 +119,27 @@ namespace Extensions::Game {
 
       // Do deactive queue
       for (auto it = std::begin(g_DeactivateQueue); it != std::end(g_DeactivateQueue);) {
-        const auto& effect = *it;
-        if (effect->GetStatus() != IGameEffect::Status::InDeactivateQueue) {
-          it = g_ActivateQueue.erase(it);
-          continue;
-        }
+        try {
+          const auto& effect = *it;
+          if (effect->GetStatus() != IGameEffect::Status::InDeactivateQueue) {
+            it = g_ActivateQueue.erase(it);
+            continue;
+          }
 
 #if defined(_DEBUG)
-        OutputDebugStringA(fmt::format("IGameEffectsHandler: Deactivating '{}'\n", effect->GetName()).c_str());
+          OutputDebugStringA(fmt::format("IGameEffectsHandler: Deactivating '{}'\n", effect->GetName()).c_str());
 #endif
-        if (effect->Deactivate()) {
+          if (effect->Deactivate()) {
 #if defined(_DEBUG)
-          OutputDebugStringA(fmt::format("IGameEffectsHandler: Deactivated '{}'\n", effect->GetName()).c_str());
+            OutputDebugStringA(fmt::format("IGameEffectsHandler: Deactivated '{}'\n", effect->GetName()).c_str());
 #endif
-          // Manage lists
-          g_ActiveEffects.erase(std::remove(std::begin(g_ActiveEffects), std::end(g_ActiveEffects), effect), std::end(g_ActiveEffects));
-          it = g_DeactivateQueue.erase(it);
-        } else {
+            // Manage lists
+            g_ActiveEffects.erase(std::remove(std::begin(g_ActiveEffects), std::end(g_ActiveEffects), effect), std::end(g_ActiveEffects));
+            it = g_DeactivateQueue.erase(it);
+          } else {
+            it++;
+          }
+        } catch (...) {
           it++;
         }
       }
@@ -152,13 +160,25 @@ namespace Extensions::Game {
 #pragma region Active effects tick(STATIC)
     static void RunActiveEffects() {
       std::scoped_lock _l(g_MutexQueue);
-      for (const auto& effect : g_ActiveEffects) effect->ActiveTick();
+      for (const auto& effect : g_ActiveEffects) {
+        try {
+          effect->ActiveTick();
+        } catch (...) {
+          ;
+        }
+      }
     }
 #pragma endregion
 #pragma region Modifiers tick(STATIC)
     static void RunModifiers() {
       std::scoped_lock _l(g_MutexQueue);
-      for (const auto& modifier : g_AllModifiers) modifier->OnTick();
+      for (const auto& modifier : g_AllModifiers) {
+        try {
+          modifier->OnTick();
+        } catch (...) {
+          ;
+        }
+      }
     }
 #pragma endregion
 #pragma region Manage g_AllEffects(STATIC)
