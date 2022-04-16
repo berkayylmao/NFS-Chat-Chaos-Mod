@@ -47,14 +47,12 @@ namespace Extensions::Game::MW05::Effects {
       OpenMW::PVehicleEx::ForEachInstance([=](OpenMW::PVehicle* pvehicle) mutable {
         if (pvehicle->GetOwnerHandle() == player_vehicle->GetOwnerHandle()) return;
 
-        auto* target_rb = pvehicle->GetRigidBody() | OpenMW::RigidBodyEx::AsRigidBody;
-        if (!target_rb) return;
-
         position.x -= direction.x * 8.0f;
         position.y -= direction.y * 8.0f;
 
+        auto* target_rb = pvehicle->GetRigidBody();
         target_rb->SetPosition(position);
-        target_rb->SetRotation(rotation);
+        if (auto* p = target_rb | OpenMW::RigidBodyEx::AsRigidBody) p->SetRotation(rotation);
 
         pvehicle->ForceStopOn(OpenMW::IVehicle::ForceStopType::ForceStop);
       });
