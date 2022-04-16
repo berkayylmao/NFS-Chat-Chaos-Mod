@@ -119,6 +119,10 @@
 #include "Extensions/Game/MW05/Effects/BIGCARS.hpp"
 #include "Extensions/Game/MW05/Effects/LimoCars.hpp"
 #include "Extensions/Game/MW05/Effects/FlippedCars.hpp"
+#include "Extensions/Game/MW05/Effects/PepegaTruck.hpp"
+#include "Extensions/Game/MW05/Effects/TeleportToRandomCar.hpp"
+#include "Extensions/Game/MW05/Effects/TeleportToRandomRacer.hpp"
+#include "Extensions/Game/MW05/Effects/TeleportToRandomCop.hpp"
 
 // Modifiers
 #include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
@@ -370,6 +374,10 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::BIGCARS());
       IGameEffectsHandler::AddEffect(new Effects::LimoCars());
       IGameEffectsHandler::AddEffect(new Effects::FlippedCars());
+      IGameEffectsHandler::AddEffect(new Effects::PepegaTruck());
+      IGameEffectsHandler::AddEffect(new Effects::TeleportToRandomCar());
+      IGameEffectsHandler::AddEffect(new Effects::TeleportToRandomCop());
+      IGameEffectsHandler::AddEffect(new Effects::TeleportToRandomRacer());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),

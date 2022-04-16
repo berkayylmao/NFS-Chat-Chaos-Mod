@@ -268,7 +268,7 @@ namespace OpenSpeed {
         if (!player) return false;
 
         auto* hud = static_cast<FEngHud*>(player->GetHud());
-        if (!hud && (!hud->pSpeedometer || !hud->pTachometer || !hud->pTachometerDrag)) return false;
+        if (!hud || (!hud->pSpeedometer || !hud->pTachometer || !hud->pTachometerDrag)) return false;
 
         if (!PVehicleEx::ChangePVehicleInto(pvehicle, vehicleKey, customizations).WasSuccessful) return false;
 
@@ -276,6 +276,45 @@ namespace OpenSpeed {
 
         EAXSound::ReStartRace();
         return true;
+      }
+
+      static std::vector<PVehicle*> GetCopCars() {
+        std::vector<PVehicle*> ret;
+
+        PVehicleEx::ForEachInstance([&](PVehicle* pvehicle) {
+          if (pvehicle->IsPlayer() || pvehicle->IsOwnedByPlayer()) return;
+
+          IVehicleAI* ai = pvehicle->GetAIVehiclePtr() | AIVehicleEx::AsAIVehicleCopCar;
+          if (!ai) ai = pvehicle->GetAIVehiclePtr() | AIVehicleEx::AsAIVehiclePursuit;
+          if (!ai) ai = pvehicle->GetAIVehiclePtr() | AIVehicleEx::AsAIVehicleHelicopter;
+          if (ai) ret.push_back(pvehicle);
+        });
+
+        return ret;
+      }
+      static std::vector<PVehicle*> GetRacerCars() {
+        std::vector<PVehicle*> ret;
+
+        PVehicleEx::ForEachInstance([&](PVehicle* pvehicle) {
+          if (pvehicle->IsPlayer() || pvehicle->IsOwnedByPlayer()) return;
+
+          auto* ai = pvehicle->GetAIVehiclePtr() | AIVehicleEx::AsAIVehicleRacecar;
+          if (ai) ret.push_back(pvehicle);
+        });
+
+        return ret;
+      }
+      static std::vector<PVehicle*> GetTrafficCars() {
+        std::vector<PVehicle*> ret;
+
+        PVehicleEx::ForEachInstance([&](PVehicle* pvehicle) {
+          if (pvehicle->IsPlayer() || pvehicle->IsOwnedByPlayer()) return;
+
+          auto* ai = pvehicle->GetAIVehiclePtr() | AIVehicleEx::AsAIVehicleTraffic;
+          if (ai) ret.push_back(pvehicle);
+        });
+
+        return ret;
       }
     }  // namespace PVehicleEx
 

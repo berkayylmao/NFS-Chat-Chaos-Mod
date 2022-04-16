@@ -25,18 +25,33 @@
 #include "Helpers/OpenSpeedEx.hpp"
 
 namespace Extensions::Game::MW05::Effects {
-  class TeleportToOldBridge : public IGameEffect {
+  class TeleportToRandomRacer : public IGameEffect {
    protected:
-    virtual bool _activate() noexcept override {
-      auto* pvehicle = OpenMW::PVehicleEx::GetPlayerInstance();
-      if (!pvehicle) return false;
+    virtual bool _specialCooldownConditionSatisfied() const noexcept override { return OpenMW::PVehicleEx::GetRacerCars().size() > 0; }
 
-      if (!pvehicle->SetVehicleOnGround(OpenMW::UMath::Vector3(-961.0f, -2646.0f, 210.0f), OpenMW::UMath::Vector3(-0.81f, 0.52f, 0.22f))) return false;
-      pvehicle->SetSpeed(100.0f);
+    virtual bool _activate() noexcept override {
+      auto* player_vehicle = OpenMW::PVehicleEx::GetPlayerInstance();
+      if (!player_vehicle) return false;
+
+      const auto& racers = OpenMW::PVehicleEx::GetRacerCars();
+      if (racers.size() == 0) return false;
+
+      auto* racer = racers[Random::Get().Generate(0, racers.size() - 1)];
+      // No Speed
+      racer->SetSpeed(0);
+      player_vehicle->SetSpeed(0);
+      // Same direction (if possible)
+      {
+        auto* player_rb = player_vehicle->GetRigidBody() | OpenMW::RigidBodyEx::AsRigidBody;
+        auto* racer_rb  = racer->GetRigidBody() | OpenMW::RigidBodyEx::AsRigidBody;
+        if (player_rb && racer_rb) player_rb->SetRotation(racer_rb->GetRotation());
+      }
+      // Same position
+      player_vehicle->GetRigidBody()->SetPosition(racer->GetRigidBody()->GetPosition());
       return true;
     }
 
    public:
-    explicit TeleportToOldBridge() : IGameEffect(91) {}
+    explicit TeleportToRandomRacer() : IGameEffect(98) {}
   };
 }  // namespace Extensions::Game::MW05::Effects

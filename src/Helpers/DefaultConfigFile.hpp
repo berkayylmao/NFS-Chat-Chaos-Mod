@@ -216,5 +216,13 @@ namespace ChaosMod::DefaultConfigFile {
       "\"Name\":\"Limo Cars\",\"Description\":\"Hey, I\'d like a 6-inch sub "
       "please\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[]},{"
       "\"Name\":\"Flipped Cars\",\"Description\":\"Just like the last time Uncle Crock had his truck "
-      "towed\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[19]}]}";
+      "towed\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":3,\"Duration\":60.0,\"IncompatibleWith\":[19]},{"
+      "\"Name\":\"Pepega Truck\",\"Description\":\"Did you think he forgot about "
+      "you?\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":8,\"Duration\":10.0,\"IncompatibleWith\":[]},{\"Name\":"
+      "\"Teleport To Random Car\",\"Description\":\"What\'s he doing over "
+      "there?\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":8,\"Duration\":10.0,\"IncompatibleWith\":[]},{"
+      "\"Name\":\"Teleport To Random Cop\",\"Description\":\"It\'s important to visit your "
+      "elderlies\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":8,\"Duration\":10.0,\"IncompatibleWith\":[]},{"
+      "\"Name\":\"Teleport To Random Racer\",\"Description\":\"Remember: they are what you are racing "
+      "against\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":8,\"Duration\":10.0,\"IncompatibleWith\":[]}]}";
 }

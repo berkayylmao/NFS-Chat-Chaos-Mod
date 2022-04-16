@@ -604,6 +604,18 @@
     <ClInclude Include="src\Extensions\Game\Carbon\Effects\FlippedCars.hpp">
       <Filter>Extensions\Game\Carbon\Effects</Filter>
     </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\PepegaTruck.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\TeleportToRandomCar.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\TeleportToRandomCop.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\TeleportToRandomRacer.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="NFS_ChatChaosMod.licenseheader" />
