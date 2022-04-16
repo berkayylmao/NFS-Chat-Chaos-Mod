@@ -31,9 +31,11 @@ namespace Extensions::Game::MW05::Effects {
 
     virtual bool _activate() noexcept override {
       OpenMW::PVehicleEx::ForEachInstance([](OpenMW::PVehicle* pvehicle) {
-        auto gear_id = pvehicle->mTranny->GetGear();
-        pvehicle->SetDriverStyle(OpenMW::DriverStyle::Drag);
-        pvehicle->mTranny->Shift(gear_id);
+        if (auto* tranny = pvehicle->mTranny) {
+          auto gear_id = tranny->GetGear();
+          pvehicle->SetDriverStyle(OpenMW::DriverStyle::Drag);
+          pvehicle->mTranny->Shift(gear_id);
+        }
       });
 
       return true;
