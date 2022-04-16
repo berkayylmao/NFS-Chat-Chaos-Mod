@@ -232,5 +232,7 @@ namespace ChaosMod::DefaultConfigFile {
       "\"Name\":\"Spin To Win\",\"Description\":\"Makes all cars spin "
       "around\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":8,\"Duration\":15.0,\"IncompatibleWith\":[13,14,44]},"
       "{\"Name\":\"Get Back Here\",\"Description\":\"Pulls the player car "
-      "backwards\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":8,\"Duration\":10.0,\"IncompatibleWith\":[]}]}";
+      "backwards\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":8,\"Duration\":10.0,\"IncompatibleWith\":[]},{"
+      "\"Name\":\"Blind\",\"Description\":\"I can\'t see "
+      "anything\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":8,\"Duration\":5.0,\"IncompatibleWith\":[73]}]}";
 }
