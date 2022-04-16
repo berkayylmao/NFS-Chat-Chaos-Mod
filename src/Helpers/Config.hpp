@@ -66,7 +66,7 @@ class Config {
     }
   }
 
-  rapidjson::Value& operator[](const char* const szConfigName) { return mConfigDocument[szConfigName]; }
+  rapidjson::Value& operator[](const char* szConfigName) { return mConfigDocument[szConfigName]; }
 
  private:
   void Load() {
