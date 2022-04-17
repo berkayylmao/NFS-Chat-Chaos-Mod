@@ -293,6 +293,7 @@ namespace Extensions::Game::MW05::Effects {
    protected:
     virtual bool _activate() noexcept override {
       mBoltPowerUp.ClearList();
+      XInputWrapper::Get().ClearData();
       return true;
     }
 

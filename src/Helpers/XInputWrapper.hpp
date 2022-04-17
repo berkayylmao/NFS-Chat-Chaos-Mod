@@ -82,19 +82,23 @@ class XInputWrapper {
     return false;
   }
 
+  void ResetData() {
+    ZeroMemory(&mControllerState, sizeof(XINPUT_STATE));
+    ZeroMemory(&mLeftSick, sizeof(StickInfo));
+    ZeroMemory(&mRightSick, sizeof(StickInfo));
+    mLeftTrigger  = 0.0f;
+    mRightTrigger = 0.0f;
+  }
   void Refresh() {
     while (mKeepRunningUpdater) {
       std::this_thread::sleep_for(10ms);
-
-      // Reset old data
-      ZeroMemory(&mControllerState, sizeof(XINPUT_STATE));
-      ZeroMemory(&mLeftSick, sizeof(StickInfo));
-      ZeroMemory(&mRightSick, sizeof(StickInfo));
-      mLeftTrigger  = 0.0f;
-      mRightTrigger = 0.0f;
-
       // Ensure connection
-      if (!CheckPort() || mMainControllerPort == -1) continue;
+      if (!CheckPort() || mMainControllerPort == -1) {
+        std::this_thread::sleep_for(2s);
+        continue;
+      }
+      // Reset
+      ResetData();
 
       // Left stick
       {
@@ -151,6 +155,11 @@ class XInputWrapper {
   }
 
  public:
+  void ClearData() {
+    ResetData();
+    mKeyStrokes.clear();
+  }
+
   bool                IsConnected() const { return mMainControllerPort != -1; }
   const XINPUT_STATE& GetState() const { return mControllerState; }
   const StickInfo&    GetLeftStick() const { return mLeftSick; }
