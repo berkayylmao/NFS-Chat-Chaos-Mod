@@ -34,10 +34,8 @@ namespace Extensions::Game::MW05::Effects {
     virtual bool _activate() noexcept override {
       OpenMW::PVehicleEx::ForEachInstance([](OpenMW::PVehicle* pvehicle) {
         if (pvehicle->IsPlayer() && pvehicle->IsOwnedByPlayer()) return;
-        if (pvehicle->mDamage)
-          pvehicle->mDamage->Destroy();
-        else
-          OpenMW::Game::BlowEngine(pvehicle);
+        if (pvehicle->mDamage) pvehicle->mDamage->Destroy();
+        OpenMW::Game::BlowEngine(pvehicle);
       });
 
       FMODWrapper::Get().PlaySoundFX(FMODWrapper::SoundFX::IfYouCantBeatThemKillThem);
