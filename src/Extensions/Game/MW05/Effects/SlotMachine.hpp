@@ -29,7 +29,9 @@ namespace Extensions::Game::MW05::Effects {
     std::vector<std::pair<OpenMW::Attrib::StringKey, OpenMW::CarType>> mAvailableCarsMap;
 
    protected:
-    virtual bool _specialCooldownConditionSatisfied() const noexcept override { return !OpenMW::GameStatusEx::IsInPursuit(); }
+    virtual bool _specialCooldownConditionSatisfied() const noexcept override {
+      return OpenMW::GameStatusEx::HasFinishedPrologue() && !OpenMW::GameStatusEx::IsInPursuit();
+    }
 
     virtual bool _activate() noexcept override {
       if (mAvailableCarsMap.empty()) {
