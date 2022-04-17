@@ -164,7 +164,7 @@ namespace Extensions::D3D9::Overlay {
     static inline void GenarateEffectsToBeVoted() {
       sEffectsBeingVoted.clear();
 
-      const auto& effects = Game::IGameEffectsHandler::GetCompatibleRandomEffects(3);
+      const auto& effects = Game::IGameEffectsHandler::GetCompatibleRandomEffects(4);
       for (const auto& effect : effects) sEffectsBeingVoted[effect] = 0;
     }
 
@@ -173,7 +173,7 @@ namespace Extensions::D3D9::Overlay {
 
     // Vote bar draw call
     static inline void DrawVoteBars(const ImGuiViewport* viewport) {
-      if (sEffectsBeingVoted.size() != 3) return;
+      if (sEffectsBeingVoted.size() != 4) return;
 
       // Vote bar colours
       static const ImU32 vote_bar_colour    = IM_COL32(255, 80, 80, 100);
@@ -192,13 +192,13 @@ namespace Extensions::D3D9::Overlay {
       ImGui::WithStyle _s6(ImGuiStyleVar_Alpha, 1.0f);
 
       ImGui::SetNextWindowBgAlpha(0.0f);
-      ImGui::SetNextWindowSize(ImVec2(viewport->Size.x, sVoteBarRect.GetBottom() * 3.0f));
+      ImGui::SetNextWindowSize(ImVec2(viewport->Size.x, sVoteBarRect.GetBottom() * 4.0f));
       ImGui::SetNextWindowPos(viewport->Pos);
       ImGui::Begin("##VoteBars", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_NoNav);
       {
         const ImVec2 cursor = ImGui::GetCursorScreenPos();
 
-        for (std::size_t i = 0; i < 3; i++) {
+        for (std::size_t i = 0; i < 4; i++) {
           format_array.fill(NULL);
 
           const auto& it                 = std::next(std::cbegin(sEffectsBeingVoted), i);
@@ -301,7 +301,7 @@ namespace Extensions::D3D9::Overlay {
       ImGui::WithStyle _s6(ImGuiStyleVar_WindowRounding, 5.0f);
 
       ImGui::SetNextWindowBgAlpha(0.4f);
-      ImGui::SetNextWindowPos(viewport->Pos + ImVec2(sVoteBarRect.x, sVoteBarRect.GetBottom() * 2.0f));
+      ImGui::SetNextWindowPos(viewport->Pos + ImVec2(sVoteBarRect.x, sVoteBarRect.GetBottom() * 2.5f));
       if (ImGui::Begin("##ActiveEffectsDisplay", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_AlwaysAutoResize)) {
         const auto time_now = std::chrono::steady_clock::now();
 
@@ -413,7 +413,7 @@ namespace Extensions::D3D9::Overlay {
       if (result.ec != std::errc()) return;
 
       // Is the parsed vote id within range?
-      if (vote_idx < 1 || vote_idx > 3) return;
+      if (vote_idx < 1 || vote_idx > 4) return;
 
       // Align vote id
       vote_idx--;
