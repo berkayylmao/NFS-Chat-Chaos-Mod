@@ -81,7 +81,7 @@ namespace Extensions::Game::MW05::Effects {
       details::WarpDrive::V::sFactor = 1.0f;
       if (speed > 20.0f) {
         details::WarpDrive::H::sFactor /= std::min(10.0f, (speed / 180.0f) * 10.0f);
-        details::WarpDrive::V::sFactor *= std::min(2.0f, std::max(1.0f, (speed / 180.0f) * 5.0f));
+        details::WarpDrive::V::sFactor *= std::min(1.75f, std::max(1.0f, (speed / 180.0f) * 5.0f));
       }
     }
 
