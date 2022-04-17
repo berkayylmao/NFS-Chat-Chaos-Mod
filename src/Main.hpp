@@ -61,14 +61,32 @@ namespace ChaosMod {
           break;
         case OpenSpeed::SpeedGame::MW05:
           g_GameEffectsHandler = std::make_unique<Extensions::Game::MW05::GameEffectsHandler>();
+          // Warnings
+          if (::GetModuleHandleA("RockportEd.asi")) Extensions::D3D9::details::sWarnings.push_back("RockportEd (scripts/RockportEd.asi)");
+          if (::GetModuleHandleA("NFSMWExtraOptions.asi"))
+            Extensions::D3D9::details::sWarnings.push_back("NFS Most Wanted Extra Options (scripts/NFSMWExtraOptions.asi)");
+          if (::GetModuleHandleA("NFSMWUnlimiter.asi"))
+            Extensions::D3D9::details::sWarnings.push_back("NFS Most Wanted Unlimiter (scripts/NFSMWUnlimiter.asi)");
+          if (::GetModuleHandleA("ZMenuMW.asi")) Extensions::D3D9::details::sWarnings.push_back("ZMenu Most Wanted (scripts/ZMenuMW.asi)");
+          if (::GetModuleHandleA("ZPatchMW.asi")) Extensions::D3D9::details::sWarnings.push_back("ZPatch Most Wanted (scripts/ZPatchMW.asi)");
+          if (::GetModuleHandleA("PlakGraphics.asi")) Extensions::D3D9::details::sWarnings.push_back("PlakGraphics (PlakGraphics.asi)");
           break;
         case OpenSpeed::SpeedGame::Carbon:
           g_GameEffectsHandler = std::make_unique<Extensions::Game::Carbon::GameEffectsHandler>();
+          // Warnings
+          if (::GetModuleHandleA("PalmontEd.asi")) Extensions::D3D9::details::sWarnings.push_back("PalmontEd (scripts/PalmontEd.asi)");
+          if (::GetModuleHandleA("NFSCExtraOptions.asi"))
+            Extensions::D3D9::details::sWarnings.push_back("NFS Carbon Extra Options (scripts/NFSCExtraOptions.asi)");
+          if (::GetModuleHandleA("NFSCUnlimiter.asi")) Extensions::D3D9::details::sWarnings.push_back("NFS Carbon Unlimiter (scripts/NFSCUnlimiter.asi)");
+          if (::GetModuleHandleA("ZMenuCarbon.asi")) Extensions::D3D9::details::sWarnings.push_back("ZMenu Carbon (scripts/ZMenuCarbon.asi)");
+          if (::GetModuleHandleA("ZPatchCarbon.asi")) Extensions::D3D9::details::sWarnings.push_back("ZPatch Carbon (scripts/ZPatchCarbon.asi)");
           break;
         default:
           // No compatible game was found! Shutting down mod.
           return;
       }
+      // Warning
+      if (::GetModuleHandleA("CustomHud.asi")) Extensions::D3D9::details::sWarnings.push_back("Custom HUD (scripts/CustomHud.asi)");
 
       g_GameEffectsHandler->Init();
       prepdebug();

@@ -48,7 +48,8 @@ namespace Extensions::D3D9 {
 
     /// FIELDS
 
-    static bool sIsMenuVisible = true;
+    static std::vector<std::string> sWarnings;
+    static bool                     sIsMenuVisible = true;
 
     // Logo Loop
     static std::uint8_t       sLogoFrame = 0;
@@ -71,6 +72,25 @@ namespace Extensions::D3D9 {
       Overlay::DrawEffectsDisplay(viewport);
 
       if (sIsMenuVisible) {
+        // Warnings
+        if (sWarnings.size() > 0) {
+          ImGui::WithStyle _s1(ImGuiStyleVar_WindowPadding, ImVec2(5.0f, 5.0f));
+          ImGui::WithStyle _s2(ImGuiStyleVar_FramePadding, ImVec2(0.0f, 0.0f));
+          ImGui::WithStyle _s3(ImGuiStyleVar_WindowMinSize, ImVec2(0.0f, 0.0f));
+          ImGui::WithStyle _s4(ImGuiStyleVar_ItemSpacing, ImVec2(0.0f, 0.0f));
+          ImGui::WithStyle _s5(ImGuiStyleVar_ItemInnerSpacing, ImVec2(0.0f, 0.0f));
+          ImGui::WithStyle _s6(ImGuiStyleVar_WindowRounding, 5.0f);
+
+          ImGui::SetNextWindowBgAlpha(1.0f);
+          ImGui::SetNextWindowPos(viewport->Pos + viewport->Size * 0.5f, ImGuiCond_Always, ImVec2(0.5f, 0.5f));
+          if (ImGui::Begin("##WarningsDisplay", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_AlwaysAutoResize)) {
+            ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), "Attention! You are using some mods that can crash the game if used with Chaos Mod!");
+            ImGui::TextUnformatted("If you experience any issues, bugs or crashes, please remove these mods first before reporting!");
+            for (const auto& warning : sWarnings) ImGui::BulletText(warning.c_str());
+          }
+          ImGui::End();
+        }
+
         ImGui::SetNextWindowPos(viewport->Pos + ImVec2(8.0f, 8.0f), ImGuiCond_Once);
         if (ImGui::Begin(CONST_UI_TITLE, &sIsMenuVisible, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoCollapse)) {
           if (ImGui::BeginTabBar("##NFS_CHAT_CHAOS_TABBAR", ImGuiTabBarFlags_FittingPolicyResizeDown)) {
@@ -163,7 +183,6 @@ namespace Extensions::D3D9 {
     static LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
       if (ImGui_ImplWin32_WndProcHandler(hWnd, uMsg, wParam, lParam)) return TRUE;
       if ((uMsg == WM_KEYDOWN || uMsg == WM_KEYUP) && ChaosMod::g_GameWindowLostFocus) return TRUE;
-
       if (uMsg == WM_KEYUP && wParam == VK_INSERT && (!ImGui::GetIO().WantCaptureKeyboard || !ImGui::GetIO().WantTextInput)) sIsMenuVisible = !sIsMenuVisible;
 
       return MirrorHook::WndProc::g_constIgnoreThisReturn;
