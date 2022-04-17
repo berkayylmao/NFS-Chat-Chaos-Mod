@@ -213,7 +213,6 @@ namespace OpenSpeed {
 
         return ret;
       }
-
       static Physics::Upgrades::Package GetRandomLevelPackage(const Attrib::Gen::pvehicle& instance) {
         Physics::Upgrades::Package ret;
         // Tires
@@ -380,7 +379,16 @@ namespace OpenSpeed {
       }
     }  // namespace TimeOfDayLightingEx
   }    // namespace MW05
+
   namespace Carbon {
+    namespace EAXSound {
+      static inline void** g_pEAXSound = reinterpret_cast<void**>(0xA8BA38);
+
+      static void ReStartRace(bool is321 = false) {
+        if (*g_pEAXSound) reinterpret_cast<void(__thiscall*)(void*, bool)>(0x516910)(*g_pEAXSound, is321);
+      }
+    }  // namespace EAXSound
+
     namespace GameStatusEx {
       namespace details {
         static bool                  sInPursuit;
@@ -471,13 +479,54 @@ namespace OpenSpeed {
         return std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - details::sRoamingTP).count();
       }
     }  // namespace GameStatusEx
-    namespace EAXSound {
-      static inline void** g_pEAXSound = reinterpret_cast<void**>(0xA8BA38);
 
-      static void ReStartRace(bool is321 = false) {
-        if (*g_pEAXSound) reinterpret_cast<void(__thiscall*)(void*, bool)>(0x516910)(*g_pEAXSound, is321);
+    namespace PhysicsEx {
+      static Physics::Upgrades::Package GetMaxLevelPackage(const Attrib::Gen::pvehicle& instance) {
+        Physics::Upgrades::Package ret;
+        // Tires
+        ret.mTires.mLevel = Physics::Upgrades::Package::GetMaxLevel(instance, Physics::Upgrades::Type::Tires);
+        // Brakes
+        ret.mBrakes.mLevel = Physics::Upgrades::Package::GetMaxLevel(instance, Physics::Upgrades::Type::Brakes);
+        // Chassis
+        ret.mChassis.mLevel = Physics::Upgrades::Package::GetMaxLevel(instance, Physics::Upgrades::Type::Chassis);
+        // Transmission
+        ret.mTransmission.mLevel = Physics::Upgrades::Package::GetMaxLevel(instance, Physics::Upgrades::Type::Transmission);
+        // Engine
+        ret.mEngine.mLevel = Physics::Upgrades::Package::GetMaxLevel(instance, Physics::Upgrades::Type::Engine);
+        // Induction
+        ret.mInduction.mLevel = Physics::Upgrades::Package::GetMaxLevel(instance, Physics::Upgrades::Type::Induction);
+        // NOS
+        ret.mNOS.mLevel = Physics::Upgrades::Package::GetMaxLevel(instance, Physics::Upgrades::Type::NOS);
+
+        return ret;
       }
-    }  // namespace EAXSound
+      static Physics::Upgrades::Package GetRandomLevelPackage(const Attrib::Gen::pvehicle& instance) {
+        Physics::Upgrades::Package ret;
+        // Tires
+        ret.mTires.mLevel = static_cast<eCareerUpgradeLevels>(
+            Random::Get().Generate(0, static_cast<std::int32_t>(Physics::Upgrades::Package::GetMaxLevel(instance, Physics::Upgrades::Type::Tires))));
+        // Brakes
+        ret.mBrakes.mLevel = static_cast<eCareerUpgradeLevels>(
+            Random::Get().Generate(0, static_cast<std::int32_t>(Physics::Upgrades::Package::GetMaxLevel(instance, Physics::Upgrades::Type::Brakes))));
+        // Chassis
+        ret.mChassis.mLevel = static_cast<eCareerUpgradeLevels>(
+            Random::Get().Generate(0, static_cast<std::int32_t>(Physics::Upgrades::Package::GetMaxLevel(instance, Physics::Upgrades::Type::Chassis))));
+        // Transmission
+        ret.mTransmission.mLevel = static_cast<eCareerUpgradeLevels>(
+            Random::Get().Generate(0, static_cast<std::int32_t>(Physics::Upgrades::Package::GetMaxLevel(instance, Physics::Upgrades::Type::Transmission))));
+        // Engine
+        ret.mEngine.mLevel = static_cast<eCareerUpgradeLevels>(
+            Random::Get().Generate(0, static_cast<std::int32_t>(Physics::Upgrades::Package::GetMaxLevel(instance, Physics::Upgrades::Type::Engine))));
+        // Induction
+        ret.mInduction.mLevel = static_cast<eCareerUpgradeLevels>(
+            Random::Get().Generate(0, static_cast<std::int32_t>(Physics::Upgrades::Package::GetMaxLevel(instance, Physics::Upgrades::Type::Induction))));
+        // NOS
+        ret.mNOS.mLevel = static_cast<eCareerUpgradeLevels>(
+            Random::Get().Generate(0, static_cast<std::int32_t>(Physics::Upgrades::Package::GetMaxLevel(instance, Physics::Upgrades::Type::NOS))));
+
+        return ret;
+      }
+    }  // namespace PhysicsEx
 
     namespace PVehicleEx {
       static bool ChangePlayerVehicle(Attrib::Gen::pvehicle& instance, VehicleCustomizations* customizations) {
@@ -498,6 +547,45 @@ namespace OpenSpeed {
         if (!instance.mCollection) return false;
 
         return ChangePlayerVehicle(instance, customizations);
+      }
+
+      static std::vector<PVehicle*> GetCopCars() {
+        std::vector<PVehicle*> ret;
+
+        PVehicleEx::ForEachInstance([&](PVehicle* pvehicle) {
+          if (pvehicle->IsPlayer() || pvehicle->IsOwnedByPlayer()) return;
+
+          IVehicleAI* ai = pvehicle->GetAIVehiclePtr() | AIVehicleEx::AsAIVehicleCopCar;
+          if (!ai) ai = pvehicle->GetAIVehiclePtr() | AIVehicleEx::AsAIVehiclePursuit;
+          if (!ai) ai = pvehicle->GetAIVehiclePtr() | AIVehicleEx::AsAIVehicleGhost;
+          if (ai) ret.push_back(pvehicle);
+        });
+
+        return ret;
+      }
+      static std::vector<PVehicle*> GetRacerCars() {
+        std::vector<PVehicle*> ret;
+
+        PVehicleEx::ForEachInstance([&](PVehicle* pvehicle) {
+          if (pvehicle->IsPlayer() || pvehicle->IsOwnedByPlayer()) return;
+
+          auto* ai = pvehicle->GetAIVehiclePtr() | AIVehicleEx::AsAIVehicleRacecar;
+          if (ai) ret.push_back(pvehicle);
+        });
+
+        return ret;
+      }
+      static std::vector<PVehicle*> GetTrafficCars() {
+        std::vector<PVehicle*> ret;
+
+        PVehicleEx::ForEachInstance([&](PVehicle* pvehicle) {
+          if (pvehicle->IsPlayer() || pvehicle->IsOwnedByPlayer()) return;
+
+          auto* ai = pvehicle->GetAIVehiclePtr() | AIVehicleEx::AsAIVehicleTraffic;
+          if (ai) ret.push_back(pvehicle);
+        });
+
+        return ret;
       }
     }  // namespace PVehicleEx
   }    // namespace Carbon
