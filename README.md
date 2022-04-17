@@ -55,7 +55,26 @@ Simple! Click on the `Twitch` tab and enter the necessary information.
 </p>
 
 ## My game's crashing!
-Great! Create an issue with the `.log` and `.dmp` files from the `CrashDumps` folder. (Best to archive them into a `.zip` file or similar)
+Great! Create an issue with the `.log` and `.dmp` files from the `CrashDumps` folder. (Best to archive them into a `.zip` file or similar) **Please check the list before reporting!**
+
+## Possible incompatibilities
+Some mods don't like Chaos. Here's a list:
+
+NFS Most Wanted:
+- RockportEd
+- NFSMW Extra Options
+- NFSMW Unlimiter
+- ZMenuMW
+- ZPatchMW
+
+NFS Carbon:
+- PalmontEd
+- NFSC Extra Options
+- NFSC Unlimiter
+- ZMenuCarbon
+- ZPatchCarbon
+
+**!!Not compatible with CustomHUD!!**
 
 ## I have a suggestion for an effect!
 Also great! Feel free to create an issue with that as well, best to explain what it should do in detail.
