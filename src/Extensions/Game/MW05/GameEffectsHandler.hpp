@@ -428,24 +428,41 @@ namespace Extensions::Game::MW05 {
         std::uintptr_t addr3 = 0x665FDC;
         std::uintptr_t addr4 = 0x8F5790;
         std::uintptr_t addr5 = 0x8F7EF0;
+        // Aero_ ->
+        std::uintptr_t addr6 = 0x5009D2;
+        std::uintptr_t addr7 = 0x5009DC;
+        std::uintptr_t addr8 = 0x500A01;
+        std::uintptr_t addr9 = 0x500A12;
 
         MemoryEditor::Get().UnlockMemory(addr1, sizeof(std::uint16_t));
         MemoryEditor::Get().UnlockMemory(addr2, sizeof(std::uint16_t));
         MemoryEditor::Get().UnlockMemory(addr3, sizeof(std::uint8_t));
         MemoryEditor::Get().UnlockMemory(addr4, sizeof(std::uint32_t));
         MemoryEditor::Get().UnlockMemory(addr5, sizeof(std::uint32_t));
+        MemoryEditor::Get().UnlockMemory(addr6, sizeof(std::uint32_t));
+        MemoryEditor::Get().UnlockMemory(addr7, sizeof(std::uint32_t));
+        MemoryEditor::Get().UnlockMemory(addr8, sizeof(std::uint32_t));
+        MemoryEditor::Get().UnlockMemory(addr9, sizeof(std::uint32_t));
 
         *reinterpret_cast<std::uint16_t*>(addr1) = 0x2C80;
         *reinterpret_cast<std::uint16_t*>(addr2) = 0x2C80;
         *reinterpret_cast<std::uint8_t*>(addr3)  = 0x80;
         *reinterpret_cast<std::uint32_t*>(addr4) = 0xBE6E0;
         *reinterpret_cast<std::uint32_t*>(addr5) = 0x1CC00;
+        *reinterpret_cast<std::uint32_t*>(addr6) = 0xFA000;
+        *reinterpret_cast<std::uint32_t*>(addr7) = 0xFA000;
+        *reinterpret_cast<std::uint32_t*>(addr8) = 0xFA000;
+        *reinterpret_cast<std::uint32_t*>(addr9) = 0xFA000;
 
         MemoryEditor::Get().LockMemory(addr1);
         MemoryEditor::Get().LockMemory(addr2);
         MemoryEditor::Get().LockMemory(addr3);
         MemoryEditor::Get().LockMemory(addr4);
         MemoryEditor::Get().LockMemory(addr5);
+        MemoryEditor::Get().LockMemory(addr6);
+        MemoryEditor::Get().LockMemory(addr7);
+        MemoryEditor::Get().LockMemory(addr8);
+        MemoryEditor::Get().LockMemory(addr9);
       }
       // Car skin fix (for PVehicle spawning during races) (from ExOpts)
       {
