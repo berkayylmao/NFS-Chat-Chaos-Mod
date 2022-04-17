@@ -259,6 +259,7 @@
       <ConformanceMode>true</ConformanceMode>
       <RuntimeTypeInfo>
       </RuntimeTypeInfo>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -297,6 +298,7 @@
       <ConformanceMode>true</ConformanceMode>
       <RuntimeTypeInfo>
       </RuntimeTypeInfo>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -431,6 +433,7 @@
       <ConformanceMode>true</ConformanceMode>
       <RuntimeTypeInfo>
       </RuntimeTypeInfo>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -474,6 +477,7 @@
       <ConformanceMode>true</ConformanceMode>
       <RuntimeTypeInfo>
       </RuntimeTypeInfo>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

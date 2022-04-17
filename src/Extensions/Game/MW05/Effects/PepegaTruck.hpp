@@ -43,7 +43,7 @@ namespace Extensions::Game::MW05::Effects {
       direction.y *= -1.0f;
 
       // Create semi
-      mSpawned = OpenMW::PVehicle::Construct(OpenMW::VehicleParams(OpenMW::DriverClass::Cop, OpenMW::Attrib::StringToKey("semilog"), direction, position,
+      mSpawned = OpenMW::PVehicle::Construct(OpenMW::VehicleParams(OpenMW::DriverClass::Traffic, OpenMW::Attrib::StringToKey("semilog"), direction, position,
                                                                    nullptr, OpenMW::eVehicleParamFlags::SnapToGround));
       if (!mSpawned) return false;
       if (!mSpawned->SetVehicleOnGround(position, direction)) {

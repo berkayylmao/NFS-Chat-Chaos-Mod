@@ -32,7 +32,7 @@ namespace Extensions::Game::MW05::Effects {
       if (!pvehicle) return false;
 
       // Invert speed
-      pvehicle->SetSpeed(-pvehicle->GetSpeed());
+      pvehicle->SetSpeed(std::min(-20.0f, -pvehicle->GetSpeed()));
       return true;
     }
 
