@@ -37,7 +37,7 @@ namespace Extensions::Game::MW05::Effects {
       if (!rb) return false;
 
       mSavedCollisionMass = rb->mCollisionMass;
-      rb->SetCollisionMass(FLT_MAX);
+      rb->SetCollisionMass(10000.0f);
       return true;
     }
     virtual bool _deactivate() noexcept override {

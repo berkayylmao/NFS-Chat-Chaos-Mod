@@ -65,6 +65,7 @@ namespace Extensions::Game::MW05::Effects {
           available_ids.push_back(i);
       }
       if (!mPlayerRacerInfo) return false;
+      if (available_ids.size() == 0) return false;
 
       // Shuffle available ids
       std::shuffle(available_ids.begin(), available_ids.end(), Random::Get().GetGenerator());
