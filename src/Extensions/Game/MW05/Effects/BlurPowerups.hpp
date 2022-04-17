@@ -87,7 +87,7 @@ namespace Extensions::Game::MW05::Effects {
         auto* pvehicle = OpenMW::PVehicleEx::GetPlayerInstance();
         if (!pvehicle) return false;
 
-        auto                   position = pvehicle->GetPosition();
+        OpenMW::UMath::Vector3 position = pvehicle->GetPosition();
         OpenMW::UMath::Vector3 direction;
         pvehicle->GetRigidBody()->GetForwardVector(direction);
 
@@ -276,6 +276,18 @@ namespace Extensions::Game::MW05::Effects {
       mBoostPowerUp.DoCleanUp();
     }
 
+    bool hasRequestedSwitchPowerup() {
+      return ImGui::IsKeyReleased(ImGuiKey_RightArrow) || ImGui::IsKeyReleased(ImGuiKey_Keypad9) ||
+             XInputWrapper::Get().GetKeyState(XINPUT_GAMEPAD_RIGHT_SHOULDER) == XInputWrapper::KeyStatus::Up;
+    }
+    bool hasRequestedActivatePowerup() {
+      return ImGui::IsKeyReleased(ImGuiKey_UpArrow) || ImGui::IsKeyReleased(ImGuiKey_Keypad8) ||
+             XInputWrapper::Get().GetKeyState(XINPUT_GAMEPAD_A) == XInputWrapper::KeyStatus::Up;
+    }
+    bool hasRequestedActivatePowerupBackward() {
+      return ImGui::IsKeyReleased(ImGuiKey_DownArrow) || ImGui::IsKeyReleased(ImGuiKey_Keypad5) || XInputWrapper::Get().GetLeftStick().y < -0.8f;
+    }
+
     ImVec2 mPowerupIconSize;
 
    protected:
@@ -303,24 +315,21 @@ namespace Extensions::Game::MW05::Effects {
 
       active_powerup->OnTick();
 
-      const auto& xinput = XInputWrapper::Get();
-      if (xinput.IsConnected()) {
-        if (xinput.GetKeyState(XINPUT_GAMEPAD_A) == XInputWrapper::KeyStatus::Up) active_powerup->OnActivate();
-        if (xinput.GetLeftStick().y < -0.8f) active_powerup->OnActivateBackwards();
-        if (xinput.GetKeyState(XINPUT_GAMEPAD_RIGHT_SHOULDER) == XInputWrapper::KeyStatus::Up) {
-          switch (mActivePowerUp) {
-            case PowerUpType::Bolt:
-              mActivePowerUp = PowerUpType::Boost;
-              break;
-            case PowerUpType::Boost:
-              mActivePowerUp = PowerUpType::Barge;
-              break;
-            case PowerUpType::Barge:
-              mActivePowerUp = PowerUpType::Bolt;
-              break;
-          }
-          FMODWrapper::Get().PlaySoundFX(FMODWrapper::SoundFX::BlurPowerUpSwitch);
+      if (hasRequestedActivatePowerup()) active_powerup->OnActivate();
+      if (hasRequestedActivatePowerupBackward()) active_powerup->OnActivateBackwards();
+      if (hasRequestedSwitchPowerup()) {
+        switch (mActivePowerUp) {
+          case PowerUpType::Bolt:
+            mActivePowerUp = PowerUpType::Boost;
+            break;
+          case PowerUpType::Boost:
+            mActivePowerUp = PowerUpType::Barge;
+            break;
+          case PowerUpType::Barge:
+            mActivePowerUp = PowerUpType::Bolt;
+            break;
         }
+        FMODWrapper::Get().PlaySoundFX(FMODWrapper::SoundFX::BlurPowerUpSwitch);
       }
     }
 
@@ -337,7 +346,7 @@ namespace Extensions::Game::MW05::Effects {
           //                        CENTER OF SCREEN     -        HALF OF IMAGE        -         PADDING        -  IMAGE
           ImGui::SetCursorPosX((viewport->Size.x / 2.0f) - (mPowerupIconSize.x / 2.0f) - (ImGui::GetFontSize()) - mPowerupIconSize.x);
           ImGui::Image(mBoltPowerUp.mIconTexture, mPowerupIconSize, ImVec2(0.0f, 0.0f), ImVec2(1.0f, 1.0f),
-                       ImVec4(1.0f, 1.0f, 1.0f, mActivePowerUp == PowerUpType::Bolt ? 1.0f : 0.33f));
+                       ImVec4(1.0f, 1.0f, 1.0f, mActivePowerUp == PowerUpType::Bolt ? (mBoltPowerUp.mActivationLocked ? 0.8f : 1.0f) : 0.25f));
         }
         // Boost
         {
@@ -345,7 +354,7 @@ namespace Extensions::Game::MW05::Effects {
           //                        CENTER OF SCREEN     -        HALF OF IMAGE
           ImGui::SetCursorPosX((viewport->Size.x / 2.0f) - (mPowerupIconSize.x / 2.0f));
           ImGui::Image(mBoostPowerUp.mIconTexture, mPowerupIconSize, ImVec2(0.0f, 0.0f), ImVec2(1.0f, 1.0f),
-                       ImVec4(1.0f, 1.0f, 1.0f, mActivePowerUp == PowerUpType::Boost ? 1.0f : 0.33f));
+                       ImVec4(1.0f, 1.0f, 1.0f, mActivePowerUp == PowerUpType::Boost ? (mBoostPowerUp.mActivationLocked ? 0.8f : 1.0f) : 0.25f));
         }
         // Barge
         {
@@ -353,7 +362,7 @@ namespace Extensions::Game::MW05::Effects {
           //                        CENTER OF SCREEN     +        HALF OF IMAGE        +         PADDING
           ImGui::SetCursorPosX((viewport->Size.x / 2.0f) + (mPowerupIconSize.x / 2.0f) + (ImGui::GetFontSize()));
           ImGui::Image(mBargePowerUp.mIconTexture, mPowerupIconSize, ImVec2(0.0f, 0.0f), ImVec2(1.0f, 1.0f),
-                       ImVec4(1.0f, 1.0f, 1.0f, mActivePowerUp == PowerUpType::Barge ? 1.0f : 0.33f));
+                       ImVec4(1.0f, 1.0f, 1.0f, mActivePowerUp == PowerUpType::Barge ? (mBargePowerUp.mActivationLocked ? 0.8f : 1.0f) : 0.25f));
         }
       }
       ImGui::End();

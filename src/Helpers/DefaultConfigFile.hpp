@@ -154,8 +154,9 @@ namespace ChaosMod::DefaultConfigFile {
       "cars\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":15,\"Duration\":30.0,\"IncompatibleWith\":[57,58,61,75,"
       "76]},{\"Name\":\"The PSP Experience\",\"Description\":\"COMPRESS THOSE "
       "PIXELS!\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":9,\"Duration\":30.0,\"IncompatibleWith\":[51]},{"
-      "\"Name\":\"Blur Powerups\",\"Description\":\"The true arcade "
-      "experience\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":20,\"Duration\":60.0,\"IncompatibleWith\":[]},{"
+      "\"Name\":\"Blur Powerups\",\"Description\":\"The true arcade experience\\nSwitch powerup:\\n- Right arrow\\n- NumPad 9\\n- Gamepad R1\\nActivate "
+      "powerup:\\n- Up arrow\\n- NumPad 8\\n- Gamepad A/X\\nReverse activate powerup:\\n- Down arrow\\n- NumPad 5\\n- Gamepad left stick pull "
+      "down\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":20,\"Duration\":60.0,\"IncompatibleWith\":[]},{"
       "\"Name\":\"Enjoy The Scenery\",\"Description\":\"It sure is lovely this time of the "
       "year\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":7,\"Duration\":30.0,\"IncompatibleWith\":[]},{\"Name\":"
       "\"Insane Traffic\",\"Description\":\"Years of illegal street racing have made people of Rockport go "
@@ -255,6 +256,5 @@ namespace ChaosMod::DefaultConfigFile {
       "pimped\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":8,\"Duration\":10.0,\"IncompatibleWith\":[]},{"
       "\"Name\":\"Invisible Everything\",\"Description\":\"Hasta la vista, el "
       "mundo\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":9,\"Duration\":60.0,\"IncompatibleWith\":[103,109,110,"
-      "111]}]}"
-      "}";
+      "111]}]}";
 }
