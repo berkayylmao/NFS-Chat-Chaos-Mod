@@ -249,7 +249,9 @@ namespace ChaosMod::DefaultConfigFile {
       "game\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":7,\"Duration\":60.0,\"IncompatibleWith\":[111]},{"
       "\"Name\":\"The Upside Down\",\"Description\":\"Stranger Things getting even "
       "stranger\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":7,\"Duration\":60.0,\"IncompatibleWith\":[111]},{"
-      "\"Name\":\"Warp Drive\",\"Description\":\"Kerbal \'Need for Speed\' "
-      "Program\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":7,\"Duration\":60.0,\"IncompatibleWith\":[109,110]}]"
+      "\"Name\":\"Warp Drive\",\"Description\":\"Kerbal \'Speed\' "
+      "Program\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":7,\"Duration\":60.0,\"IncompatibleWith\":[109,110]},"
+      "{\"Name\":\"Pimp My Ride\",\"Description\":\"You\'ve officially been "
+      "pimped\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":8,\"Duration\":10.0,\"IncompatibleWith\":[]}]}"
       "}";
 }

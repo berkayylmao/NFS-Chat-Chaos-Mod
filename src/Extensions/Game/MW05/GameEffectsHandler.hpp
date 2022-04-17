@@ -136,6 +136,7 @@
 #include "Extensions/Game/MW05/Effects/AGoodSenseOfSpeed.hpp"
 #include "Extensions/Game/MW05/Effects/TheUpsideDown.hpp"
 #include "Extensions/Game/MW05/Effects/WarpDrive.hpp"
+#include "Extensions/Game/MW05/Effects/PimpMyRide.hpp"
 
 // Modifiers
 #include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
@@ -405,6 +406,7 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::AGoodSenseOfSpeed());
       IGameEffectsHandler::AddEffect(new Effects::TheUpsideDown());
       IGameEffectsHandler::AddEffect(new Effects::WarpDrive());
+      IGameEffectsHandler::AddEffect(new Effects::PimpMyRide());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),

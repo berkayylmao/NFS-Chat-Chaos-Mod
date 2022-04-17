@@ -618,6 +618,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\NeverBusted.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\PaperCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\PepegaTruck.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\PimpMyRide.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\PopAllTires.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\PopARandomTire.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\PotatoPC.hpp" />

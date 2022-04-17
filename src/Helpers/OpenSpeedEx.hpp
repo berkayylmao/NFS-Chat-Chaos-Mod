@@ -277,6 +277,15 @@ namespace OpenSpeed {
         return true;
       }
 
+      static CarType GetCarType(PVehicle* pvehicle) {
+        if (!(pvehicle | ValidatePVehicle)) return CarType::NONE;
+
+        // bStringHashUpper
+        auto hash = reinterpret_cast<std::uint32_t(__cdecl*)(const char*)>(0x460BC0)(pvehicle->GetVehicleName());
+        // CarPartDatabase::GetCarType
+        return reinterpret_cast<CarType(__thiscall*)(std::uintptr_t, std::uint32_t)>(0x7398D0)(0x9B26A8, hash);
+      }
+
       static std::vector<PVehicle*> GetCopCars() {
         std::vector<PVehicle*> ret;
 
