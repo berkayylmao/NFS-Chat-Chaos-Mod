@@ -24,9 +24,8 @@
 
 namespace ChaosMod::DefaultConfigFile {
   constexpr char CONST_DEFAULT_CONFIG[] =
-      "{\"Timers\":{\"IdleTimer\":5.0,\"VoteTimer\":20.0},\"Twitch\":{\"ChannelName\":\"berkayy\",\"Username\":\"chatchaosbot\",\"UserOAuth\":\"oauth:"
-      "dp48cdeyckmj4kzzlkpjlw08gnrov3\"},\"Effects\":[{\"Name\":\"Thanos Snap\",\"Description\":\"Removes half of all cars; sometimes including the player\'s. "
-      "Perfectly balanced, as all things should "
+      "{\"Timers\":{\"IdleTimer\":5.0,\"VoteTimer\":20.0},\"Twitch\":{\"ChannelName\":\"\",\"Username\":\"\",\"UserOAuth\":\"\"},\"Effects\":[{\"Name\":"
+      "\"Thanos Snap\",\"Description\":\"Removes half of all cars; sometimes including the player\'s. Perfectly balanced, as all things should "
       "be.\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":9,\"Duration\":10.0,\"IncompatibleWith\":[]},{\"Name\":"
       "\"If You Can\'t Beat Them, Kill Them\",\"Description\":\"Blows the engine of all cars, except the "
       "player\'s\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":11,\"Duration\":10.0,\"IncompatibleWith\":[]},{"
@@ -241,5 +240,16 @@ namespace ChaosMod::DefaultConfigFile {
       "\"Name\":\"Random Boxes\",\"Description\":\"Blocks parts of the screen "
       "randomly\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":8,\"Duration\":45.0,\"IncompatibleWith\":[]},{"
       "\"Name\":\"Bouncy Castle\",\"Description\":\"Inflatable Rockport City "
-      "gameplay\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":6,\"Duration\":30.0,\"IncompatibleWith\":[3]}]}";
+      "gameplay\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":6,\"Duration\":60.0,\"IncompatibleWith\":[3]},{"
+      "\"Name\":\"GoPro FOV\",\"Description\":\"It\'s just like in the "
+      "commercials\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":7,\"Duration\":60.0,\"IncompatibleWith\":[108]},"
+      "{\"Name\":\"4:3 Stretched\",\"Description\":\"Time to go start a pro CS:GO "
+      "career\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":7,\"Duration\":60.0,\"IncompatibleWith\":[107]},{"
+      "\"Name\":\"A Good Sense Of Speed\",\"Description\":\"Finally, a good racing "
+      "game\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":7,\"Duration\":60.0,\"IncompatibleWith\":[111]},{"
+      "\"Name\":\"The Upside Down\",\"Description\":\"Stranger Things getting even "
+      "stranger\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":7,\"Duration\":60.0,\"IncompatibleWith\":[111]},{"
+      "\"Name\":\"Warp Drive\",\"Description\":\"Kerbal \'Need for Speed\' "
+      "Program\",\"IsEnabled\":true,\"IsStatusEffect\":false,\"NeedsActivationWarning\":false,\"Cooldown\":7,\"Duration\":60.0,\"IncompatibleWith\":[109,110]}]"
+      "}";
 }

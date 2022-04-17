@@ -131,6 +131,11 @@
 #include "Extensions/Game/MW05/Effects/Graviton.hpp"
 #include "Extensions/Game/MW05/Effects/RandomBoxes.hpp"
 #include "Extensions/Game/MW05/Effects/BouncyCastle.hpp"
+#include "Extensions/Game/MW05/Effects/GoProFOV.hpp"
+#include "Extensions/Game/MW05/Effects/Stretched4by3.hpp"
+#include "Extensions/Game/MW05/Effects/AGoodSenseOfSpeed.hpp"
+#include "Extensions/Game/MW05/Effects/TheUpsideDown.hpp"
+#include "Extensions/Game/MW05/Effects/WarpDrive.hpp"
 
 // Modifiers
 #include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
@@ -395,6 +400,11 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::Graviton());
       IGameEffectsHandler::AddEffect(new Effects::RandomBoxes());
       IGameEffectsHandler::AddEffect(new Effects::BouncyCastle());
+      IGameEffectsHandler::AddEffect(new Effects::GoProFOV());
+      IGameEffectsHandler::AddEffect(new Effects::Stretched4by3());
+      IGameEffectsHandler::AddEffect(new Effects::AGoodSenseOfSpeed());
+      IGameEffectsHandler::AddEffect(new Effects::TheUpsideDown());
+      IGameEffectsHandler::AddEffect(new Effects::WarpDrive());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),

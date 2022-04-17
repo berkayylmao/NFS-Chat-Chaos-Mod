@@ -584,6 +584,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\FlippedCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\GASGASGAS.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\GigaRubberband.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\GoProFOV.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\Graviton.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\GuessWhosBack.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\HeavyCars.hpp" />
@@ -628,9 +629,11 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\RCCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\RKO.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\SlotMachine.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\AGoodSenseOfSpeed.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\SpinToWin.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\StickShiftPro.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\STONKS.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\Stretched4by3.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\SuddentlyItsADragRace.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\Superhot.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\SuperSeducer.hpp" />
@@ -658,6 +661,8 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\TheMagnumOpus.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\Timeout.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\AYAYAAYAYA.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\TheUpsideDown.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\WarpDrive.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\WideCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\YoBroIsThatASupra.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\YouAreSafeThisTime.hpp" />
