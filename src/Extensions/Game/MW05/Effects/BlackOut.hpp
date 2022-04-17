@@ -50,7 +50,7 @@ namespace Extensions::Game::MW05::Effects {
       ImGui::SetNextWindowBgAlpha(1.0f - mShownDuration / mEffectDuration);
       ImGui::SetNextWindowPos(viewport->Pos, ImGuiCond_Always);
       ImGui::SetNextWindowSize(viewport->Size * 2.0f, ImGuiCond_Always);
-      ImGui::Begin("##blackout_effect_window", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoInputs);
+      ImGui::Begin("##blackout_effect_window", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_NoBringToFrontOnFocus);
       ImGui::End();
 
       mShownDuration += ImGui::GetIO().DeltaTime;
