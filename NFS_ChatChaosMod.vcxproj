@@ -604,6 +604,7 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\InsaneTraffic.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\IntoTheVoid.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\InvisibleCars.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\InvisibleEverything.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\JellyCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\JesusTakeTheWheel.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\JumpToCarLot.hpp" />
