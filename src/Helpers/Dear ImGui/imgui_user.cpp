@@ -180,12 +180,16 @@ namespace ImGui {
     ImGuiWindow* _window = GetCurrentWindow();
     if (_window->SkipItems) return false;
 
-    const ImVec2 cursor          = ImGui::GetCursorPos();
+    const ImVec2 cursor          = ImGui::GetCursorScreenPos();
     const bool   is_text_changed = ImGui::InputTextEx(label, nullptr, buf, static_cast<std::int32_t>(buf_size), ImVec2(0, 0), flags, callback, user_data);
 
-    ImGui::SetCursorPosX(cursor.x + ImGui::GetItemRectSize().x - ImGui::CalcTextSize(hint).x - ImGui::GetStyle().FramePadding.x);
-    ImGui::SetCursorPosY(cursor.y + ImGui::GetStyle().FramePadding.y);
-    ImGui::TextDisabled(hint);
+    WithColor _c1(ImGuiCol_Text, ImGui::GetStyleColorVec4(ImGuiCol_TextDisabled));
+    ImGui::RenderText(ImVec2(
+                          // x
+                          cursor.x + ImGui::GetItemRectSize().x - ImGui::CalcTextSize(hint).x - ImGui::GetStyle().FramePadding.x,
+                          // y
+                          cursor.y + ImGui::GetStyle().FramePadding.y),
+                      hint);
 
     return is_text_changed;
   }
