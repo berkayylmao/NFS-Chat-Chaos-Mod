@@ -112,15 +112,11 @@ namespace Extensions::D3D9::Menu {
 
     // Constants
 
-    static constexpr char CONST_UI_CONFIG_HEADER_ENABLED[]  = "E";
+    static constexpr char CONST_UI_CONFIG_HEADER_ENABLED[]  = "Enabled";
     static constexpr char CONST_UI_CONFIG_HEADER_NAME[]     = "Name";
-    static constexpr char CONST_UI_CONFIG_HEADER_COOLDOWN[] = "Cooldown";
     static constexpr char CONST_UI_CONFIG_HEADER_DURATION[] = "Duration (seconds)";
     static constexpr char CONST_UI_CONFIG_INFO_ENABLED[]    = "Whether the effect is enabled.";
     static constexpr char CONST_UI_CONFIG_INFO_NAME[]       = "Name of the effect. Hovering over the respective '[?]' marks shows description of the effect.";
-    static constexpr char CONST_UI_CONFIG_INFO_COOLDOWN[] =
-        "Cooldown of the effect. Note that this is PER ACTIVATED EFFECT!!, not per voting cycle. For example, a "
-        "cooldown of '3' means 'allow for voting after 3 effects are activated'.";
     static constexpr char CONST_UI_CONFIG_INFO_DURATION[] =
         "Duration of the effect in seconds. If the effect isn't continuous (e.g., 'Magneto'), this will only show "
         "'Status effect'.";
@@ -131,15 +127,14 @@ namespace Extensions::D3D9::Menu {
     // Tab Content
     static inline void DrawEffectsTabContent() {
       if (ImGui::BeginTable(
-              "EffectsTable", 4,
+              "EffectsTable", 3,
               ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg | ImGuiTableFlags_Resizable | ImGuiTableFlags_SizingStretchProp | ImGuiTableFlags_ScrollY,
               ImVec2(ImGui::GetFontSize() * 30.0f, ImGui::GetFontSize() * 20.0f))) {
         // Set up columns
         {
           ImGui::TableSetupColumn(CONST_UI_CONFIG_HEADER_ENABLED, ImGuiTableColumnFlags_NoSort, 0.1f);
-          ImGui::TableSetupColumn(CONST_UI_CONFIG_HEADER_NAME, ImGuiTableColumnFlags_NoSort, 1.0f);
-          ImGui::TableSetupColumn(CONST_UI_CONFIG_HEADER_COOLDOWN, ImGuiTableColumnFlags_NoSort, 0.5f);
-          ImGui::TableSetupColumn(CONST_UI_CONFIG_HEADER_DURATION, ImGuiTableColumnFlags_NoSort, 0.5f);
+          ImGui::TableSetupColumn(CONST_UI_CONFIG_HEADER_NAME, ImGuiTableColumnFlags_NoSort, 0.6f);
+          ImGui::TableSetupColumn(CONST_UI_CONFIG_HEADER_DURATION, ImGuiTableColumnFlags_NoSort, 0.3f);
           ImGui::TableSetupScrollFreeze(0, 2);
           ImGui::TableHeadersRow();
         }
@@ -173,22 +168,9 @@ namespace Extensions::D3D9::Menu {
               ImGui::EndTooltip();
             }
           }
-          // Cooldown info
-          {
-            ImGui::TableSetColumnIndex(2);
-            // Display information marker
-            ImGui::TextDisabled("[?] Info");
-            if (ImGui::IsItemHovered()) {
-              ImGui::BeginTooltip();
-              ImGui::PushTextWrapPos(ImGui::GetFontSize() * 20.0f);
-              ImGui::TextUnformatted(CONST_UI_CONFIG_INFO_COOLDOWN);
-              ImGui::PopTextWrapPos();
-              ImGui::EndTooltip();
-            }
-          }
           // Duration info
           {
-            ImGui::TableSetColumnIndex(3);
+            ImGui::TableSetColumnIndex(2);
             // Display information marker
             ImGui::TextDisabled("[?] Info");
             if (ImGui::IsItemHovered()) {
@@ -235,29 +217,14 @@ namespace Extensions::D3D9::Menu {
             ImGui::TextWrapped(ptr->GetName().c_str());
           }
 
-          // Effect cooldown
-          {
-            static const char format[] = "%u";
-
-            ImGui::TableSetColumnIndex(2);
-
-            ImGui::PushID((ptr->GetIndex() + 1) * -1);
-            ImGui::PushItemWidth(-FLT_MIN);
-            ImGui::InputScalar("", ImGuiDataType_U32, &ptr->GetCooldownRef(), nullptr, nullptr, format, ImGuiInputTextFlags_CharsDecimal);
-            if (ImGui::IsItemDeactivatedAfterEdit()) {
-              ptr->GetCooldownRef() = std::clamp(ptr->GetCooldown(), 0u, 999u);
-              Config::Get()["Effects"][ptr->GetIndex()]["Cooldown"].SetUint(ptr->GetCooldown());
-              Config::Get().Save();
-            }
-            ImGui::PopID();
-          }
-
           // Effect duration
           {
-            static const char _format[] = "%.1f";
-            double            val       = std::chrono::duration<double>(ptr->GetDuration()).count();
+            static constexpr char   format[] = "%.1f";
+            static constexpr double min      = 0.0;
+            static constexpr double max      = 999.0;
+            double                  val      = std::chrono::duration<double>(ptr->GetDuration()).count();
 
-            ImGui::TableSetColumnIndex(3);
+            ImGui::TableSetColumnIndex(2);
 
             if (ptr->GetIsStatusEffect()) {
               ImGui::AlignTextToFramePadding();
@@ -265,7 +232,7 @@ namespace Extensions::D3D9::Menu {
             } else {
               ImGui::PushID((ptr->GetIndex() + 1) * -10);
               ImGui::PushItemWidth(-FLT_MIN);
-              ImGui::InputScalar("", ImGuiDataType_Double, &val, nullptr, nullptr, _format, ImGuiInputTextFlags_CharsDecimal);
+              ImGui::SliderScalar("", ImGuiDataType_Double, &val, &min, &max, format);
               if (ImGui::IsItemDeactivatedAfterEdit()) {
                 val                   = std::clamp(val, 1.0, 900.0);
                 ptr->GetDurationRef() = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::duration<double>(val));
@@ -375,7 +342,7 @@ namespace Extensions::D3D9::Menu {
         {
           ImGui::SameLine();
           ImGui::SetCursorPosX(_offsetX);
-          ImGui::BeginDisabled();
+          ImGui::BeginDisabled(Shared::IsChaosRunning());
           ImGui::InputTextWithHint("##ChaosSeedInput", "(leave blank for random)", details::sSeed.data(), details::sSeed.max_size() - 1);
           if (ImGui::IsItemDeactivatedAfterEdit()) {
             Config::Get()["Seed"].SetString(details::sSeed.data(), strnlen_s(details::sSeed.data(), details::sSeed.max_size()));

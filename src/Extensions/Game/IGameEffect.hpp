@@ -212,7 +212,7 @@ namespace Extensions::Game {
         mName(std::move(Config::Get()["Effects"][effectIndex]["Name"].Get<std::string>())),
         mDescription(std::move(Config::Get()["Effects"][effectIndex]["Description"].Get<std::string>())),
         mStatus(Status::Inactive),
-        mCooldown(Config::Get()["Effects"][effectIndex]["Cooldown"].GetUint()),
+        mCooldown(0),
         mDuration(std::move(std::chrono::duration_cast<std::chrono::milliseconds>(
             std::chrono::duration<double>(Config::Get()["Effects"][effectIndex]["Duration"].GetDouble())))),
         mIsStatusEffect(Config::Get()["Effects"][effectIndex]["IsStatusEffect"].GetBool()),
