@@ -125,6 +125,9 @@ namespace Extensions::D3D9::Menu {
         "Duration of the effect in seconds. If the effect isn't continuous (e.g., 'Magneto'), this will only show "
         "'Status effect'.";
 
+    // Seed
+    static inline std::array<char, 65> sSeed{};
+
     // Tab Content
     static inline void DrawEffectsTabContent() {
       if (ImGui::BeginTable(
@@ -345,7 +348,7 @@ namespace Extensions::D3D9::Menu {
   // Called when user has Configuration tab active
   static inline void DrawConfig() {
     if (ImGui::BeginTabBar("###ConfigTabBar", ImGuiTabBarFlags_FittingPolicyResizeDown)) {
-      if (ImGui::BeginTabItem("Timers")) {
+      if (ImGui::BeginTabItem("Core")) {
         ImGui::TextUnformatted("Idle timer (before votes):  ");
         ImGui::SameLine();
         const float _offsetX = ImGui::GetCursorPosX();
@@ -368,6 +371,19 @@ namespace Extensions::D3D9::Menu {
             Config::Get().Save();
           }
         }
+        ImGui::TextUnformatted("Seed: ");
+        {
+          ImGui::SameLine();
+          ImGui::SetCursorPosX(_offsetX);
+          ImGui::BeginDisabled();
+          ImGui::InputTextWithHint("##ChaosSeedInput", "(leave blank for random)", details::sSeed.data(), details::sSeed.max_size() - 1);
+          if (ImGui::IsItemDeactivatedAfterEdit()) {
+            Config::Get()["Seed"].SetString(details::sSeed.data(), strnlen_s(details::sSeed.data(), details::sSeed.max_size()));
+            Config::Get().Save();
+          }
+          ImGui::EndDisabled();
+        }
+
         ImGui::EndTabItem();
       }
       if (ImGui::BeginTabItem("Effects")) {
@@ -402,10 +418,13 @@ namespace Extensions::D3D9::Menu {
   static inline void DrawAbout() { details::DrawAboutTabContent(); }
 
   static inline void Init() {
-    // Load saved timer values from Config
+    // Load core values from Config
     {
       ChaosMod::g_IdleTimerSeconds = Config::Get()["Timers"]["IdleTimer"].GetFloat();
       ChaosMod::g_VoteTimerSeconds = Config::Get()["Timers"]["VoteTimer"].GetFloat();
+
+      const auto& seed = Config::Get()["Seed"].Get<std::string>();
+      std::copy(std::begin(seed), std::end(seed), std::begin(details::sSeed));
     }
     // Load saved Twitch login information from Config
     {

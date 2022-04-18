@@ -69,6 +69,24 @@ namespace Extensions::D3D9::Shared {
 
   // Called from 'D3D9.Base' when 'Start Chaos' is clicked
   static void StartChaos(bool isTwitch) {
+    // Randomize cooldowns
+    {
+      std::mt19937 rng;
+      std::string  str_seed = Config::Get()["Seed"].Get<std::string>();
+      if (str_seed.length() == 0) {  // no custom seed, just create a random one
+        std::array<std::uint32_t, std::mt19937::state_size> data;
+        std::random_device                                  rd;
+        // seed rng
+        std::generate(std::begin(data), std::end(data), std::ref(rd));
+        std::seed_seq seed(std::begin(data), std::end(data));
+        rng.seed(seed);
+      } else {  // has seed
+        std::seed_seq seed(std::begin(str_seed), std::end(str_seed));
+        rng.seed(seed);
+      }
+      for (auto* effect : Game::IGameEffectsHandler::GetAllEffects()) effect->GetCooldownRef() = std::uniform_int_distribution<std::int32_t>(0, 10)(rng);
+    }
+
     if (isTwitch) {
       if (!g_TwitchTalkStatus.second) return;
       g_ChaosMode = ChaosMode::TwitchChat;

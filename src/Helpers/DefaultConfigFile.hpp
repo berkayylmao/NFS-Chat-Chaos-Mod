@@ -24,7 +24,7 @@
 
 namespace ChaosMod::DefaultConfigFile {
   constexpr char CONST_DEFAULT_CONFIG[] =
-      "{\"Timers\":{\"IdleTimer\":5.0,\"VoteTimer\":20.0},\"Twitch\":{\"ChannelName\":\"\",\"Username\":\"\",\"UserOAuth\":\"\"},\"Effects\":[{\"Name\":"
+      "\"Seed\": \"\", {\"Timers\":{\"IdleTimer\":5.0,\"VoteTimer\":20.0},\"Twitch\":{\"ChannelName\":\"\",\"Username\":\"\",\"UserOAuth\":\"\"},\"Effects\":[{\"Name\":"
       "\"Thanos Snap\",\"Description\":\"Removes half of all cars; sometimes including the player\'s. Perfectly balanced, as all things should "
       "be.\",\"IsEnabled\":true,\"IsStatusEffect\":true,\"NeedsActivationWarning\":false,\"Cooldown\":9,\"Duration\":10.0,\"IncompatibleWith\":[]},{\"Name\":"
       "\"If You Can\'t Beat Them, Kill Them\",\"Description\":\"Blows the engine of all cars, except the "
