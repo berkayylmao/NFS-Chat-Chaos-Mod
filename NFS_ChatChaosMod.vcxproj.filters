@@ -670,6 +670,9 @@
     <None Include="src\Helpers\fmt\fmt.licenseheader">
       <Filter>Helpers\fmt</Filter>
     </None>
+    <Content Include="src\Helpers\Config.json">
+      <Filter>Helpers</Filter>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="_vs">

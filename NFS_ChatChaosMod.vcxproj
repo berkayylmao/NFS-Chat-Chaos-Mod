@@ -197,7 +197,8 @@
       <HeapCommitSize>100000000</HeapCommitSize>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need For Speed Most Wanted\scripts\NFS_ChatChaosMod.asi" /y</Command>
+      <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need For Speed Most Wanted\scripts\NFS_ChatChaosMod.asi" /y
+echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need For Speed Most Wanted\ChatChaosMod\Config.json"</Command>
       <Message>Copy output file to a test Speed game's directory.</Message>
     </PostBuildEvent>
     <CustomBuildStep>
@@ -234,7 +235,8 @@
       <HeapCommitSize>100000000</HeapCommitSize>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need for Speed Carbon Collectors Edition\scripts\NFS_ChatChaosMod.asi" /y</Command>
+      <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need for Speed Carbon Collectors Edition\scripts\NFS_ChatChaosMod.asi" /y
+echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need for Speed Carbon Collectors Edition\ChatChaosMod\Config.json"</Command>
       <Message>Copy output file to a test Speed game's directory.</Message>
     </PostBuildEvent>
     <CustomBuildStep>
@@ -271,7 +273,8 @@
       <HeapCommitSize>100000000</HeapCommitSize>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need For Speed Most Wanted\scripts\NFS_ChatChaosMod.asi" /y</Command>
+      <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need For Speed Most Wanted\scripts\NFS_ChatChaosMod.asi" /y
+echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need For Speed Most Wanted\ChatChaosMod\Config.json"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy output file to a test Speed game's directory.</Message>
@@ -310,7 +313,8 @@
       <HeapCommitSize>100000000</HeapCommitSize>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need For Speed Most Wanted\scripts\NFS_ChatChaosMod.asi" /y</Command>
+      <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need for Speed Carbon Collectors Edition\scripts\NFS_ChatChaosMod.asi" /y
+echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need for Speed Carbon Collectors Edition\ChatChaosMod\Config.json"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy output file to a test Speed game's directory.</Message>
@@ -355,7 +359,8 @@
       <AdditionalDependencies>Xinput.lib;fmod_vc.lib;d3d9.lib;d3dx9.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need For Speed Most Wanted\scripts\NFS_ChatChaosMod.asi" /y</Command>
+      <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need For Speed Most Wanted\scripts\NFS_ChatChaosMod.asi" /y
+echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need For Speed Most Wanted\ChatChaosMod\Config.json"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy output file to a test Speed game's directory.</Message>
@@ -400,7 +405,8 @@
       <AdditionalDependencies>Xinput.lib;fmod_vc.lib;d3d9.lib;d3dx9.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need for Speed Carbon Collectors Edition\scripts\NFS_ChatChaosMod.asi" /y</Command>
+      <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need for Speed Carbon Collectors Edition\scripts\NFS_ChatChaosMod.asi" /y
+echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need for Speed Carbon Collectors Edition\ChatChaosMod\Config.json"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy output file to a test Speed game's directory.</Message>
@@ -444,7 +450,8 @@
       <AdditionalDependencies>Xinput.lib;fmod_vc.lib;d3d9.lib;d3dx9.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need For Speed Most Wanted\scripts\NFS_ChatChaosMod.asi" /y</Command>
+      <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need For Speed Most Wanted\scripts\NFS_ChatChaosMod.asi" /y
+echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need For Speed Most Wanted\ChatChaosMod\Config.json"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy output file to a test Speed game's directory.</Message>
@@ -488,7 +495,8 @@
       <AdditionalDependencies>Xinput.lib;fmod_vc.lib;d3d9.lib;d3dx9.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need For Speed Most Wanted\scripts\NFS_ChatChaosMod.asi" /y</Command>
+      <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need for Speed Carbon Collectors Edition\scripts\NFS_ChatChaosMod.asi" /y
+echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need for Speed Carbon Collectors Edition\ChatChaosMod\Config.json"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy output file to a test Speed game's directory.</Message>
@@ -1021,6 +1029,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="NFS_ChatChaosMod.licenseheader" />
+    <Content Include="src\Helpers\Config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="src\Helpers\Dear ImGui\imgui.licenseheader" />
     <None Include="src\Helpers\fmt\fmt.licenseheader" />
   </ItemGroup>
