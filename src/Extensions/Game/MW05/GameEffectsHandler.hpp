@@ -138,6 +138,7 @@
 #include "Extensions/Game/MW05/Effects/WarpDrive.hpp"
 #include "Extensions/Game/MW05/Effects/PimpMyRide.hpp"
 #include "Extensions/Game/MW05/Effects/InvisibleEverything.hpp"
+#include "Extensions/Game/MW05/Effects/MirrorPort.hpp"
 
 // Modifiers
 #include "Extensions/Game/MW05/Modifiers/CarScaleModifier.hpp"
@@ -409,6 +410,7 @@ namespace Extensions::Game::MW05 {
       IGameEffectsHandler::AddEffect(new Effects::WarpDrive());
       IGameEffectsHandler::AddEffect(new Effects::PimpMyRide());
       IGameEffectsHandler::AddEffect(new Effects::InvisibleEverything());
+      IGameEffectsHandler::AddEffect(new Effects::MirrorPort());
 
       // Sort for config handler
       std::sort(std::begin(IGameEffectsHandler::g_AllEffects), std::end(IGameEffectsHandler::g_AllEffects),

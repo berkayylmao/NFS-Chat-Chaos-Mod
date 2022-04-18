@@ -23,10 +23,11 @@
 #pragma once
 #include "pch.h"
 #include "Helpers/OpenSpeedEx.hpp"
+#include "Extensions/Game/MW05/Modifiers/InputModifier.hpp"
 
 namespace Extensions::Game::MW05::Effects {
-  namespace details::TheUpsideDown {
-    static constexpr std::uintptr_t sBack   = 0x6CF583;
+  namespace details::MirrorPort {
+    static constexpr std::uintptr_t sBack   = 0x6CF545;
     static constexpr std::uintptr_t sInner  = 0x7C4B80;
     static inline float             sFactor = -1.0f;
 
@@ -37,25 +38,27 @@ namespace Extensions::Game::MW05::Effects {
         jmp [sBack]
       }
     }
-  }  // namespace details::TheUpsideDown
+  }  // namespace details::MirrorPort
 
-  class TheUpsideDown : public IGameEffect {
+  class MirrorPort : public IGameEffect {
     std::unique_ptr<MemoryEditor::Editor::DetourInfo> mDetour;
 
    protected:
     virtual bool _activate() noexcept override {
-      mDetour = MemoryEditor::Get().Detour(0x6CF57E, reinterpret_cast<std::uintptr_t>(&details::TheUpsideDown::detour));
+      mDetour                          = MemoryEditor::Get().Detour(0x6CF540, reinterpret_cast<std::uintptr_t>(&details::MirrorPort::detour));
       OpenMW::Variables::PrecullerMode = false;
+      Modifiers::InputModifier::Get().SetInvertedSteering(true);
       return true;
     }
     virtual bool _deactivate() noexcept override {
       mDetour->Undetour();
       mDetour.reset();
       OpenMW::Variables::PrecullerMode = true;
+      Modifiers::InputModifier::Get().SetInvertedSteering(false);
       return true;
     }
 
    public:
-    explicit TheUpsideDown() : IGameEffect(110), mDetour(nullptr) {}
+    explicit MirrorPort() : IGameEffect(114), mDetour(nullptr) {}
   };
 }  // namespace Extensions::Game::MW05::Effects

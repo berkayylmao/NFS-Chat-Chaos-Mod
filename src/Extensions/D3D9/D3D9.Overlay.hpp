@@ -253,29 +253,31 @@ namespace Extensions::D3D9::Overlay {
           if (Shared::g_ChaosMode == Shared::ChaosMode::TwitchChat) {
             // Format into string
             fmt::format_to_n(format_array.data(), format_array.max_size(), "{}{}: {}", CONST_TWITCH_VOTE_PREFIX, i + 1, it->first->GetName());
+          } else {
+            fmt::format_to_n(format_array.data(), format_array.max_size(), "{}: {}", i + 1, it->first->GetName());
+          }
 
-            // Center text
-            const ImVec2 str_size = ImGui::CalcTextSize(format_array.data());
-            const ImVec2 str_pos =
-                ImVec2(sVoteBarRect.width + ImGui::GetFontSize() * 1.5f, sVoteBarRect.y + y_diff + (sVoteBarRect.height - str_size.y) / 2.0f);
+          // Center text
+          const ImVec2 str_size = ImGui::CalcTextSize(format_array.data());
+          const ImVec2 str_pos =
+              ImVec2(sVoteBarRect.width + ImGui::GetFontSize() * 1.5f, sVoteBarRect.y + y_diff + (sVoteBarRect.height - str_size.y) / 2.0f);
 
-            // Draw shadow
-            {
-              ImGui::WithColor _c1(ImGuiCol_Text, IM_COL32_BLACK);
+          // Draw shadow
+          {
+            ImGui::WithColor _c1(ImGuiCol_Text, IM_COL32_BLACK);
 
-              ImGui::SetCursorPos(str_pos - ImVec2(CONST_UI_PAD_SHADOW, 0.0f));
-              ImGui::TextUnformatted(format_array.data());
-              ImGui::SetCursorPos(str_pos - ImVec2(-CONST_UI_PAD_SHADOW, 0.0f));
-              ImGui::TextUnformatted(format_array.data());
-              ImGui::SetCursorPos(str_pos - ImVec2(0.0f, CONST_UI_PAD_SHADOW));
-              ImGui::TextUnformatted(format_array.data());
-              ImGui::SetCursorPos(str_pos - ImVec2(0.0f, -CONST_UI_PAD_SHADOW));
-              ImGui::TextUnformatted(format_array.data());
-            }
-
-            ImGui::SetCursorPos(str_pos);
+            ImGui::SetCursorPos(str_pos - ImVec2(CONST_UI_PAD_SHADOW, 0.0f));
+            ImGui::TextUnformatted(format_array.data());
+            ImGui::SetCursorPos(str_pos - ImVec2(-CONST_UI_PAD_SHADOW, 0.0f));
+            ImGui::TextUnformatted(format_array.data());
+            ImGui::SetCursorPos(str_pos - ImVec2(0.0f, CONST_UI_PAD_SHADOW));
+            ImGui::TextUnformatted(format_array.data());
+            ImGui::SetCursorPos(str_pos - ImVec2(0.0f, -CONST_UI_PAD_SHADOW));
             ImGui::TextUnformatted(format_array.data());
           }
+
+          ImGui::SetCursorPos(str_pos);
+          ImGui::TextUnformatted(format_array.data());
         }
       }
       ImGui::End();

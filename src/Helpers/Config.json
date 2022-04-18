@@ -1215,6 +1215,20 @@
             110,
             111
          ]
+      },
+      {
+        "Name": "MirrorPort",
+        "Description": "Mirror, mirror, on the wall, who's the fastest of them all?",
+        "IsEnabled": true,
+        "IsStatusEffect": false,
+        "NeedsActivationWarning": false,
+        "Duration": 60.0,
+        "IncompatibleWith": [
+          23,
+          83,
+          111,
+          113
+        ]
       }
    ]
 }

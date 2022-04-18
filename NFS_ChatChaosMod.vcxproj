@@ -628,6 +628,7 @@ echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Game
     <ClInclude Include="src\Extensions\Game\MW05\Effects\MaybeInvertedSteering.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\MegaRubberband.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\MidnightClubRacing.hpp" />
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\MirrorPort.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\NeverBusted.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\PaperCars.hpp" />
     <ClInclude Include="src\Extensions\Game\MW05\Effects\PepegaTruck.hpp" />

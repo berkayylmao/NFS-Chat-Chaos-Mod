@@ -661,6 +661,9 @@
     <ClInclude Include="src\Extensions\Game\MW05\Effects\InvisibleEverything.hpp">
       <Filter>Extensions\Game\MW05\Effects</Filter>
     </ClInclude>
+    <ClInclude Include="src\Extensions\Game\MW05\Effects\MirrorPort.hpp">
+      <Filter>Extensions\Game\MW05\Effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="NFS_ChatChaosMod.licenseheader" />
