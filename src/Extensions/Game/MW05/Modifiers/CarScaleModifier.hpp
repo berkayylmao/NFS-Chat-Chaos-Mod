@@ -33,14 +33,15 @@ namespace Extensions::Game::MW05::Modifiers {
 
    protected:
     static constexpr float CONST_NOT_USED_MARKER = -123.456f;
+    static constexpr float CONST_STEP_VALUE      = 0.1f;
 
-    const CarScaleVector sRCCarsScale    = CarScaleVector(0.4f, 0.4f, 0.4f);
-    const CarScaleVector sBigCarsScale   = CarScaleVector(1.6f, 1.6f, 1.6f);
+    const CarScaleVector sRCCarsScale    = CarScaleVector(0.5f, 0.5f, 0.5f);
+    const CarScaleVector sBigCarsScale   = CarScaleVector(1.5f, 1.5f, 1.5f);
     const CarScaleVector sFlatCarsScale  = CarScaleVector(0.1f, CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER);
     const CarScaleVector sTallCarsScale  = CarScaleVector(3.0f, CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER);
     const CarScaleVector sLongCarsScale  = CarScaleVector(CONST_NOT_USED_MARKER, 2.0f, CONST_NOT_USED_MARKER);
     const CarScaleVector sWideCarsScale  = CarScaleVector(CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER, 4.0f);
-    const CarScaleVector sPaperCarsScale = CarScaleVector(CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER, 0.001f);
+    const CarScaleVector sPaperCarsScale = CarScaleVector(CONST_NOT_USED_MARKER, CONST_NOT_USED_MARKER, 0.1f);
     CarScaleVector       mJellyCarsScale;
 
     bool mRCCarsEnabled;
@@ -55,6 +56,16 @@ namespace Extensions::Game::MW05::Modifiers {
 
     std::uint32_t mCountEnabled;
 
+    inline void _inc(float& val, float max) {
+      if (val < max) val += CONST_STEP_VALUE;
+    }
+    inline void _dec(float& val, float min) {
+      if (val > min) val -= CONST_STEP_VALUE;
+    }
+    inline void _clamp(float& val, float clampVal) {
+      _inc(val, clampVal);
+      _dec(val, clampVal);
+    }
     void _transformJelly() {
       static bool sLengthIncreasing = false;
       static bool sWidthIncreasing  = false;
@@ -82,43 +93,57 @@ namespace Extensions::Game::MW05::Modifiers {
       OpenMW::Variables::CarScaleMatrix.GetField().v1.z = 1.0f;
       OpenMW::Variables::CarScaleMatrix.GetField().v2.x = 1.0f;
     }
-    virtual void _onTick() {  // Default values
-      OpenMW::Variables::CarScaleMatrix.GetField().v0.y = 1.0f;
-      OpenMW::Variables::CarScaleMatrix.GetField().v1.z = 1.0f;
-      OpenMW::Variables::CarScaleMatrix.GetField().v2.x = 1.0f;
+    virtual void _onTick() {
+      OpenMW::UMath::Matrix4& mat = OpenMW::Variables::CarScaleMatrix;
+
+      float& x = mat.v2.x;
+      float& y = mat.v0.y;
+      float& z = mat.v1.z;
+
+      float final_x = 1.0f;
+      float final_y = 1.0f;
+      float final_z = 1.0f;
 
       if (mRCCarsEnabled) {
-        OpenMW::Variables::CarScaleMatrix.GetField().v0.y = sRCCarsScale.y;
-        OpenMW::Variables::CarScaleMatrix.GetField().v1.z = sRCCarsScale.z;
-        OpenMW::Variables::CarScaleMatrix.GetField().v2.x = sRCCarsScale.x;
+        if (!mFlatCarsEnabled && !mTallCarsEnabled) _dec(x, sRCCarsScale.x);
+        if (!mLongCarsEnabled) _dec(y, sRCCarsScale.y);
+        if (!mWideCarsEnabled && !mPaperCarsEnabled) _dec(z, sRCCarsScale.z);
+
+        final_x = sRCCarsScale.x;
+        final_y = sRCCarsScale.y;
+        final_z = sRCCarsScale.z;
       } else if (mBigCarsEnabled) {
-        OpenMW::Variables::CarScaleMatrix.GetField().v0.y = sBigCarsScale.y;
-        OpenMW::Variables::CarScaleMatrix.GetField().v1.z = sBigCarsScale.z;
-        OpenMW::Variables::CarScaleMatrix.GetField().v2.x = sBigCarsScale.x;
+        if (!mFlatCarsEnabled && !mTallCarsEnabled) _inc(x, sBigCarsScale.x);
+        if (!mLongCarsEnabled) _inc(y, sBigCarsScale.y);
+        if (!mWideCarsEnabled && !mPaperCarsEnabled) _inc(z, sBigCarsScale.z);
+
+        final_x = sBigCarsScale.x;
+        final_y = sBigCarsScale.y;
+        final_z = sBigCarsScale.z;
       }
 
       if (mFlatCarsEnabled)
-        OpenMW::Variables::CarScaleMatrix.GetField().v2.x *= sFlatCarsScale.x;
+        _clamp(x, final_x * sFlatCarsScale.x);
       else if (mTallCarsEnabled)
-        OpenMW::Variables::CarScaleMatrix.GetField().v2.x *= sTallCarsScale.x;
+        _clamp(x, final_x * sTallCarsScale.x);
 
-      if (mLongCarsEnabled) OpenMW::Variables::CarScaleMatrix.GetField().v0.y = sLongCarsScale.y;
+      if (mLongCarsEnabled) _clamp(y, final_y * sLongCarsScale.y);
 
       if (mWideCarsEnabled)
-        OpenMW::Variables::CarScaleMatrix.GetField().v1.z *= sWideCarsScale.z;
+        _clamp(z, final_z * sWideCarsScale.z);
       else if (mPaperCarsEnabled)
-        OpenMW::Variables::CarScaleMatrix.GetField().v1.z = sPaperCarsScale.z;
+        _clamp(z, final_z * sPaperCarsScale.z);
 
       if (mJellyCarsEnabled) {
         _transformJelly();
-        OpenMW::Variables::CarScaleMatrix.GetField().v0.y *= mJellyCarsScale.y;
-        OpenMW::Variables::CarScaleMatrix.GetField().v1.z *= mJellyCarsScale.z;
-        OpenMW::Variables::CarScaleMatrix.GetField().v2.x *= mJellyCarsScale.x;
+        final_x = (x *= mJellyCarsScale.x);
+        final_y = (y *= mJellyCarsScale.y);
+        final_z = (z *= mJellyCarsScale.z);
       }
 
       if (mFlippedCarsEnabled) {
-        OpenMW::Variables::CarScaleMatrix.GetField().v0.y *= -1.0f;
-        OpenMW::Variables::CarScaleMatrix.GetField().v1.z *= -1.0f;
+        y *= -1.0f;
+        z *= -1.0f;
       }
     }
 
