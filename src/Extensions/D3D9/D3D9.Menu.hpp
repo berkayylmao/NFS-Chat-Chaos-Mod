@@ -133,8 +133,8 @@ namespace Extensions::D3D9::Menu {
         // Set up columns
         {
           ImGui::TableSetupColumn(CONST_UI_CONFIG_HEADER_ENABLED, ImGuiTableColumnFlags_NoSort, 0.1f);
-          ImGui::TableSetupColumn(CONST_UI_CONFIG_HEADER_NAME, ImGuiTableColumnFlags_NoSort, 0.6f);
-          ImGui::TableSetupColumn(CONST_UI_CONFIG_HEADER_DURATION, ImGuiTableColumnFlags_NoSort, 0.3f);
+          ImGui::TableSetupColumn(CONST_UI_CONFIG_HEADER_NAME, ImGuiTableColumnFlags_NoSort, 1.0f);
+          ImGui::TableSetupColumn(CONST_UI_CONFIG_HEADER_DURATION, ImGuiTableColumnFlags_NoSort, 0.4f);
           ImGui::TableSetupScrollFreeze(0, 2);
           ImGui::TableHeadersRow();
         }
@@ -227,8 +227,10 @@ namespace Extensions::D3D9::Menu {
             ImGui::TableSetColumnIndex(2);
 
             if (ptr->GetIsStatusEffect()) {
+              static constexpr char text[] = "Status effect";
               ImGui::AlignTextToFramePadding();
-              ImGui::TextUnformatted("Status effect");
+              ImGui::SetCursorPosX(ImGui::GetCursorPosX() + ImGui::GetColumnWidth() / 2.0f - ImGui::CalcTextSize(text).x / 2.0f);
+              ImGui::TextUnformatted(text);
             } else {
               ImGui::PushID((ptr->GetIndex() + 1) * -10);
               ImGui::PushItemWidth(-FLT_MIN);

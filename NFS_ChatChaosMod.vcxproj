@@ -198,7 +198,7 @@
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need For Speed Most Wanted\scripts\NFS_ChatChaosMod.asi" /y
-echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need For Speed Most Wanted\ChatChaosMod\Config.json"</Command>
+echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need For Speed Most Wanted\ChatChaosMod\Config.json" /Y</Command>
       <Message>Copy output file to a test Speed game's directory.</Message>
     </PostBuildEvent>
     <CustomBuildStep>
@@ -236,7 +236,7 @@ echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Game
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need for Speed Carbon Collectors Edition\scripts\NFS_ChatChaosMod.asi" /y
-echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need for Speed Carbon Collectors Edition\ChatChaosMod\Config.json"</Command>
+echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need for Speed Carbon Collectors Edition\ChatChaosMod\Config.json" /Y</Command>
       <Message>Copy output file to a test Speed game's directory.</Message>
     </PostBuildEvent>
     <CustomBuildStep>
@@ -274,7 +274,7 @@ echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Game
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need For Speed Most Wanted\scripts\NFS_ChatChaosMod.asi" /y
-echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need For Speed Most Wanted\ChatChaosMod\Config.json"</Command>
+echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need For Speed Most Wanted\ChatChaosMod\Config.json" /Y</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy output file to a test Speed game's directory.</Message>
@@ -314,7 +314,7 @@ echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Game
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need for Speed Carbon Collectors Edition\scripts\NFS_ChatChaosMod.asi" /y
-echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need for Speed Carbon Collectors Edition\ChatChaosMod\Config.json"</Command>
+echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need for Speed Carbon Collectors Edition\ChatChaosMod\Config.json" /Y</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy output file to a test Speed game's directory.</Message>
@@ -360,7 +360,7 @@ echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Game
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need For Speed Most Wanted\scripts\NFS_ChatChaosMod.asi" /y
-echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need For Speed Most Wanted\ChatChaosMod\Config.json"</Command>
+echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need For Speed Most Wanted\ChatChaosMod\Config.json" /Y</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy output file to a test Speed game's directory.</Message>
@@ -406,7 +406,7 @@ echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Game
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need for Speed Carbon Collectors Edition\scripts\NFS_ChatChaosMod.asi" /y
-echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need for Speed Carbon Collectors Edition\ChatChaosMod\Config.json"</Command>
+echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need for Speed Carbon Collectors Edition\ChatChaosMod\Config.json" /Y</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy output file to a test Speed game's directory.</Message>
@@ -451,7 +451,7 @@ echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Game
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need For Speed Most Wanted\scripts\NFS_ChatChaosMod.asi" /y
-echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need For Speed Most Wanted\ChatChaosMod\Config.json"</Command>
+echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need For Speed Most Wanted\ChatChaosMod\Config.json" /Y</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy output file to a test Speed game's directory.</Message>
@@ -496,7 +496,7 @@ echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Game
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)$(Configuration)\NFS_ChatChaosMod.asi" "D:\Games\Need for Speed Carbon Collectors Edition\scripts\NFS_ChatChaosMod.asi" /y
-echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need for Speed Carbon Collectors Edition\ChatChaosMod\Config.json"</Command>
+echo f | xcopy "$(SolutionDir)$(Configuration)\src\Helpers\Config.json" "D:\Games\Need for Speed Carbon Collectors Edition\ChatChaosMod\Config.json" /Y</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy output file to a test Speed game's directory.</Message>
