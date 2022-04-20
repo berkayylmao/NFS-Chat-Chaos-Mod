@@ -48,7 +48,8 @@ Simple! Click on the `Twitch` tab and enter the necessary information.
 - Channel Name: *The channel you want to have the voting on*  
 - Username: *The username of an account that will read the votes (can be your own, can be a channel moderator)*  
 - User OAuth: *An OAuth Token for the specified username (Can be generated [from here](https://twitchtokengenerator.com/quick/xnaEGgziJl))*
-  - Note: You will need to add "oauth:" in front of the token. For example: `oauth:YOURTOKENHERE`.
+  - You need to use the `access token`.
+  - **!!NOTE!!**: You need to add "oauth:" in front of the access token. For example: `oauth:YOURACCESSTOKENHERE`.
 
 <p align="center">
 <img src=".gitdocs/UI_Twitch.png?raw=true]" />
