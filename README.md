@@ -1,6 +1,7 @@
 <p align="center">
-<img src=".gitdocs/UI_Main.png?raw=true" />
-<img src=".gitdocs/UI_About.png?raw=true" />
+<img src=".gitdocs/UI_Main.png?raw=true" /> <br />
+<img src=".gitdocs/UI_About.png?raw=true" /> <br />
+  <a href="EFFECTS.md"><h1 align="center">** See a complete list all effects in `EFFECTS.md` **</h1><a/>
 </p>
 
 ## NFS Chat Chaos Mod
