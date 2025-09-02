@@ -2,7 +2,7 @@
 // clang-format off
 //
 //    NFS Chaos Mod (NFS-Chat-Chaos-Mod)
-//    Copyright (C) 2022 Berkay Yigit <berkaytgy@gmail.com>
+//    Copyright (C) 2025 Berkay Yiğit <contact@withberkay.com>
 //
 //    This program is free software: you can redistribute it and/or modify
 //    it under the terms of the GNU Affero General Public License as published
